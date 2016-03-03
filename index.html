@@ -1,23 +1,9 @@
 ---
 layout: default
 ---
-
-<div class="home">
-
-  <h1 class="page-heading">Posts</h1>
-
-  <ul class="post-list">
-    {% for post in site.posts %}
-      <li>
-        <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
-
-        <h2>
-          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        </h2>
-      </li>
-    {% endfor %}
-  </ul>
-
-  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
-
+<div class="col-sm-12">
+    <div class="page-content">
+		<p>I am senior researcher at eScience Research Institute, ITMO University in Saint Petersburg, Russia.</p>
+		<p align="center"><a href="http://en.ifmo.ru/"><img src="/itmo_small_white_eng.jpg" style="height:100px"/></a></p>
+    </div>
 </div>
