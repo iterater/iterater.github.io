@@ -5,9 +5,7 @@ sass:
   sass_dir: assets/css/_sass
   style: :compressed
 
-markdown: redcarpet
-redcarpet:
-  extensions: ["no_intra_emphasis", "tables", "fenced_code_blocks", "autolink", "strikethrough", "superscript"]
+markdown: kramdown
 
 url: http://iterater.github.io
 permalink: /:year/:month/:title/
