@@ -1,3 +1,4 @@
-theme: jekyll-theme-minimal
+gem "minima"
+theme: minima
 title: Sergey V. Kovalchuk
 description: Persoanl page of Sergey V. Kovalchuk
