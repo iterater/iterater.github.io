@@ -3,8 +3,8 @@ layout: default
 title: About
 ---
 
-![image](me.png){: style="float: left"}
-Test text
+| ![image](me.png){: style="float: left"} | Test text |
+|---|---|
 
 # About me
 
