@@ -3,7 +3,8 @@ layout: default
 title: About
 ---
 
-<img src="/me.png" alt="Me" width="150" style="float: right;" />
+<img src="/me.png" alt="Me" width="150" style="float: left;" />
+<img src="/itmo.jpg" alt="Me" width="150" style="float: right;" />
 
 # Sergey V. Kovalchuk, Ph.D.
 
