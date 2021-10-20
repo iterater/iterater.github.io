@@ -3,10 +3,12 @@ layout: default
 title: About
 ---
 
-<img src="/me.png" alt="Kitten" width="150"/>
+<img src="/me.png" alt="Me" width="150"/>
 
-<!-- ![image](me.png) -->
+# Sergey V. Kovalchuk, Ph.D.
 
+- Senior researcher at National Center for Cognitive Research, ITMO University
+- Associate professor at Faculty of Digital Transformations, ITMO University
 
 # About me
 
