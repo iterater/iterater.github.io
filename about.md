@@ -3,6 +3,9 @@ layout: default
 title: About
 ---
 
+![image](me.png){: style="float: left"}
+Test text
+
 # About me
 
 Currently, I am a senior researcher and associate professor at [ITMO University](https://en.itmo.ru/) (Saint Petersburg, Russia). My general research interests are in modeling and simulation of complex systems, intelligent and knowledge-based technologies, data-driven modeling and machine learning, high-performance and distributed computing, decision making, and decision support. The application areas where I'm trying to apply everything above include medicine and healthcare, hydrometeorology, social sciences, and many others.
