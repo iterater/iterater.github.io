@@ -3,8 +3,10 @@ layout: default
 title: About
 ---
 
-| ![image](me.png){: style="float: left"} | Test text |
-|---|---|
+<img src="/me.png" alt="Kitten" width="150"/>
+
+<!-- ![image](me.png) -->
+
 
 # About me
 
