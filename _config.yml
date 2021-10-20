@@ -1,11 +1,6 @@
 theme: minima
-  skin: dark
 title: Sergey V. Kovalchuk
 description: Here is some description
-# twitter_username: iterater
-# github_username: iterater
-minima:
-  social_links:
-    twitter: iterater
-    github: iterater
+twitter_username: iterater
+github_username: iterater
 author: Sergey V. Kovalchuk
