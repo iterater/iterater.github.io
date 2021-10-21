@@ -3,6 +3,8 @@ layout: default
 title: About
 ---
 
+<p>
+
 <img src="/me.png" alt="Me" width="150" style="float: left; margin-right: 10px" />
 <img src="/itmo.jpg" alt="Me" width="150" style="float: right;" />
 
@@ -10,6 +12,8 @@ title: About
 
 - Senior researcher at National Center for Cognitive Research, ITMO University
 - Associate professor at Faculty of Digital Transformations, ITMO University
+
+</p>
 
 # About me
 
