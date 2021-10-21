@@ -3,17 +3,13 @@ layout: default
 title: About
 ---
 
-<p>
-
-<img src="/me.png" alt="Me" width="150" style="float: left; margin-right: 10px" />
-<img src="/itmo.jpg" alt="Me" width="150" style="float: right;" />
+<img src="/me.png" alt="Me" width="150" style="float: right; margin-left: 10px" />
+<!-- <img src="/itmo.jpg" alt="ITMO" width="150" style="float: right;" /> -->
 
 # Sergey V. Kovalchuk, Ph.D.
 
 - Senior researcher at National Center for Cognitive Research, ITMO University
 - Associate professor at Faculty of Digital Transformations, ITMO University
-
-</p>
 
 # About me
 
