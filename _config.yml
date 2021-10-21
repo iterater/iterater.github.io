@@ -5,7 +5,7 @@ twitter_username: iterater
 github_username: iterater
 author: Sergey V. Kovalchuk
 header_pages:
-  - about.md
+  - index.md
   - research.md
   - lab.md
   - publications.md
