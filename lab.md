@@ -5,7 +5,7 @@ title: Lab
 
 # DHC Lab
 
-![[images/dhc_lab.jpg]]
+![image](/images/dhc_lab.jpg)
 
 ## History
 
