@@ -4,3 +4,10 @@ description: Here is some description
 twitter_username: iterater
 github_username: iterater
 author: Sergey V. Kovalchuk
+header_pages:
+  - about.md
+  - research.md
+  - lab.md
+  - publications.md
+  - teaching.md
+  - community.md
