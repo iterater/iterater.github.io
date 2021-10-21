@@ -5,7 +5,7 @@ title: Lab
 
 # DHC Lab
 
-![image](/images/dhc_lab.jpg)
+![DHC Lab photo](/images/dhc_lab.jpg)
 
 ## History
 
@@ -34,3 +34,12 @@ The DHC Lab is open for collaboration with academic and industrial companies in 
 - [Cardiology Research Institute](https://en.cardio-tomsk.ru/) (Tomsk)
 - [Medical Information and Analytical Center](https://spbmiac.ru/) (Saint Petersburg)
 - and others
+
+## Lab news 
+
+<a class="twitter-timeline"
+  href="https://twitter.com/TwitterDev"
+  data-width="300"
+  data-height="300">
+Tweets by @TwitterDev
+</a>
