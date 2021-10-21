@@ -20,6 +20,6 @@ title: Publications
 1. S.V. Kovalchuk, A.V. Krikunov, K.V. Knyazkov, A.V. Boukhanovsky Classification issues within ensemble-based simulation: application to surge floods forecasting // Stochastic Environmental Research and Risk Assessment, Vol. 31, Issue 5, 2017, pp. 1183-1197. (doi: 10.1007/s00477-016-1324-5, [link](https://link.springer.com/article/10.1007/s00477-016-1324-5))
 1. V.V. Kashirin, A.A. Lantseva, S.V. Ivanov, S.V. Kovalchuk, A.V. Boukhanovsky Evolutionary simulation of complex networks’ structures with specific functional properties // Journal of Applied Logic, Volume 24, Part A, 2017, pp. 39-49. (doi: 10.1016/j.jal.2016.11.012, [link](https://www.sciencedirect.com/science/article/abs/pii/S1570868316300660))
 
-[All publications - 172 items (2021-10-22)]({{ site.baseurl }}{% link all_publications.md %})
+[All publications - 172 items (2021-10-22)]({{ site.baseurl }}{% link all_publications.html %})
 
 [Patents and software (in Russian) - 22 items (2021-10-22)]({{ site.baseurl }}{% link patents_and_software.md %})
