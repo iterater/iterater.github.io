@@ -5,7 +5,7 @@ title: Research
 
 # Research interests
 
-<img src="/images/research_domain_behavior.png" width="50%" style="float: right; margin-left: 10px" />
+<img src="/images/research_domain_behavior.png" width="40%" style="float: right; margin-left: 10px" />
 
 ## Modeling and simulation of professional and domain-specific behavior and decision making
 
@@ -16,7 +16,7 @@ In many cases, the agent is influenced by complex environments, personal motivat
 1. S.V. Kovalchuk [et al.] **Simulation of Patient Flow in Multiple Healthcare Units using Process and Data Mining Techniques for Model Identification** // Journal of Biomedical Informatics, Vol. 82, 2018, pp. 128-142. (doi: 10.1016/j.jbi.2018.05.004, [link](https://www.sciencedirect.com/science/article/pii/S153204641830087X))
 2. S.V. Kovalchuk [et al.] **Towards Modeling of Information Processing Within Business-Processes of Service-Providing Organizations** // Lecture Notes in Computer Science, Vol. 12137, 2020, pp. 667–675. (doi: 10.1007/978-3-030-50371-0_49, [link](https://link.springer.com/chapter/10.1007/978-3-030-50371-0_49))
 
-<img src="/images/research_xai.png" width="50%" style="float: right; margin-left: 10px" />
+<img src="/images/research_xai.png" width="40%" style="float: right; margin-left: 10px" />
 
 ## Application of cognitive technologies and explainable AI (XAI) to domain-specific problems
 
@@ -25,6 +25,8 @@ A key interest here is defined by a possible extension of known XAI technologies
 ### Notable papers
 
 1. S.V. Kovalchuk [et al.] **Three-stage intelligent support of clinical decision making for higher trust, validity, and explainability** // Preprint at arXiv (arXiv:2007.12870, [link](https://arxiv.org/abs/2007.12870))
+
+<img src="/images/research_metamodeling.png" width="40%" style="float: right; margin-left: 10px" />
 
 ## Meta-modeling and model management for complex system modeling and simulation
 
