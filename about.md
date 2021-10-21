@@ -21,6 +21,8 @@ Since 2015, I'm the head of the Digital Healthcare Lab (formerly, Digital Health
 
 Since 2018, I'm a part of the [National Center for Cognitive Research](https://actcognitive.org/) at ITMO University where the research directions I'm involved in include distributed intelligent systems cognitive technologies, explainable artificial intelligence. 
 
+[1-page CV (2020-04-22)]({{ site.baseurl }}{% link docs/Kovalchuk_CV_ENG_1P.pdf %})
+
 # Contact
 
 Birzhevaya line, 4, Saint Petersburg, 199034, Russia (room 306A)
