@@ -37,9 +37,4 @@ The DHC Lab is open for collaboration with academic and industrial companies in 
 
 ## Lab news 
 
-<a class="twitter-timeline"
-  href="https://twitter.com/TwitterDev"
-  data-width="300"
-  data-height="300">
-Tweets by @TwitterDev
-</a>
+<a class="twitter-timeline" href="https://twitter.com/DhcLab?ref_src=twsrc%5Etfw">Tweets by DhcLab</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
