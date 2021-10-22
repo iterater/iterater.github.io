@@ -5,9 +5,9 @@ title: Research
 
 # Research interests
 
-<img src="/images/research_domain_behavior.png" width="40%" style="float: right; margin-left: 10px" />
-
 ## Modeling and simulation of professional and domain-specific behavior and decision making
+
+<img src="/images/research_domain_behavior.png" width="40%" style="float: right; margin-left: 10px" />
 
 In many cases, the agent is influenced by complex environments, personal motivation, background domain knowledge, and regulatory mechanisms. Within a complex environment, people act like professionals doing their jobs. Such activity includes both professional and general motivation, reasoning, and planning. How such behavior may be understood, explained, and optimized (both for the personal goals of an agent and for the global system-level performance)?
 
@@ -16,9 +16,10 @@ In many cases, the agent is influenced by complex environments, personal motivat
 1. S.V. Kovalchuk [et al.] **Simulation of Patient Flow in Multiple Healthcare Units using Process and Data Mining Techniques for Model Identification** // Journal of Biomedical Informatics, Vol. 82, 2018, pp. 128-142. (doi: 10.1016/j.jbi.2018.05.004, [link](https://www.sciencedirect.com/science/article/pii/S153204641830087X))
 2. S.V. Kovalchuk [et al.] **Towards Modeling of Information Processing Within Business-Processes of Service-Providing Organizations** // Lecture Notes in Computer Science, Vol. 12137, 2020, pp. 667–675. (doi: 10.1007/978-3-030-50371-0_49, [link](https://link.springer.com/chapter/10.1007/978-3-030-50371-0_49))
 
-<img src="/images/research_xai.png" width="40%" style="float: right; margin-left: 10px" />
 
 ## Application of cognitive technologies and explainable AI (XAI) to domain-specific problems
+
+<img src="/images/research_xai.png" width="40%" style="float: right; margin-left: 10px" />
 
 A key interest here is defined by a possible extension of known XAI technologies beyond basic feature-based reasoning towards domain-specific inference and knowledge integration. The goal of such extension is in higher validability of the models and higher trust of the results in practical problems. How can we manage complex models with high uncertainty and diversity of the described processes and objects to achieve valid and trustworthy results in a mostly automatic manner?
 
@@ -26,9 +27,9 @@ A key interest here is defined by a possible extension of known XAI technologies
 
 1. S.V. Kovalchuk [et al.] **Three-stage intelligent support of clinical decision making for higher trust, validity, and explainability** // Preprint at arXiv (arXiv:2007.12870, [link](https://arxiv.org/abs/2007.12870))
 
-<img src="/images/research_metamodeling.png" width="40%" style="float: right; margin-left: 10px" />
-
 ## Meta-modeling and model management for complex system modeling and simulation
+
+<img src="/images/research_metamodeling.png" width="40%" style="float: right; margin-left: 10px" />
 
 As the complexity of a system grows the model to describe it becomes more and more complicated. As a result hybrid modeling, surrogate modeling, data-driven modeling approaches are combined within cross-domain knowledge-based reasoning and artificial intelligence to design, implement, identify and apply composite models for domain-specific tasks. How can the general approach to such a problem be developed to extend intelligent support of complex system modeling and simulation?
 
