@@ -35,7 +35,7 @@ Birzhevaya line, 4, Saint Petersburg, 199034, Russia (room 306A)
 # Social networks
 
 <a href="https://ru.linkedin.com/in/sergeykovalchuk" title="LinkedIn" style="margin-right: 10px"><img src="/images/linkedin.png" width="30"/></a>
-<a href="http://www.researchgate.net/profile/Sergey_Kovalchuk2" title="ResearchGate" style="margin-right: 10px"><img src="/images/researchgate.png" width="30"/></a>
+<a href="http://www.researchgate.net/profile/Sergey_Kovalchuk2" title="ResearchGate" style="margin-right: 10px"><img src="https://cdn.jsdelivr.net/npm/simple-icons@5.19.0/icons/researchgate.svg" width="30"/></a>
 <a href="https://scholar.google.com/citations?user=P1ruBPYAAAAJ" title="GoogleScholar" style="margin-right: 10px"><img src="/images/google_scholar.png" width="30"/></a>
 <a href="https://twitter.com/iterater" title="Twitter" style="margin-right: 10px"><img src="/images/twitter.png" width="30"/></a>
 <a href="https://github.com/iterater" title="GitHub" style="margin-right: 10px"><img src="/images/github.png" width="30"/></a>
