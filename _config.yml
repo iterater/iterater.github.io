@@ -4,6 +4,7 @@ description: Powered by GitHub Pages, Jekyll, Minima theme
 twitter_username: iterater
 github_username: iterater
 author: Sergey V. Kovalchuk
+google_analytics: UA-210876536-1
 header_pages:
   - index.md
   - research.md
