@@ -10,6 +10,7 @@ title: About
 
 - Senior researcher at National Center for Cognitive Research, ITMO University
 - Associate professor at Faculty of Digital Transformations, ITMO University
+- Senior researcher, Almazov National Medical Research Centre
 
 # About me
 
