@@ -34,4 +34,5 @@ Birzhevaya line, 4, Saint Petersburg, 199034, Russia (room 306A)
 
 # Social networks
 
-<img src="/images/linkedin.png" alt="linkedin" width="30" style="margin-right: 10px" />
+<a href="https://ru.linkedin.com/in/sergeykovalchuk" title="LinkedIn"><img src="/images/linkedin.png" width="30" style="margin-right: 10px"/></a>
+<a href="http://www.researchgate.net/profile/Sergey_Kovalchuk2" title="ResearchGate"><img src="/images/researchgate.png" width="30" style="margin-right: 10px"/></a>
