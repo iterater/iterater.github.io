@@ -31,3 +31,7 @@ Birzhevaya line, 4, Saint Petersburg, 199034, Russia (room 306A)
 **E-mail:** kovalchuk *[at]* itmo.ru
 
 **Phone:** +7 (812) 337 64 92 *(work)*
+
+# Social networks
+
+<img src="/images/linkedin.png" alt="linkedin" width="30" style="margin-right: 10px" />
