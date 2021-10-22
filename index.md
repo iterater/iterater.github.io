@@ -34,9 +34,9 @@ Birzhevaya line, 4, Saint Petersburg, 199034, Russia (room 306A)
 
 # Social networks
 
-<a href="https://ru.linkedin.com/in/sergeykovalchuk" title="LinkedIn" style="margin-right: 10px"><img src="https://cdn.jsdelivr.net/npm/simple-icons@5.19.0/icons/linkedin.png" alt="LinkedIn" width="30"/></a>
+<a href="https://ru.linkedin.com/in/sergeykovalchuk" title="LinkedIn" style="margin-right: 10px"><img src="https://cdn.jsdelivr.net/npm/simple-icons@5.19.0/icons/linkedin.svg" alt="LinkedIn" width="30"/></a>
 <a href="http://www.researchgate.net/profile/Sergey_Kovalchuk2" title="ResearchGate" style="margin-right: 10px"><img src="https://cdn.jsdelivr.net/npm/simple-icons@5.19.0/icons/researchgate.svg" title="ResearchGate" width="30"/></a>
-<a href="https://scholar.google.com/citations?user=P1ruBPYAAAAJ" title="GoogleScholar" style="margin-right: 10px"><img src="https://cdn.jsdelivr.net/npm/simple-icons@5.19.0/icons/googlescholar.png" alt="GoogleScholar" width="30"/></a>
-<a href="https://twitter.com/iterater" title="Twitter" style="margin-right: 10px"><img src="https://cdn.jsdelivr.net/npm/simple-icons@5.19.0/icons/twitter.png" alt="Twitter" width="30"/></a>
-<a href="https://www.facebook.com/iterater" title="Facebook" style="margin-right: 10px"><img src="https://cdn.jsdelivr.net/npm/simple-icons@5.19.0/icons/facebook.png" alt="Facebook" width="30"/></a>
-<a href="https://github.com/iterater" title="GitHub" style="margin-right: 10px"><img src="https://cdn.jsdelivr.net/npm/simple-icons@5.19.0/icons/github.png" alt="GitHub" width="30"/></a>
+<a href="https://scholar.google.com/citations?user=P1ruBPYAAAAJ" title="GoogleScholar" style="margin-right: 10px"><img src="https://cdn.jsdelivr.net/npm/simple-icons@5.19.0/icons/googlescholar.svg" alt="GoogleScholar" width="30"/></a>
+<a href="https://twitter.com/iterater" title="Twitter" style="margin-right: 10px"><img src="https://cdn.jsdelivr.net/npm/simple-icons@5.19.0/icons/twitter.svg" alt="Twitter" width="30"/></a>
+<a href="https://www.facebook.com/iterater" title="Facebook" style="margin-right: 10px"><img src="https://cdn.jsdelivr.net/npm/simple-icons@5.19.0/icons/facebook.svg" alt="Facebook" width="30"/></a>
+<a href="https://github.com/iterater" title="GitHub" style="margin-right: 10px"><img src="https://cdn.jsdelivr.net/npm/simple-icons@5.19.0/icons/github.svg" alt="GitHub" width="30"/></a>
