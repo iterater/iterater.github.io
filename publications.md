@@ -7,6 +7,9 @@ title: Publications
 
 ## Selected papers
 
+
+1. S.V. Kovalchuk, G.D. Kopanitsa, I.V. Derevitskii, G.A. Matveev, D.A. Savitskaya Three-stage intelligent support of clinical decision making for higher trust, validity, and explainability // Journal of Biomedical Informatics, Vol. 127, 2022, pp. 104013. (doi: 10.1016/j.jbi.2022.104013, [link](https://www.sciencedirect.com/science/article/abs/pii/S1532046422000296))
+1. A.A. Funkner, A.N. Yakovlev, S.V. Kovalchuk Surrogate-assisted performance prediction for data-driven knowledge discovery algorithms: Application to evolutionary modeling of clinical pathways // Journal of Computational Science, Vol. 59, 2022, pp. 101562. (doi: 10.1016/j.jocs.2022.101562, [link](https://www.sciencedirect.com/science/article/abs/pii/S1877750322000059))
 1. I.V. Derevitskii, D.A. Savitskaya, A.Y. Babenko, S.V. Kovalchuk Hybrid predictive modelling: Thyrotoxic atrial fibrillation case // Journal of Computational Science, Vol. 51, 2021, pp. 101365. (doi: 10.1016/j.jocs.2021.101365, [link](https://www.sciencedirect.com/science/article/abs/pii/S1877750321000570))
 1. O. Metsker, K. Magoev, A. Yakovlev, S. Yanishevskiy, G. Kopanitsa, S. Kovalchuk, V.V. Krzhizhanovskaya Identification of risk factors for patients with diabetes: diabetic polyneuropathy case study // BMC Medical Informatics and Decision Making, Vol. 20, 2020, pp. 201. (doi: 10.1186/s12911-020-01215-w, [link](https://bmcmedinformdecismak.biomedcentral.com/articles/10.1186/s12911-020-01215-w))
 1. E.V. Bolgova, S.V. Kovalchuk, M.A. Balakhontceva, N.E. Zvartau, O.G. Metsker Human Computer Interaction During Clinical Decision Support With Electronic Health Records Improvement // International Journal of E-Health and Medical Communications, Vol. 11, Issue 1, 2020, pp. 93-106. (doi: 10.4018/IJEHMC.2020010106, [link](https://www.igi-global.com/gateway/article/full-text-html/240208&riu=true))

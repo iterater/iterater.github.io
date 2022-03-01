@@ -25,7 +25,7 @@ A key interest here is defined by a possible extension of known XAI technologies
 
 ### Notable papers
 
-1. S.V. Kovalchuk [et al.] **Three-stage intelligent support of clinical decision making for higher trust, validity, and explainability** // Preprint at arXiv (arXiv:2007.12870, [link](https://arxiv.org/abs/2007.12870))
+1. S.V. Kovalchuk [et al.] **Three-stage intelligent support of clinical decision making for higher trust, validity, and explainability** // Journal of Biomedical Informatics, Vol. 127, 2022, pp. 104013. (doi: 10.1016/j.jbi.2022.104013, [link](https://www.sciencedirect.com/science/article/abs/pii/S1532046422000296), [arXiv](https://arxiv.org/abs/2007.12870))
 
 ## Meta-modeling and model management for complex system modeling and simulation
 
