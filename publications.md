@@ -7,7 +7,6 @@ title: Publications
 
 ## Selected papers
 
-
 1. S.V. Kovalchuk, G.D. Kopanitsa, I.V. Derevitskii, G.A. Matveev, D.A. Savitskaya Three-stage intelligent support of clinical decision making for higher trust, validity, and explainability // Journal of Biomedical Informatics, Vol. 127, 2022, pp. 104013. (doi: 10.1016/j.jbi.2022.104013, [link](https://www.sciencedirect.com/science/article/abs/pii/S1532046422000296))
 1. A.A. Funkner, A.N. Yakovlev, S.V. Kovalchuk Surrogate-assisted performance prediction for data-driven knowledge discovery algorithms: Application to evolutionary modeling of clinical pathways // Journal of Computational Science, Vol. 59, 2022, pp. 101562. (doi: 10.1016/j.jocs.2022.101562, [link](https://www.sciencedirect.com/science/article/abs/pii/S1877750322000059))
 1. I.V. Derevitskii, D.A. Savitskaya, A.Y. Babenko, S.V. Kovalchuk Hybrid predictive modelling: Thyrotoxic atrial fibrillation case // Journal of Computational Science, Vol. 51, 2021, pp. 101365. (doi: 10.1016/j.jocs.2021.101365, [link](https://www.sciencedirect.com/science/article/abs/pii/S1877750321000570))
@@ -23,6 +22,6 @@ title: Publications
 1. S.V. Kovalchuk, A.V. Krikunov, K.V. Knyazkov, A.V. Boukhanovsky Classification issues within ensemble-based simulation: application to surge floods forecasting // Stochastic Environmental Research and Risk Assessment, Vol. 31, Issue 5, 2017, pp. 1183-1197. (doi: 10.1007/s00477-016-1324-5, [link](https://link.springer.com/article/10.1007/s00477-016-1324-5))
 1. V.V. Kashirin, A.A. Lantseva, S.V. Ivanov, S.V. Kovalchuk, A.V. Boukhanovsky Evolutionary simulation of complex networks’ structures with specific functional properties // Journal of Applied Logic, Volume 24, Part A, 2017, pp. 39-49. (doi: 10.1016/j.jal.2016.11.012, [link](https://www.sciencedirect.com/science/article/abs/pii/S1570868316300660))
 
-[All publications - 172 items (2021-10-22)]({{ site.baseurl }}{% link all_publications.html %})
+[All publications - 187 items (2022-03-01)]({{ site.baseurl }}{% link all_publications.html %})
 
 [Patents and software (in Russian) - 22 items (2021-10-22)]({{ site.baseurl }}{% link patents_and_software.md %})
