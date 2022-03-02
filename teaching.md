@@ -7,7 +7,7 @@ title: Teaching
 
 ## Supervising students
 
-Supervising 1 PhD, 18 MSc, 3 BSc projects defended in 2010-2020 including 4 double-degree MSc students (ITMO University + University of Amsterdam). 
+Supervising 1 PhD, 21 MSc, 3 BSc projects defended in 2010-2021 including 4 double-degree MSc students (ITMO University + University of Amsterdam). 
 
 ### Selected recently completed PhD/MSc projects
 
