@@ -30,9 +30,11 @@ Being focused on the medical domain, the DHC Lab successfully extends and transl
 The DHC Lab is open for collaboration with academic and industrial companies in research and development directions. The collaboration network of the lab includes the following companies:
 
 - [Almazov National Medical Research Center](http://www.almazovcentre.ru/?lang=en) (Saint Petersburg) - key academic partner
+- [UMCH Technology](https://umchtech.com/) (Kuala Lumpur, Malaysia)
 - [PMT Online](https://pmtonline.ru/) (Moscow)
 - [Cardiology Research Institute](https://en.cardio-tomsk.ru/) (Tomsk)
 - [Medical Information and Analytical Center](https://spbmiac.ru/) (Saint Petersburg)
+- [International Centre for Reproductive Medicine](https://www.ivf-russia.com/) (Saint Petersburg)
 - and others
 
 ## Lab news 
