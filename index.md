@@ -28,9 +28,9 @@ Since 2018, I'm a part of the [National Center for Cognitive Research](https://a
 
 Birzhevaya line, 4, Saint Petersburg, 199034, Russia (room 306A)
 
-**E-mail:** kovalchuk*[at]*itmo.ru, sergey.v.kovalchuk*[at]*gmail.com
+**E-mail:** kovalchuk*[at]*itmo.ru, sergey.kovalchuk*[at]*huawei.com, sergey.v.kovalchuk*[at]*gmail.com
 
-**Phone:** +7 (812) 337 64 92 *(work)*
+**Phone:** +7 (812) 337 64 92 *(work, ITMO)*
 
 # Social networks
 
