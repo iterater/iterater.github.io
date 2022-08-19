@@ -22,7 +22,7 @@ Since 2015, I'm the head of the [Digital Healthcare Lab]({{ site.baseurl }}{% li
 
 Since 2018, I'm a part of the [National Center for Cognitive Research](https://actcognitive.org/) at ITMO University where the research directions I'm involved in include distributed intelligent systems cognitive technologies, explainable artificial intelligence. 
 
-[CV (2022-03-03)]({{ site.baseurl }}{% link docs/Kovalchuk_CV_ENG.pdf %})
+[CV (2022-08-19)]({{ site.baseurl }}{% link docs/Kovalchuk_CV_ENG.pdf %})
 
 # Contact
 
