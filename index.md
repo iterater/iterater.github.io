@@ -10,7 +10,7 @@ title: About
 
 - Senior researcher at National Center for Cognitive Research, ITMO University
 - Associate professor at Faculty of Digital Transformations, ITMO University
-- Principal engineer, Huawei
+- Principal engineer at Russian Research Institute, Huawei
 
 # About me
 
