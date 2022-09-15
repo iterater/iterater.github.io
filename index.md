@@ -8,19 +8,16 @@ title: About
 
 # Sergey V. Kovalchuk, Ph.D.
 
-- Senior researcher at National Center for Cognitive Research, ITMO University
 - Associate professor at Faculty of Digital Transformations, ITMO University
 - Principal engineer at Russian Research Institute, Huawei
 
 # About me
 
-Currently, I am a senior researcher and associate professor at [ITMO University](https://en.itmo.ru/) (Saint Petersburg, Russia). My general research interests are in modeling and simulation of complex systems, intelligent and knowledge-based technologies, data-driven modeling and machine learning, high-performance and distributed computing, decision making, and decision support. The application areas where I'm trying to apply everything above include medicine and healthcare, hydrometeorology, social sciences, and many others.
+My general research interests are in modeling and simulation of complex systems, intelligent and knowledge-based technologies, data-driven modeling and machine learning, high-performance and distributed computing, decision making, and decision support. The application areas where I'm trying to apply everything above include medicine and healthcare, hydrometeorology, social sciences, and many others.
 
 My education includes PhD (candidate of sciences) in mathematical modeling, numerical calculation, and software systems (2008, [ITMO University](https://en.itmo.ru/)) and an Engineering degree in software engineering (2006, [Orenburg State University](http://osu.ru/doc/666)). 
 
-Since 2015, I'm the head of the [Digital Healthcare Lab]({{ site.baseurl }}{% link lab.md %}) (formerly, Digital Healthcare Research Group) at ITMO University where we try to extend the area of modeling and simulation as well as intelligent technologies for improving clinical and organizational decisions in the medical domain. 
-
-Since 2018, I'm a part of the [National Center for Cognitive Research](https://actcognitive.org/) at ITMO University where the research directions I'm involved in include distributed intelligent systems cognitive technologies, explainable artificial intelligence. 
+Since 2015, I'm the head of the [Digital Healthcare Lab]({{ site.baseurl }}{% link lab.md %}) (formerly, Digital Healthcare Research Group) where we try to extend the area of modeling and simulation as well as intelligent technologies for improving clinical and organizational decisions in the medical domain. 
 
 [CV (2022-08-19)]({{ site.baseurl }}{% link docs/Kovalchuk_CV_ENG.pdf %})
 
@@ -28,9 +25,9 @@ Since 2018, I'm a part of the [National Center for Cognitive Research](https://a
 
 Birzhevaya line, 4, Saint Petersburg, 199034, Russia (room 306A)
 
-**E-mail:** kovalchuk*[at]*itmo.ru, sergey.kovalchuk*[at]*huawei.com, sergey.v.kovalchuk*[at]*gmail.com
+**E-mail:** sergey.v.kovalchuk*[at]*gmail.com, kovalchuk*[at]*itmo.ru, sergey.kovalchuk*[at]*huawei.com
 
-**Phone:** +7 (812) 337 64 92 *(work, ITMO)*
+**Phone:** +7 (812) 337 64 92 *(office)*
 
 # Social networks
 
