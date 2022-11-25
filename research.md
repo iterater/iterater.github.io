@@ -42,6 +42,7 @@ As the complexity of a system grows the model to describe it becomes more and mo
 
 ## Research grants (as a primary investigator)
 
+- “Intelligent technologies for chronic disease health service quality improvement in large-scale distributed telemedicine systems”, Ministry of Science and Education (international Russia-Malaysia collaboration project), 2021
 - “Intelligent technologies for building, investigation, and application of digital entities based on composite models for complex systems”, Russian Scientific Foundation, 2019-2021
 - “Personalized recommending technology for chronic disease patients using hybrid predictive modeling of life and health processes”, Ministry of Science and Education, 2017-2019
 - “Big data management for computationally intensive applications”, Ministry of Science and Education, 2014-2016
@@ -50,10 +51,9 @@ As the complexity of a system grows the model to describe it becomes more and mo
 
 ## Projects for industry (as a primary investigator)
 
-- “Concepts and models for a digital image of company’s employee”, GazpromNeft STC, 2019-2021
-- “Risk assessment for redundant medication recommendation”, PMT-Online, 2019-2020
-- “Meta-optimization algorithms for tuning and optimization of complex geological hydrodynamic models”, GazpromNeft STC, 2019
-- “Self-learning module for operator support in the telemedicine information system”, PMT-Online, 2018-2019
+- 1 project for *GazpromNeft*, 2021-2022
+- 2 projects for *GazpromNeft STC*, 2019-2021
+- 2 projects for *PMT-Online*, 2018-2020
 
 ## Personal grants
 
