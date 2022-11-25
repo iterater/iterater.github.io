@@ -25,7 +25,7 @@ Since 2015, I'm the head of the [Digital Healthcare Lab]({{ site.baseurl }}{% li
 
 Birzhevaya line, 4, Saint Petersburg, 199034, Russia (room 306A)
 
-**E-mail:** sergey.v.kovalchuk*[at]*gmail.com, kovalchuk*[at]*itmo.ru, sergey.kovalchuk*[at]*huawei.com
+**E-mail:** sergey.v.kovalchuk📧gmail.com, kovalchuk📧itmo.ru, sergey.kovalchuk📧huawei.com
 
 **Phone:** +7 (812) 337 64 92 *(office)*
 
