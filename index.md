@@ -19,7 +19,7 @@ My education includes PhD (candidate of sciences) in mathematical modeling, nume
 
 Since 2015, I'm the head of the [Digital Healthcare Lab]({{ site.baseurl }}{% link lab.md %}) (formerly, Digital Healthcare Research Group) where we try to extend the area of modeling and simulation as well as intelligent technologies for improving clinical and organizational decisions in the medical domain. 
 
-[CV (2022-08-19)]({{ site.baseurl }}{% link docs/Kovalchuk_CV_ENG.pdf %})
+[CV (2023-07-08)]({{ site.baseurl }}{% link docs/Kovalchuk_CV_ENG.pdf %})
 
 # Contact
 

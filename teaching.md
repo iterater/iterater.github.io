@@ -7,10 +7,13 @@ title: Teaching
 
 ## Supervising students
 
-Supervising 2 PhD, 25 MSc, 3 BSc projects defended in 2010-2022 including 4 double-degree MSc students (ITMO University + University of Amsterdam). 
+Supervising 2 PhD, 31 MSc, 4 BSc projects defended in 2010-2022 including 4 double-degree MSc students (ITMO University + University of Amsterdam). 
 
 ### Selected recently completed PhD/MSc projects
 
+- *\[MSc\]* "Evaluation of Process Models using Healthcare Event Logs with Complex Multi-Criterion Metrics" by Ashish Ireddy (ITMO University, 2023)
+- *\[MSc\]* "Methods for Distributed Healthcare System Control: Hospital Network Management in Providing Emergency Medical Care" by Daria Teplova (ITMO University, 2023)
+- *\[BSc\]* "Methods for Improvement of Generative Model Applied to Programming Question Answering" by Alexey Gorbatovsky (ITMO University, 2023)
 - *\[PhD\]* "Extracting and applicatiing knowledge from special data to improve quality of predictive models for tasks of expert decision support" by Ilia Derevitskii (ITMO University, 2022) - [link](https://dissovet.itmo.ru/dissertation/en/?number=752822)
 - *\[MSc\]* "Coupling Game Theory and Discrete-Event Simulation for Model-Based Ambulance Dispatching" by Xinyu Fu (ITMO University + University of Amsterdam, 2020) - [link](https://scripties.uba.uva.nl/search?id=716615)
 - *\[MSc\]* "Intelligent technologies for interpretable process models of caregiving to the patients with chronic diseases" by Liubov Elkhovskaya (ITMO University, 2020)
