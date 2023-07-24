@@ -25,7 +25,7 @@ Supervising 2 PhD, 31 MSc, 4 BSc projects defended in 2010-2023 including 4 doub
 
 - Computational biomedicine (MSc program, defenses in 2018, 2019, 2020)
 - Digital healthcare (MSc program, defense in 2021)
-- Intelligent big data technologies in medicine and healthcare (specialization in MSc program "Big data and machine learning", defense in 2022)
+- Intelligent big data technologies in medicine and healthcare (specialization in MSc program "Big data and machine learning", defenses in 2022, 2023)
 
 ## Lecturing, giving and organizing courses
 
