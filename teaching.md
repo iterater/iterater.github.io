@@ -12,7 +12,6 @@ Supervising 2 PhD, 31 MSc, 4 BSc projects defended in 2010-2022 including 4 doub
 ### Selected recently completed PhD/MSc projects
 
 - *\[MSc\]* "Evaluation of Process Models using Healthcare Event Logs with Complex Multi-Criterion Metrics" by Ashish Ireddy (ITMO University, 2023)
-- *\[MSc\]* "Methods for Distributed Healthcare System Control: Hospital Network Management in Providing Emergency Medical Care" by Daria Teplova (ITMO University, 2023)
 - *\[BSc\]* "Methods for Improvement of Generative Model Applied to Programming Question Answering" by Alexey Gorbatovsky (ITMO University, 2023)
 - *\[PhD\]* "Extracting and applicatiing knowledge from special data to improve quality of predictive models for tasks of expert decision support" by Ilia Derevitskii (ITMO University, 2022) - [link](https://dissovet.itmo.ru/dissertation/en/?number=752822)
 - *\[MSc\]* "Coupling Game Theory and Discrete-Event Simulation for Model-Based Ambulance Dispatching" by Xinyu Fu (ITMO University + University of Amsterdam, 2020) - [link](https://scripties.uba.uva.nl/search?id=716615)
@@ -27,3 +26,8 @@ Supervising 2 PhD, 31 MSc, 4 BSc projects defended in 2010-2022 including 4 doub
 - Computational biomedicine (MSc program, defenses in 2018, 2019, 2020)
 - Digital healthcare (MSc program, defense in 2021)
 - Intelligent big data technologies in medicine and healthcare (specialization in MSc program "Big data and machine learning", defense in 2022)
+
+## Lecturing, giving and organizing courses
+
+- Regular courses for MSc students at ITMO University: "Medical statistics", "Mathematical models of complex software", "Introduction to eScience and eEngineering", "Methodology of translational research"
+- Lectures for external professionals: "Data science in medicine and healthcare" (for medicine professionals), "Commertial development of intellectual entities" (for wide range of professionals), "Foundation of digital transformation in healthcare" (for healthcare professionals and government)
