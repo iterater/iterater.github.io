@@ -9,7 +9,7 @@ title: Teaching
 
 Supervising 2 PhD, 31 MSc, 4 BSc projects defended in 2010-2023 including 4 double-degree MSc students (ITMO University + University of Amsterdam). 
 
-### Selected recently completed PhD/MSc projects
+### Selected recently completed PhD/MSc/BSc projects
 
 - *\[MSc\]* "Evaluation of Process Models using Healthcare Event Logs with Complex Multi-Criterion Metrics" by Ashish Ireddy (ITMO University, 2023)
 - *\[BSc\]* "Methods for Improvement of Generative Model Applied to Programming Question Answering" by Alexey Gorbatovsky (ITMO University, 2023)
