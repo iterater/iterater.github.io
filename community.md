@@ -8,7 +8,7 @@ title: Community
 ## Chairing and Judging
 
 - Editor of [Journal of Computational Science](https://www.journals.elsevier.com/journal-of-computational-science)
-- Chair of Computational Health (CompHealth) track in ICCS since 2020 (recent site - [CompHealth 2023](https://sites.google.com/view/comp-health-2023/))
+- PC chair/organizer of Computational Health (CompHealth) track in ICCS since 2020 - [CompHealth](https://sites.google.com/view/comp-health-iccs/)
 - Guest editor of the annual special issue of Journal of Computational Science after International Conference of Computational Science, [ICCS](https://www.iccs-meeting.org/) (since 2016)
 	- [Virtual special issue](https://www.sciencedirect.com/journal/journal-of-computational-science/special-issue/10PMHNRTF9G) "The Computational Planet" after ICCS 2022
 	- [Virtual special issue](https://www.sciencedirect.com/journal/journal-of-computational-science/special-issue/10JWTQSD3Z9) "Computational Science for a Better Future" after ICCS 2021
