@@ -10,6 +10,7 @@ title: Community
 - Editor of [Journal of Computational Science](https://www.journals.elsevier.com/journal-of-computational-science)
 - Chair of Computational Health (CompHealth) track in ICCS since 2020 (recent site - [CompHealth 2023](https://sites.google.com/view/comp-health-2023/))
 - Guest editor of the annual special issue of Journal of Computational Science after International Conference of Computational Science, [ICCS](https://www.iccs-meeting.org/) (since 2016)
+	- [Virtual special issue](https://www.sciencedirect.com/journal/journal-of-computational-science/special-issue/10PMHNRTF9G) "The Computational Planet" after ICCS 2022
 	- [Virtual special issue](https://www.sciencedirect.com/journal/journal-of-computational-science/special-issue/10JWTQSD3Z9) "Computational Science for a Better Future" after ICCS 2021
 	- Special issue "20 years of computational science" ([Vol. 46, 2020](https://www.sciencedirect.com/journal/journal-of-computational-science/vol/46/suppl/C))
 	- [Virtual special issue](https://www.sciencedirect.com/journal/journal-of-computational-science/special-issue/107VGC0STDL) "Computational Science in the Interconnected World" after ICCS 2019
