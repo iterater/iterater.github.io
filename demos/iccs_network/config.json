@@ -8,8 +8,8 @@
     "text": "SK"
   },
   "text": {
-    "more": "Giant component of graph containing new pairs appeared after ICCS meeting.",
-    "intro": "Giant component of graph containing new pairs appeared after ICCS meeting.",
+    "more": "Giant component of graph containing new pairs of co-authors appeared after ICCS meeting where both co-authors publish independently. The data was collected for ICCS 2001-2023 and consequent publication.",
+    "intro": "New pairs of co-authors appeared after meeting at ICCS.",
     "title": "New pairs appeared after ICCS meeting"
   },
   "legend": {
