@@ -13,8 +13,8 @@ While considering professional decision-making, an important yet unobservable pa
 
 ### Notable papers
 
-1. O.V. Kubryak, S.V. Kovalchuk, N.G. Bagdasaryan **Assessment of Cognitive Behavioral Characteristics in Intelligent Systems with Predictive Ability and Computing Power** // Philosophies, 2023, Vol. 8, No. 5, pp. 75. [link](https://www.mdpi.com/2409-9287/8/5/75)
-2. S. Kovalchuk, A.T.S. Ireddy **Prediction of Users Perceptional State for Human-Centric Decision Support Systems in Complex Domains through Implicit Cognitive State Modeling** // Proceedings of the Annual Meeting of the Cognitive Science Society, 2024, Vol. 46, pp. 3257-3264. [link](https://escholarship.org/uc/item/02t0z53n)
+1. O.V. Kubryak, S.V. Kovalchuk, N.G. Bagdasaryan **Assessment of Cognitive Behavioral Characteristics in Intelligent Systems with Predictive Ability and Computing Power** // Philosophies, 2023, Vol. 8, No. 5, pp. 75. 🔗[link](https://www.mdpi.com/2409-9287/8/5/75)
+2. S. Kovalchuk, A.T.S. Ireddy **Prediction of Users Perceptional State for Human-Centric Decision Support Systems in Complex Domains through Implicit Cognitive State Modeling** // Proceedings of the Annual Meeting of the Cognitive Science Society, 2024, Vol. 46, pp. 3257-3264. 🔗[link](https://escholarship.org/uc/item/02t0z53n)
 
 ## Human-AI and human-machine interaction in complex decision making
 
@@ -24,8 +24,8 @@ Interaction between modern AI agents and human operators should be considered as
 
 ### Notable papers
 
-1. S.V. Kovalchuk [et al.] **Three-stage intelligent support of clinical decision making for higher trust, validity, and explainability** // Journal of Biomedical Informatics, Vol. 127, 2022, pp. 104013. [link](https://www.sciencedirect.com/science/article/abs/pii/S1532046422000296), [arXiv](https://arxiv.org/abs/2007.12870)
-2. O.V. Kubryak, S.V. Kovalchuk **An Artificial Sensory Component in a Man–Machine System with Combined Feedback** // Control Sciences, No. 6, 2024, pp. 22-31. [link](http://pu.mtas.ru/eng/Kubryak_624.php) 
+1. S.V. Kovalchuk [et al.] **Three-stage intelligent support of clinical decision making for higher trust, validity, and explainability** // Journal of Biomedical Informatics, Vol. 127, 2022, pp. 104013. 🔗[link](https://www.sciencedirect.com/science/article/abs/pii/S1532046422000296) 🔗[arXiv](https://arxiv.org/abs/2007.12870)
+2. O.V. Kubryak, S.V. Kovalchuk **An Artificial Sensory Component in a Man–Machine System with Combined Feedback** // Control Sciences, No. 6, 2024, pp. 22-31. 🔗[link](http://pu.mtas.ru/eng/Kubryak_624.php) 
 
 ## Modeling and simulation of professional and domain-specific behavior and decision making
 
@@ -35,8 +35,8 @@ In many cases, the agents are influenced by complex environments, personal motiv
 
 ### Notable papers
 
-1. S.V. Kovalchuk [et al.] **Simulation of Patient Flow in Multiple Healthcare Units using Process and Data Mining Techniques for Model Identification** // Journal of Biomedical Informatics, Vol. 82, 2018, pp. 128-142. [link](https://www.sciencedirect.com/science/article/pii/S153204641830087X) [arXiv](https://arxiv.org/abs/1702.07733)
-2. S.V. Kovalchuk [et al.] **Towards Modeling of Information Processing Within Business-Processes of Service-Providing Organizations** // Lecture Notes in Computer Science, Vol. 12137, 2020, pp. 667–675. [link](https://link.springer.com/chapter/10.1007/978-3-030-50371-0_49)
+1. S.V. Kovalchuk [et al.] **Simulation of Patient Flow in Multiple Healthcare Units using Process and Data Mining Techniques for Model Identification** // Journal of Biomedical Informatics, Vol. 82, 2018, pp. 128-142. 🔗[link](https://www.sciencedirect.com/science/article/pii/S153204641830087X) 🔗[arXiv](https://arxiv.org/abs/1702.07733)
+2. S.V. Kovalchuk [et al.] **Towards Modeling of Information Processing Within Business-Processes of Service-Providing Organizations** // Lecture Notes in Computer Science, Vol. 12137, 2020, pp. 667–675. 🔗[link](https://link.springer.com/chapter/10.1007/978-3-030-50371-0_49)
 
 ## Meta-modeling and model management for complex system modeling and simulation
 
@@ -46,8 +46,8 @@ As the complexity of a system grows the model to describe it becomes more and mo
 
 ### Notable papers
 
-1. S.V. Kovalchuk [et al.] **A Conceptual Approach to Complex Model Management with Generalized Modelling Patterns and Evolutionary Identification** // Complexity, Volume 2018, Article ID 5870987, 15 p. [link](https://www.hindawi.com/journals/complexity/2018/5870987/)
-2. S.V. Kovalchuk [et al.] **Classification issues within ensemble-based simulation: application to surge floods forecasting** // Stochastic Environmental Research and Risk Assessment, Vol. 31, Issue 5, 2017, pp. 1183-1197. [link](https://link.springer.com/article/10.1007/s00477-016-1324-5)
+1. S.V. Kovalchuk [et al.] **A Conceptual Approach to Complex Model Management with Generalized Modelling Patterns and Evolutionary Identification** // Complexity, Volume 2018, Article ID 5870987, 15 p. 🔗[link](https://www.hindawi.com/journals/complexity/2018/5870987/)
+2. S.V. Kovalchuk [et al.] **Classification issues within ensemble-based simulation: application to surge floods forecasting** // Stochastic Environmental Research and Risk Assessment, Vol. 31, Issue 5, 2017, pp. 1183-1197. 🔗[link](https://link.springer.com/article/10.1007/s00477-016-1324-5)
 
 # Notable projects
 
