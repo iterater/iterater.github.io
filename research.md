@@ -5,27 +5,38 @@ title: Research
 
 # Research interests
 
+## Personal cognitive modeling for decision making and decision support
+
+<img src="/images/research_2d_intelligence.png" width="40%" style="float: right; margin-left: 10px" />
+
+While considering professional decision-making, an important yet unobservable part of the decision-making is human internal context and cognitive state. Being affected by personal experience, expertise, psychological characteristics, and personal values, it frames the personal strategies and preferences in professional decision-making. Within this direction, I'm trying to develop an approach for modelling of internal operator's cognitive state during decision-making with or without decision support system, perceiving of available information, and result in intelligent behavior.
+
+### Notable papers
+
+1. O.V. Kubryak, S.V. Kovalchuk, N.G. Bagdasaryan **Assessment of Cognitive Behavioral Characteristics in Intelligent Systems with Predictive Ability and Computing Power** // Philosophies, 2023, Vol. 8, No. 5, pp. 75. [link](https://www.mdpi.com/2409-9287/8/5/75)
+2. S. Kovalchuk, A.T.S. Ireddy **Prediction of Users Perceptional State for Human-Centric Decision Support Systems in Complex Domains through Implicit Cognitive State Modeling** // Proceedings of the Annual Meeting of the Cognitive Science Society, 2024, Vol. 46, pp. 3257-3264. [link](https://escholarship.org/uc/item/02t0z53n)
+
+## Human-AI and human-machine interaction in complex decision making
+
+<img src="/images/research_xai.png" width="40%" style="float: right; margin-left: 10px" />
+
+Interaction between modern AI agents and human operators should be considered as bidirectional adaptive process aimed toward better collaboration. Here, each side of the process can reason about the opposite one in order to achieve personal and shared goals. To improve the process we can develop advanced techniques for communication (for example, by hiring explainable AI, XAI), propose novel approaches for cognitive reasoning and shared knowledge management in AI agent about human agent state, design adaptive multi-level feedback loops in information exchange.
+
+### Notable papers
+
+1. S.V. Kovalchuk [et al.] **Three-stage intelligent support of clinical decision making for higher trust, validity, and explainability** // Journal of Biomedical Informatics, Vol. 127, 2022, pp. 104013. [link](https://www.sciencedirect.com/science/article/abs/pii/S1532046422000296), [arXiv](https://arxiv.org/abs/2007.12870)
+2. O.V. Kubryak, S.V. Kovalchuk **An Artificial Sensory Component in a Man–Machine System with Combined Feedback** // Control Sciences, No. 6, 2024, pp. 22-31. [link](http://pu.mtas.ru/eng/Kubryak_624.php) 
+
 ## Modeling and simulation of professional and domain-specific behavior and decision making
 
 <img src="/images/research_domain_behavior.png" width="40%" style="float: right; margin-left: 10px" />
 
-In many cases, the agent is influenced by complex environments, personal motivation, background domain knowledge, and regulatory mechanisms. Within a complex environment, people act like professionals doing their jobs. Such activity includes both professional and general motivation, reasoning, and planning. How such behavior may be understood, explained, and optimized (both for the personal goals of an agent and for the global system-level performance)?
+In many cases, the agents are influenced by complex environments, personal motivation, social interaction, and regulatory mechanisms. Within a complex external context of decision-making, people act like professionals doing their jobs managing problems and processes with high uncertainty by application of expertise, knowledge, and tools (including computational tools). Large-scale systems (such as healthcare system) may be become complex, with emergent phenomena being observed through social interaction and knowledge sharing. Here, I'm trying to approach on how behavior of such complex systems can be understood, explained, and optimized taking into account.
 
 ### Notable papers
 
-1. S.V. Kovalchuk [et al.] **Simulation of Patient Flow in Multiple Healthcare Units using Process and Data Mining Techniques for Model Identification** // Journal of Biomedical Informatics, Vol. 82, 2018, pp. 128-142. (doi: 10.1016/j.jbi.2018.05.004, [link](https://www.sciencedirect.com/science/article/pii/S153204641830087X))
-2. S.V. Kovalchuk [et al.] **Towards Modeling of Information Processing Within Business-Processes of Service-Providing Organizations** // Lecture Notes in Computer Science, Vol. 12137, 2020, pp. 667–675. (doi: 10.1007/978-3-030-50371-0_49, [link](https://link.springer.com/chapter/10.1007/978-3-030-50371-0_49))
-
-
-## Application of cognitive technologies and explainable AI (XAI) to domain-specific problems
-
-<img src="/images/research_xai.png" width="40%" style="float: right; margin-left: 10px" />
-
-A key interest here is defined by a possible extension of known XAI technologies beyond basic feature-based reasoning towards domain-specific inference and knowledge integration. The goal of such extension is in higher validability of the models and higher trust of the results in practical problems. How can we manage complex models with high uncertainty and diversity of the described processes and objects to achieve valid and trustworthy results in a mostly automatic manner?
-
-### Notable papers
-
-1. S.V. Kovalchuk [et al.] **Three-stage intelligent support of clinical decision making for higher trust, validity, and explainability** // Journal of Biomedical Informatics, Vol. 127, 2022, pp. 104013. (doi: 10.1016/j.jbi.2022.104013, [link](https://www.sciencedirect.com/science/article/abs/pii/S1532046422000296), [arXiv](https://arxiv.org/abs/2007.12870))
+1. S.V. Kovalchuk [et al.] **Simulation of Patient Flow in Multiple Healthcare Units using Process and Data Mining Techniques for Model Identification** // Journal of Biomedical Informatics, Vol. 82, 2018, pp. 128-142. [link](https://www.sciencedirect.com/science/article/pii/S153204641830087X) [arXiv](https://arxiv.org/abs/1702.07733)
+2. S.V. Kovalchuk [et al.] **Towards Modeling of Information Processing Within Business-Processes of Service-Providing Organizations** // Lecture Notes in Computer Science, Vol. 12137, 2020, pp. 667–675. [link](https://link.springer.com/chapter/10.1007/978-3-030-50371-0_49)
 
 ## Meta-modeling and model management for complex system modeling and simulation
 
@@ -35,8 +46,8 @@ As the complexity of a system grows the model to describe it becomes more and mo
 
 ### Notable papers
 
-1. S.V. Kovalchuk [et al.] **A Conceptual Approach to Complex Model Management with Generalized Modelling Patterns and Evolutionary Identification** // Complexity, Volume 2018, Article ID 5870987, 15 p. (doi: 10.1155/2018/5870987, [link](https://www.hindawi.com/journals/complexity/2018/5870987/))
-2. S.V. Kovalchuk [et al.] **Classification issues within ensemble-based simulation: application to surge floods forecasting** // Stochastic Environmental Research and Risk Assessment, Vol. 31, Issue 5, 2017, pp. 1183-1197. (doi: 10.1007/s00477-016-1324-5, [link](https://link.springer.com/article/10.1007/s00477-016-1324-5))
+1. S.V. Kovalchuk [et al.] **A Conceptual Approach to Complex Model Management with Generalized Modelling Patterns and Evolutionary Identification** // Complexity, Volume 2018, Article ID 5870987, 15 p. [link](https://www.hindawi.com/journals/complexity/2018/5870987/)
+2. S.V. Kovalchuk [et al.] **Classification issues within ensemble-based simulation: application to surge floods forecasting** // Stochastic Environmental Research and Risk Assessment, Vol. 31, Issue 5, 2017, pp. 1183-1197. [link](https://link.springer.com/article/10.1007/s00477-016-1324-5)
 
 # Notable projects
 
