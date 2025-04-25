@@ -1,0 +1,857 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Reinforcement learning basics with CartPole model &#8212; Selected advanced topics in reinforcement learning: practical hands-on</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '1_Basic_RL/1_RL_basics';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Inverse Reinforcement Learning with Grid World Traversal" href="../2_Inverse_RL/2_IRL.html" />
+    <link rel="prev" title="Introduction" href="../intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/itmo_logo_black.png" class="logo__image only-light" alt="Selected advanced topics in reinforcement learning: practical hands-on - Home"/>
+    <script>document.write(`<img src="../_static/itmo_logo_black.png" class="logo__image only-dark" alt="Selected advanced topics in reinforcement learning: practical hands-on - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Reinforcement learning basics with CartPole model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_Inverse_RL/2_IRL.html">Inverse Reinforcement Learning with Grid World Traversal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_MARL/MARL.html">Markov Games for Multi-Agent RL: Littman’s Soccer Experiment</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/1_Basic_RL/1_RL_basics.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Reinforcement learning basics with CartPole model</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-definition">Problem definition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation">Implementation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-initialization">Basic initialization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-run">Simple run</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experiments">Experiments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-q-learning">Basic Q-learning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-policy-gradient-learning">Simple policy gradient learning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-observation-noise">Adding observation noise</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="reinforcement-learning-basics-with-cartpole-model">
+<h1>Reinforcement learning basics with CartPole model<a class="headerlink" href="#reinforcement-learning-basics-with-cartpole-model" title="Link to this heading">#</a></h1>
+<section id="problem-definition">
+<h2>Problem definition<a class="headerlink" href="#problem-definition" title="Link to this heading">#</a></h2>
+<p>CartPole model is a simple example of control problem in a simplified physical environment. The goal is to balance a pole with a mass <span class="math notranslate nohighlight">\(m\)</span> and length <span class="math notranslate nohighlight">\(l\)</span> on a moving cart by applying discrete forces to the cart in gorisontal direction. The environment is characterized by cart position <span class="math notranslate nohighlight">\(x\)</span>, cart velocity <span class="math notranslate nohighlight">\(x'\)</span>, pole angle <span class="math notranslate nohighlight">\(\theta\)</span>, and pole angular velocity <span class="math notranslate nohighlight">\(\theta'\)</span>. The action space <span class="math notranslate nohighlight">\(A\)</span> include discrete horisontal forces applied to the cart in negative (<span class="math notranslate nohighlight">\(a=0\)</span>) or positive (<span class="math notranslate nohighlight">\(a=1\)</span>) direction.</p>
+<!-- ```{figure} 1_RL_basics_Fig1_CartPole.png
+---
+width: 300px
+name: basic-cartpole
+---
+Basic CartPole model
+```-->
+<p><img alt="Figure 1" src="../_images/1_RL_basics_Fig1_CartPole.png" /></p>
+<!-- <img src="1_RL_basics_Fig1_CartPole.png" width="300px"/> -->
+<p>The model is implemented in Gymnasium library <span id="id1">[<a class="reference internal" href="../intro.html#id3" title="Cart Pole – Gymnasium Documentation. https://gymnasium.farama.org/environments/classic_control/cart_pole/. [Accessed 25-04-2025].">Car</a>]</span> with basics physics enabling simulation of various control mechanisms. Here the observation space is defined by a vector <span class="math notranslate nohighlight">\((x,x',\theta,\theta')\)</span>, action space is <span class="math notranslate nohighlight">\(A=\{0,1\}\)</span>. The agent receives +1 for every timestep the pole remains upright. The episode ends if: a) the pole tilts more than 15 degrees from vertical; b) the cart moves more than 2.4 units from the center; c) the episode length exceeds 500 steps.</p>
+<p>Within this practical task we’ll implement and evaluate a basic RL agent to control the cart in an optimal way using Gymnasium environment with REINFORCE algorithm <span id="id2">[<a class="reference internal" href="../intro.html#id2" title="Ronald J. Williams. Simple statistical gradient-following algorithms for connectionist reinforcement learning. Machine Learning, 8(3–4):229–256, May 1992. URL: http://dx.doi.org/10.1007/BF00992696, doi:10.1007/bf00992696.">Wil92</a>]</span>.</p>
+<!-- ### References
+1. [Cart Pole in Gymnasium Documentation](https://gymnasium.farama.org/environments/classic_control/cart_pole/)
+2. [R. J. Williams, Simple statistical gradient-following algorithms for connectionist reinforcement learning, Machine Learning, vol. 8, no. 23, 1992.](https://link.springer.com/content/pdf/10.1007/BF00992696.pdf) -->
+</section>
+<section id="implementation">
+<h2>Implementation<a class="headerlink" href="#implementation" title="Link to this heading">#</a></h2>
+<section id="basic-initialization">
+<h3>Basic initialization<a class="headerlink" href="#basic-initialization" title="Link to this heading">#</a></h3>
+<p>First, we import necessary libraries neededd for our experimental setting and create an instance of CartPole environment from Gymnasium. We see the action space is discrete with two option (positive and negative forces). The opservation space is continuous 4-dimension space.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+<span class="kn">from</span> <span class="nn">tensorflow</span> <span class="kn">import</span> <span class="n">keras</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">gymnasium</span> <span class="k">as</span> <span class="nn">gym</span>
+<span class="kn">from</span> <span class="nn">tqdm.notebook</span> <span class="kn">import</span> <span class="n">tqdm</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">env</span> <span class="o">=</span> <span class="n">gym</span><span class="o">.</span><span class="n">make</span><span class="p">(</span><span class="s2">&quot;CartPole-v1&quot;</span><span class="p">,</span> <span class="n">render_mode</span><span class="o">=</span><span class="s2">&quot;rgb_array&quot;</span><span class="p">)</span>
+<span class="n">env</span><span class="o">.</span><span class="n">action_space</span><span class="p">,</span> <span class="n">env</span><span class="o">.</span><span class="n">observation_space</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(Discrete(2),
+ Box([-4.8000002e+00 -3.4028235e+38 -4.1887903e-01 -3.4028235e+38], [4.8000002e+00 3.4028235e+38 4.1887903e-01 3.4028235e+38], (4,), float32))
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="simple-run">
+<h3>Simple run<a class="headerlink" href="#simple-run" title="Link to this heading">#</a></h3>
+<p>To run a basic experiment with CartPole we apply sequential steps with randome action selected with <code class="docutils literal notranslate"><span class="pre">sample()</span></code> method of action space in the environment.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+
+<span class="n">term</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">trunc</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">total_reward</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="ow">not</span> <span class="p">(</span><span class="n">term</span> <span class="ow">or</span> <span class="n">trunc</span><span class="p">):</span>
+   <span class="n">env</span><span class="o">.</span><span class="n">render</span><span class="p">()</span>
+   <span class="n">obs</span><span class="p">,</span> <span class="n">rew</span><span class="p">,</span> <span class="n">term</span><span class="p">,</span> <span class="n">trunc</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">action_space</span><span class="o">.</span><span class="n">sample</span><span class="p">())</span>
+   <span class="n">total_reward</span> <span class="o">+=</span> <span class="n">rew</span>
+   <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">obs</span><span class="si">}</span><span class="s2"> -&gt; </span><span class="si">{</span><span class="n">rew</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total reward: </span><span class="si">{</span><span class="n">total_reward</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">env</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-0.02803049  0.21940807 -0.01105825 -0.29289705] -&gt; 1.0
+[-0.02364233  0.02444551 -0.01691619 -0.00372216] -&gt; 1.0
+[-0.02315342  0.21980593 -0.01699063 -0.30169398] -&gt; 1.0
+[-0.0187573   0.41516587 -0.02302451 -0.5996866 ] -&gt; 1.0
+[-0.01045398  0.22037348 -0.03501824 -0.31434408] -&gt; 1.0
+[-0.00604651  0.02576741 -0.04130512 -0.0329072 ] -&gt; 1.0
+[-0.00553116 -0.16873862 -0.04196327  0.24646273] -&gt; 1.0
+[-0.00890593  0.02695676 -0.03703402 -0.05915549] -&gt; 1.0
+[-0.0083668  -0.16761516 -0.03821712  0.22161676] -&gt; 1.0
+[-0.0117191  -0.3621706  -0.03378479  0.5020037 ] -&gt; 1.0
+[-0.01896252 -0.16658913 -0.02374471  0.1988681 ] -&gt; 1.0
+[-0.0222943   0.02886425 -0.01976735 -0.10120961] -&gt; 1.0
+[-0.02171701 -0.16596891 -0.02179154  0.18517181] -&gt; 1.0
+[-0.02503639  0.02945794 -0.01808811 -0.11430509] -&gt; 1.0
+[-0.02444723  0.22483434 -0.02037421 -0.41263935] -&gt; 1.0
+[-0.01995054  0.4202391  -0.028627   -0.7116752 ] -&gt; 1.0
+[-0.01154576  0.6157455  -0.0428605  -1.0132298 ] -&gt; 1.0
+[ 7.6914678e-04  8.1141216e-01 -6.3125096e-02 -1.3190575e+00] -&gt; 1.0
+[ 0.01699739  0.6171426  -0.08950625 -1.04678   ] -&gt; 1.0
+[ 0.02934024  0.8133311  -0.11044185 -1.3661644 ] -&gt; 1.0
+[ 0.04560687  1.0096489  -0.13776514 -1.691251  ] -&gt; 1.0
+[ 0.06579985  0.8163613  -0.17159016 -1.4444416 ] -&gt; 1.0
+[ 0.08212707  0.62371564 -0.20047899 -1.209917  ] -&gt; 1.0
+[ 0.09460139  0.8207801  -0.22467732 -1.55814   ] -&gt; 1.0
+Total reward: 24.0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="experiments">
+<h2>Experiments<a class="headerlink" href="#experiments" title="Link to this heading">#</a></h2>
+<section id="basic-q-learning">
+<h3>Basic Q-learning<a class="headerlink" href="#basic-q-learning" title="Link to this heading">#</a></h3>
+<p>We implement a basic learning procedure with a neural network with one fullly connected layer (128 neurons) with observation space as an input and action space as an output.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_inputs</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">num_actions</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span>
+    <span class="n">keras</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">num_inputs</span><span class="p">,)),</span>
+    <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">),</span>
+    <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">num_actions</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;softmax&quot;</span><span class="p">)</span>
+<span class="p">])</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s1">&#39;categorical_crossentropy&#39;</span><span class="p">,</span> <span class="n">optimizer</span><span class="o">=</span><span class="n">keras</span><span class="o">.</span><span class="n">optimizers</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.01</span><span class="p">))</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model: &quot;sequential_1&quot;
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ dense_2 (Dense)             (None, 128)               640       
+                                                                 
+ dense_3 (Dense)             (None, 2)                 258       
+                                                                 
+=================================================================
+Total params: 898
+Trainable params: 898
+Non-trainable params: 0
+_________________________________________________________________
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next, we need implementation of episode simulation with sequential application of the model. We define a function that run an episode and collect a trace as a history of states, actions, probabilities returned by a model, and obtained rewards.</p>
+<p>Additionally, we define a discounted reward function which weight a reward vector within a trace so that earlier rewards will be discounted by a coefficient <code class="docutils literal notranslate"><span class="pre">gamma</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">run_episode</span><span class="p">(</span><span class="n">max_steps_per_episode</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">):</span>
+    <span class="n">states</span><span class="p">,</span> <span class="n">actions</span><span class="p">,</span> <span class="n">probs</span><span class="p">,</span> <span class="n">rewards</span> <span class="o">=</span> <span class="p">[],[],[],[]</span>
+    <span class="n">state</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_steps_per_episode</span><span class="p">):</span>
+        <span class="n">action_probs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="mi">0</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">action</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">num_actions</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">action_probs</span><span class="p">))</span>
+        <span class="n">nstate</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">term</span><span class="p">,</span> <span class="n">trunc</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">term</span> <span class="ow">or</span> <span class="n">trunc</span><span class="p">:</span>
+            <span class="k">break</span>
+        <span class="n">states</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">state</span><span class="p">)</span>
+        <span class="n">actions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+        <span class="n">probs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">action_probs</span><span class="p">)</span>
+        <span class="n">rewards</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">reward</span><span class="p">)</span>
+        <span class="n">state</span> <span class="o">=</span> <span class="n">nstate</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">states</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">actions</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">probs</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">rewards</span><span class="p">)</span>
+
+<span class="n">eps</span> <span class="o">=</span> <span class="mf">0.0001</span>
+
+<span class="k">def</span> <span class="nf">discounted_rewards</span><span class="p">(</span><span class="n">rewards</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mf">0.99</span><span class="p">,</span> <span class="n">normalize</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="n">ret</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">rewards</span><span class="p">[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">r</span> <span class="o">+</span> <span class="n">gamma</span> <span class="o">*</span> <span class="n">s</span>
+        <span class="n">ret</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">normalize</span><span class="p">:</span>
+        <span class="n">ret</span> <span class="o">=</span> <span class="p">(</span><span class="n">ret</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">ret</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">ret</span><span class="p">)</span><span class="o">+</span><span class="n">eps</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ret</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s</span><span class="p">,</span><span class="n">a</span><span class="p">,</span><span class="n">p</span><span class="p">,</span><span class="n">r</span> <span class="o">=</span> <span class="n">run_episode</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total reward: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">r</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total discounted reward: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">discounted_rewards</span><span class="p">(</span><span class="n">r</span><span class="p">))</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total reward: 11.0
+Total discounted reward: -6.661338147750939e-16
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="simple-policy-gradient-learning">
+<h3>Simple policy gradient learning<a class="headerlink" href="#simple-policy-gradient-learning" title="Link to this heading">#</a></h3>
+<p>Here we implement a basic policy gradient method with REINFORCE algorithm. We run the CartPole model episode <code class="docutils literal notranslate"><span class="pre">n_episodes</span></code> times (epochs) and collect trace information. After each run, the following steps are repeated:</p>
+<ol class="arabic simple">
+<li><p>Selected actions are converted into one-hot encoding <code class="docutils literal notranslate"><span class="pre">one_hot_actions</span></code>. E.g. vector of actions <code class="docutils literal notranslate"><span class="pre">[0,1,0]</span></code> will be converted into <code class="docutils literal notranslate"><span class="pre">[[1,0],</span> <span class="pre">[0,1],</span> <span class="pre">[1,0]</span></code>.</p></li>
+<li><p>We calculate the policy <code class="docutils literal notranslate"><span class="pre">gradients</span></code> as difference between action probabilities and encoded actions being taken. This gives the direction to adjust the policy to increase the likelihood of good actions.</p></li>
+<li><p>Discounted rewards <code class="docutils literal notranslate"><span class="pre">dr</span></code> are calculated with the function defined above.</p></li>
+<li><p>We multiplies <code class="docutils literal notranslate"><span class="pre">gradients</span></code> by discounted rewards <code class="docutils literal notranslate"><span class="pre">dr</span></code> to reinforce actions that led to higher rewards. Actions with higher rewards get larger updates.</p></li>
+<li><p>To calculate <code class="docutils literal notranslate"><span class="pre">target</span></code> we scales the gradient by the learning rate <code class="docutils literal notranslate"><span class="pre">alpha</span></code> and add action probabilities <code class="docutils literal notranslate"><span class="pre">probs</span></code> to ensure the update is incremental (avoids drastic policy changes).</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">target</span></code> is used to train the model in association with <code class="docutils literal notranslate"><span class="pre">states</span></code> using <code class="docutils literal notranslate"><span class="pre">train_on_batch()</span></code> method.</p></li>
+</ol>
+<p>We collect training history with obtained reward. Also, the reward is shown once per each 100 epochs.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alpha</span> <span class="o">=</span> <span class="mf">5e-4</span>
+<span class="n">n_episodes</span> <span class="o">=</span> <span class="mi">300</span>
+
+<span class="n">history</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n_episodes</span><span class="p">)):</span>
+    <span class="n">states</span><span class="p">,</span> <span class="n">actions</span><span class="p">,</span> <span class="n">probs</span><span class="p">,</span> <span class="n">rewards</span> <span class="o">=</span> <span class="n">run_episode</span><span class="p">()</span>
+    <span class="n">one_hot_actions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">)[</span><span class="n">actions</span><span class="o">.</span><span class="n">T</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">gradients</span> <span class="o">=</span> <span class="n">one_hot_actions</span><span class="o">-</span><span class="n">probs</span>
+    <span class="n">dr</span> <span class="o">=</span> <span class="n">discounted_rewards</span><span class="p">(</span><span class="n">rewards</span><span class="p">)</span>
+    <span class="n">gradients</span> <span class="o">*=</span> <span class="n">dr</span>
+    <span class="n">target</span> <span class="o">=</span> <span class="n">alpha</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">gradients</span><span class="p">])</span><span class="o">+</span><span class="n">probs</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">train_on_batch</span><span class="p">(</span><span class="n">states</span><span class="p">,</span><span class="n">target</span><span class="p">)</span>
+    <span class="n">history</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">rewards</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">epoch</span><span class="o">%</span><span class="k">50</span>==0:
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;E: </span><span class="si">{</span><span class="n">epoch</span><span class="si">:</span><span class="s1">3</span><span class="si">}</span><span class="s1"> R: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">rewards</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "05415c752ddb4d3bbddfe7010bc11353", "version_major": 2, "version_minor": 0}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>E:   0 R: 24.0
+E:  50 R: 95.0
+E: 100 R: 132.0
+E: 150 R: 159.0
+E: 200 R: 499.0
+E: 250 R: 499.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">history</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Epoch&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Accumulated reward&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Accumulated reward&#39;)
+</pre></div>
+</div>
+<img alt="../_images/b98b4b7e0e98b59d289354d022ea1a2710f23e90ee707a1c8ec38213c1e53985.png" src="../_images/b98b4b7e0e98b59d289354d022ea1a2710f23e90ee707a1c8ec38213c1e53985.png" />
+</div>
+</div>
+</section>
+<section id="adding-observation-noise">
+<h3>Adding observation noise<a class="headerlink" href="#adding-observation-noise" title="Link to this heading">#</a></h3>
+<p>For experimental analysis of learning process with noise environment, we can modify <code class="docutils literal notranslate"><span class="pre">run_episode</span></code> with additive noise component to see how it will affect RL performance.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model_with_noise</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span>
+    <span class="n">keras</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="n">shape</span><span class="o">=</span><span class="p">(</span><span class="n">num_inputs</span><span class="p">,)),</span>
+    <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;relu&quot;</span><span class="p">),</span>
+    <span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="n">num_actions</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s2">&quot;softmax&quot;</span><span class="p">)</span>
+<span class="p">])</span>
+
+<span class="n">model_with_noise</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span><span class="o">=</span><span class="s1">&#39;categorical_crossentropy&#39;</span><span class="p">,</span> <span class="n">optimizer</span><span class="o">=</span><span class="n">keras</span><span class="o">.</span><span class="n">optimizers</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.01</span><span class="p">))</span>
+
+<span class="n">model_with_noise</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Model: &quot;sequential_2&quot;
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ dense_4 (Dense)             (None, 128)               640       
+                                                                 
+ dense_5 (Dense)             (None, 2)                 258       
+                                                                 
+=================================================================
+Total params: 898
+Trainable params: 898
+Non-trainable params: 0
+_________________________________________________________________
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">NOISE_STD</span> <span class="o">=</span> <span class="mf">1e-1</span>
+
+<span class="k">def</span> <span class="nf">run_episode_with_noise</span><span class="p">(</span><span class="n">max_steps_per_episode</span> <span class="o">=</span> <span class="mi">10000</span><span class="p">):</span>
+    <span class="n">states</span><span class="p">,</span> <span class="n">actions</span><span class="p">,</span> <span class="n">probs</span><span class="p">,</span> <span class="n">rewards</span> <span class="o">=</span> <span class="p">[],[],[],[]</span>
+    <span class="n">state</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">max_steps_per_episode</span><span class="p">):</span>
+        <span class="n">noise_component</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">NOISE_STD</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">state</span><span class="p">))</span> <span class="c1"># DEFINING NOIZE COMPONENT</span>
+        <span class="n">state_observed</span> <span class="o">=</span> <span class="n">state</span> <span class="o">+</span> <span class="n">noise_component</span> <span class="c1"># ADDING NOIZE COMPONENT</span>
+        <span class="n">action_probs</span> <span class="o">=</span> <span class="n">model_with_noise</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">state_observed</span><span class="p">,</span> <span class="mi">0</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">action</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">num_actions</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(</span><span class="n">action_probs</span><span class="p">))</span>
+        <span class="n">nstate</span><span class="p">,</span> <span class="n">reward</span><span class="p">,</span> <span class="n">term</span><span class="p">,</span> <span class="n">trunc</span><span class="p">,</span> <span class="n">info</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">term</span> <span class="ow">or</span> <span class="n">trunc</span><span class="p">:</span>
+            <span class="k">break</span>
+        <span class="n">states</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">state_observed</span><span class="p">)</span>
+        <span class="n">actions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+        <span class="n">probs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">action_probs</span><span class="p">)</span>
+        <span class="n">rewards</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">reward</span><span class="p">)</span>
+        <span class="n">state</span> <span class="o">=</span> <span class="n">nstate</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">states</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">actions</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">probs</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">rewards</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">history_with_noise</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">n_episodes</span><span class="p">)):</span>
+    <span class="n">states</span><span class="p">,</span> <span class="n">actions</span><span class="p">,</span> <span class="n">probs</span><span class="p">,</span> <span class="n">rewards</span> <span class="o">=</span> <span class="n">run_episode_with_noise</span><span class="p">()</span>
+    <span class="n">one_hot_actions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">)[</span><span class="n">actions</span><span class="o">.</span><span class="n">T</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">gradients</span> <span class="o">=</span> <span class="n">one_hot_actions</span><span class="o">-</span><span class="n">probs</span>
+    <span class="n">dr</span> <span class="o">=</span> <span class="n">discounted_rewards</span><span class="p">(</span><span class="n">rewards</span><span class="p">)</span>
+    <span class="n">gradients</span> <span class="o">*=</span> <span class="n">dr</span>
+    <span class="n">target</span> <span class="o">=</span> <span class="n">alpha</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">gradients</span><span class="p">])</span><span class="o">+</span><span class="n">probs</span>
+    <span class="n">model_with_noise</span><span class="o">.</span><span class="n">train_on_batch</span><span class="p">(</span><span class="n">states</span><span class="p">,</span><span class="n">target</span><span class="p">)</span>
+    <span class="n">history_with_noise</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">rewards</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">epoch</span><span class="o">%</span><span class="k">50</span>==0:
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;E: </span><span class="si">{</span><span class="n">epoch</span><span class="si">:</span><span class="s1">3</span><span class="si">}</span><span class="s1"> R: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">rewards</span><span class="p">)</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "98a6459342254522b14e88efc7531f82", "version_major": 2, "version_minor": 0}</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>E:   0 R: 8.0
+E:  50 R: 170.0
+E: 100 R: 499.0
+E: 150 R: 168.0
+E: 200 R: 142.0
+E: 250 R: 499.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">history_with_noise</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Epoch&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Accumulated reward&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Accumulated reward&#39;)
+</pre></div>
+</div>
+<img alt="../_images/16c79d14b1203127d101c680083323f1dfdea8bd3529edc855090f56f65ea52b.png" src="../_images/16c79d14b1203127d101c680083323f1dfdea8bd3529edc855090f56f65ea52b.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<p>It can be observed that the basic implementation of the algorithm shows relatively “unstable” behavior deviating from reaching maximal reward (here, 500). The behavior become worthier when adding noise component to state observation. However, policy close to optimal is reachable even in the observed limited conditions.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./1_Basic_RL"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Introduction</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../2_Inverse_RL/2_IRL.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Inverse Reinforcement Learning with Grid World Traversal</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-definition">Problem definition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation">Implementation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-initialization">Basic initialization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-run">Simple run</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experiments">Experiments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-q-learning">Basic Q-learning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-policy-gradient-learning">Simple policy gradient learning</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-observation-noise">Adding observation noise</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Sergey V. Kovalchuk, Ashish T.S. Ireddy, Chao Li
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

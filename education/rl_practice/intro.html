@@ -1,0 +1,557 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Introduction &#8212; Selected advanced topics in reinforcement learning: practical hands-on</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'intro';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Reinforcement learning basics with CartPole model" href="1_Basic_RL/1_RL_basics.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="#">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/itmo_logo_black.png" class="logo__image only-light" alt="Selected advanced topics in reinforcement learning: practical hands-on - Home"/>
+    <script>document.write(`<img src="_static/itmo_logo_black.png" class="logo__image only-dark" alt="Selected advanced topics in reinforcement learning: practical hands-on - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1 current active">
+                <a class="reference internal" href="#">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="1_Basic_RL/1_RL_basics.html">Reinforcement learning basics with CartPole model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_Inverse_RL/2_IRL.html">Inverse Reinforcement Learning with Grid World Traversal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_MARL/MARL.html">Markov Games for Multi-Agent RL: Littman’s Soccer Experiment</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/intro.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Introduction</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#main-idea">Main idea</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#structure-and-topics">Structure and Topics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-use-this-book">How to Use This Book</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#todo">TODO:</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h1>
+<section id="main-idea">
+<h2>Main idea<a class="headerlink" href="#main-idea" title="Link to this heading">#</a></h2>
+<p>Reinforcement Learning (RL) has evolved far beyond its foundational algorithms like Q-learning and policy gradients. While introductory texts often focus on single-agent Markov Decision Processes (MDPs) and tabular methods, this book takes a different approach: it assumes familiarity with RL basics and instead explores adjacent and advanced topics that are increasingly critical in both research and industry applications.</p>
+<p>This is not a book that introduce basic concepts and ideas of RL. Instead, it is designed for readers who already understand RL’s core principles and want to:</p>
+<ul class="simple">
+<li><p>Implement and experiment with less commonly taught RL variants (e.g., inverse RL, multi-agent systems).</p></li>
+<li><p>Understand how RL interacts with human input (preference learning, feedback loops).</p></li>
+<li><p>Gain hands-on experience with emerging RL paradigms that bridge theory and real-world deployment.</p></li>
+</ul>
+<p>Most RL textbooks and courses follow a predictable trajectory: dynamic programming → Q-learning → Deep Q-Networks (DQN) → policy gradients → perhaps a brief mention of multi-agent RL or imitation learning. However, many modern RL challenges—such as reward specification, decentralized learning, and human-AI collaboration—require going beyond these basics. This book fills that gap by:</p>
+<ol class="arabic simple">
+<li><p><em>Providing executable, modular code</em> (Jupyter notebooks) for each topic, allowing both active experimentation and passive reading.</p></li>
+<li><p><em>Focusing on adjacent RL methods</em> that are often omitted from introductory material but are increasingly relevant (e.g., inverse RL for reward learning).</p></li>
+<li><p><em>Encouraging critical analysis</em> by discussing practical limitations, failure cases, and open research questions.</p></li>
+</ol>
+</section>
+<section id="structure-and-topics">
+<h2>Structure and Topics<a class="headerlink" href="#structure-and-topics" title="Link to this heading">#</a></h2>
+<p>The book is organized into four self-contained but complementary sections:</p>
+<ol class="arabic simple">
+<li><p><strong>Basics of Reinforcement Learning: The CartPole Model.</strong> Covers basics ideas and concepts of RL, value iteration, and policy gradient methods.</p></li>
+<li><p><strong>Inverse Reinforcement Learning (IRL): Inferring Reward Functions.</strong> Examines the problem of reward shaping from expert trajectories, demonstrates maximum entropy IRL.</p></li>
+<li><p><strong>Multi-Agent Reinforcement Learning (MARL): Cooperation and Competition.</strong> Introduces interaction and decentralized training. Case studies on more complex muti-agent environments.</p></li>
+<li><p><strong>Reinforcement Learning with Human Feedback (RLHF).</strong> Provides a simplified RLHF pipeline for fine-tuning LLMs or robotic policies.</p></li>
+</ol>
+</section>
+<section id="how-to-use-this-book">
+<h2>How to Use This Book<a class="headerlink" href="#how-to-use-this-book" title="Link to this heading">#</a></h2>
+<p>This book is designed for two complementary modes of engagement:</p>
+<ol class="arabic simple">
+<li><p><strong>As an interactive coding guide.</strong> All the codes were implemented as Jupyter notebooks, available at <a class="github reference external" href="https://github.com/iterater/abm_book_rl_practice">iterater/abm_book_rl_practice</a> Run the provided notebooks, tweak hyperparameters, and observe how changes affect performance. Extend implementations with custom environments or alternative algorithms.</p></li>
+<li><p><strong>As a conceptual reference.</strong> Read through the problem formulations and discussions without running code. Use the notebooks as annotated case studies in advanced RL techniques.</p></li>
+</ol>
+<p><strong>Prerequisites.</strong> Readers should have:</p>
+<ul class="simple">
+<li><p>Intermediate Python skills (NumPy, PyTorch/TensorFlow).</p></li>
+<li><p>Basic machine learning knowledge (gradient descent, neural networks).</p></li>
+<li><p>Prior exposure to RL fundamentals (MDPs, Q-learning, policy gradients).</p></li>
+</ul>
+<p><strong>Contributions and Unique Perspective.</strong> Unlike most RL books, this work:</p>
+<ul class="simple">
+<li><p>Skips introductory material in favor of adjacent and emerging topics.</p></li>
+<li><p>Balances implementability with depth - code is simple enough to run on a laptop but sophisticated enough to be research-relevant.</p></li>
+<li><p>Encourages critical thinking by highlighting where methods fail or require careful tuning.</p></li>
+</ul>
+<p><strong>Getting Started:</strong> Proceed to the first chapter - or jump to the topic most relevant to your work.</p>
+</section>
+<section id="todo">
+<h2>TODO:<a class="headerlink" href="#todo" title="Link to this heading">#</a></h2>
+<ul class="contains-task-list simple">
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> references to github</p></li>
+<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> references to web version</p></li>
+</ul>
+<div class="docutils container" id="id1">
+<div role="list" class="citation-list">
+<div class="citation" id="id3" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Car<span class="fn-bracket">]</span></span>
+<p>Cart Pole – Gymnasium Documentation. <a class="reference external" href="https://gymnasium.farama.org/environments/classic_control/cart_pole/">https://gymnasium.farama.org/environments/classic_control/cart_pole/</a>. [Accessed 25-04-2025].</p>
+</div>
+<div class="citation" id="id7" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Roc<span class="fn-bracket">]</span></span>
+<p>Rock, Paper, Scissors – Kaggle. <a class="reference external" href="https://www.kaggle.com/c/rock-paper-scissors">https://www.kaggle.com/c/rock-paper-scissors</a>. [Accessed 25-04-2025].</p>
+</div>
+<div class="citation" id="id8" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>How60<span class="fn-bracket">]</span></span>
+<p>Ronald A Howard. <em>Dynamic Programming and Markov Processes</em>. John Wiley, 1960.</p>
+</div>
+<div class="citation" id="id6" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Lit94<span class="fn-bracket">]</span></span>
+<p>Michael L. Littman. Markov games as a framework for multi-agent reinforcement learning. In William W. Cohen and Haym Hirsh, editors, <em>Machine Learning Proceedings 1994</em>, pages 157–163. Morgan Kaufmann, San Francisco (CA), 1994. URL: <a class="reference external" href="https://courses.cs.duke.edu/spring07/cps296.3/littman94markov.pdf">https://courses.cs.duke.edu/spring07/cps296.3/littman94markov.pdf</a>, <a class="reference external" href="https://doi.org/https://doi.org/10.1016/B978-1-55860-335-6.50027-1">doi:https://doi.org/10.1016/B978-1-55860-335-6.50027-1</a>.</p>
+</div>
+<div class="citation" id="id4" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>NR00<span class="fn-bracket">]</span></span>
+<p>Andrew Y. Ng and Stuart Russell. Algorithms for inverse reinforcement learning. In <em>Proceedings of the Seventeenth International Conference on Machine Learning (ICML 2000), Stanford University, Stanford, CA, USA, June 29 - July 2, 2000</em>, 663–670. 2000. URL: <a class="reference external" href="https://ai.stanford.edu/~ang/papers/icml00-irl.pdf">https://ai.stanford.edu/~ang/papers/icml00-irl.pdf</a>.</p>
+</div>
+<div class="citation" id="id2" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>Wil92<span class="fn-bracket">]</span></span>
+<p>Ronald J. Williams. Simple statistical gradient-following algorithms for connectionist reinforcement learning. <em>Machine Learning</em>, 8(3–4):229–256, May 1992. URL: <a class="reference external" href="http://dx.doi.org/10.1007/BF00992696">http://dx.doi.org/10.1007/BF00992696</a>, <a class="reference external" href="https://doi.org/10.1007/bf00992696">doi:10.1007/bf00992696</a>.</p>
+</div>
+<div class="citation" id="id5" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>ZMBD08<span class="fn-bracket">]</span></span>
+<p>Brian D. Ziebart, Andrew Maas, J. Andrew Bagnell, and Anind K. Dey. Maximum entropy inverse reinforcement learning. In <em>Proceedings of the 23rd National Conference on Artificial Intelligence - Volume 3</em>, AAAI'08, 1433–1438. AAAI Press, 2008. URL: <a class="reference external" href="https://cdn.aaai.org/AAAI/2008/AAAI08-227.pdf">https://cdn.aaai.org/AAAI/2008/AAAI08-227.pdf</a>.</p>
+</div>
+</div>
+</div>
+</section>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="right-next"
+       href="1_Basic_RL/1_RL_basics.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Reinforcement learning basics with CartPole model</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#main-idea">Main idea</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#structure-and-topics">Structure and Topics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-use-this-book">How to Use This Book</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#todo">TODO:</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Sergey V. Kovalchuk, Ashish T.S. Ireddy, Chao Li
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

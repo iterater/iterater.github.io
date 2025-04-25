@@ -1,0 +1,1077 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Inverse Reinforcement Learning with Grid World Traversal &#8212; Selected advanced topics in reinforcement learning: practical hands-on</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '2_Inverse_RL/2_IRL';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Markov Games for Multi-Agent RL: Littman’s Soccer Experiment" href="../3_MARL/MARL.html" />
+    <link rel="prev" title="Reinforcement learning basics with CartPole model" href="../1_Basic_RL/1_RL_basics.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/itmo_logo_black.png" class="logo__image only-light" alt="Selected advanced topics in reinforcement learning: practical hands-on - Home"/>
+    <script>document.write(`<img src="../_static/itmo_logo_black.png" class="logo__image only-dark" alt="Selected advanced topics in reinforcement learning: practical hands-on - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../1_Basic_RL/1_RL_basics.html">Reinforcement learning basics with CartPole model</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Inverse Reinforcement Learning with Grid World Traversal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_MARL/MARL.html">Markov Games for Multi-Agent RL: Littman’s Soccer Experiment</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/2_Inverse_RL/2_IRL.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Inverse Reinforcement Learning with Grid World Traversal</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-definition">Problem Definition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation">Implementation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-markov-decision-processes-mdp">Defining Markov Decision Processes (MDP)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#intialization">Intialization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#intializing-grid-world-environment-code">Intializing Grid World Environment Code</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#value-function">Value function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bellmans-equations">Bellmans Equations</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experiments">Experiments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-irl">Linear IRL</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#now-let-us-run-linear-irl">Now let us run Linear IRL</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#maximum-entropy-irl">Maximum Entropy IRL</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#now-we-perform-maximum-entropy-irl-for-the-first-case">Now we Perform Maximum Entropy IRL for the first case</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simulating-random-trajectories">Simulating Random Trajectories</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusions">Conclusions</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="inverse-reinforcement-learning-with-grid-world-traversal">
+<h1>Inverse Reinforcement Learning with Grid World Traversal<a class="headerlink" href="#inverse-reinforcement-learning-with-grid-world-traversal" title="Link to this heading">#</a></h1>
+<!-- This notebook dives into the concept of **Inverse Reinforcement Learning (IRL)**, its basics, background and a simple example using grid world  -->
+<section id="problem-definition">
+<h2>Problem Definition<a class="headerlink" href="#problem-definition" title="Link to this heading">#</a></h2>
+<p>The idea of reinforcement learning (RL) is to have an agent traversing through an environment, making decisions to accumulate rewards obtained for reaching each state and maximizing these rewards to acquire an optimal solution across the whole environment. To implement an RL model, one has to have information about the reward function (rewards to be given for reaching states), policies, model of the environment, value function for the environment and background data. But what if this data is unavailable?</p>
+<p>The only thing we have are <strong>demonstrations</strong> showing how the problem was solved.</p>
+<p>We can use <strong>Inverse Reinforcement learning (IRL)</strong>. The concept here is <em><strong>“ learning by observing”</strong></em>. The idea here is to infer the optimal policy by modelling the value function and reward behaviour from the given demonstrations of the expert without having to discover the environment explicitly. Simply put, IRL is an approach by which we can define the policy of decision-making and its respective rewards for choosing certain actions based on the observations shown by the experts. It is the exact opposite of the RL problem. IRL is also called apprentice learning.</p>
+<p><em>Example: Engineering the self-driving car using traditional RL methods would require the creation of an extensive list of do’s and don’ts with multiple instances of dilemmas in emergencies while also consuming tremendous computing power and tediously long durations. However, using IRL we can model the behaviour of the self-driving agent to follow the policy of the human expert without explicit definition of do’s and don’ts therefore maximizing the learning efficiency while minimising the computing time consumed.</em></p>
+<p>Yet, scenarios exist where multiple policies may be optimal with different reward functions. That is, even though we have the same observed behaviour there exist many different reward functions that the expert might be attempting to maximize. Some of these reward functions are not logical e.g.: When all policies are optimal for the reward function but have zeros everywhere. Yet, we want a reward function that captures meaningful information about the task and is able to differentiate clearly between desired and undesired policies. To solve this, Ng and Russell <span id="id1">[<a class="reference internal" href="../intro.html#id4" title="Andrew Y. Ng and Stuart Russell. Algorithms for inverse reinforcement learning. In Proceedings of the Seventeenth International Conference on Machine Learning (ICML 2000), Stanford University, Stanford, CA, USA, June 29 - July 2, 2000, 663–670. 2000. URL: https://ai.stanford.edu/~ang/papers/icml00-irl.pdf.">NR00</a>]</span> formulate inverse reinforcement learning as an optimization problem. We should choose a reward function for which the given expert policy is optimal and maximize the reward function respectively.</p>
+<p>In this chapter, we introduce the Grid World problem and aim to solve it using IRL. The Gird World initializes a grid of <span class="math notranslate nohighlight">\(N\)</span> states with <span class="math notranslate nohighlight">\((N*N)\)</span> dimensions. The goal is to traverse from <span class="math notranslate nohighlight">\(Start\)</span> state to <span class="math notranslate nohighlight">\(End\)</span> State based on the expert’s demonstrations while inferring the optimal policy from the demonstrations.</p>
+<!-- ```{figure} Images/Initial_Grid_World.png
+---
+width: 400px
+name: Initial_Grid_World
+---
+Initial Grid World
+``` -->
+<p><img alt="IRL_Grid" src="../_images/Initial_Grid_World.png" /></p>
+<p>Within this practical task, we will implement two types of IRL algorithms reflecting the behaviour and inference of reward function &amp; optimal policies (i.e. Linear Programming IRL and Maximum Entropy IRL <span id="id2">[<a class="reference internal" href="../intro.html#id5" title="Brian D. Ziebart, Andrew Maas, J. Andrew Bagnell, and Anind K. Dey. Maximum entropy inverse reinforcement learning. In Proceedings of the 23rd National Conference on Artificial Intelligence - Volume 3, AAAI'08, 1433–1438. AAAI Press, 2008. URL: https://cdn.aaai.org/AAAI/2008/AAAI08-227.pdf.">ZMBD08</a>]</span>).</p>
+<!-- ### References
+1. [Ng, Andrew Y., and Stuart Russell, Algorithms for Inverse Reinforcement Learning, Icml. Vol. 1. No. 2. 2000](https://ai.stanford.edu/~ang/papers/icml00-irl.pdf)
+2. [Brian D. Ziebart, Maximum Entropy Inverse Reinforcement Learning, AAAI. Vol. 8. 2008](https://cdn.aaai.org/AAAI/2008/AAAI08-227.pdf) --></section>
+<section id="implementation">
+<h2>Implementation<a class="headerlink" href="#implementation" title="Link to this heading">#</a></h2>
+<p>In this section, we introduce the problem in greater detail and initialise concepts, notations and code that will be used to define the Grid world and IRL problem. We begin with an overview of the problem with the following figure:</p>
+<p><img alt="Gridworld_Full" src="../_images/Run_Gridworld.png" /></p>
+<p>We have four demonstrations from experts on how to reach the end state and after IRL, we need to acquire the optimal of the above. Each one depicting an unique approach to reaching the goal state.</p>
+<section id="defining-markov-decision-processes-mdp">
+<h3>Defining Markov Decision Processes (MDP)<a class="headerlink" href="#defining-markov-decision-processes-mdp" title="Link to this heading">#</a></h3>
+<p><strong>Markov Decision processes</strong> is a method of solving sequential decision making problems in uncertainity sitautions. We use MDPs to model our grid world as an mathematical optimization problem.</p>
+<p>Given that we have expert trajecotries <span class="math notranslate nohighlight">\(E_T = \{\tau_1; \tau_2; ..... \tau_n; \}\)</span>  consitiuting of a set of state-action pair combinations. We define an MDP for our gird world enviroment as having</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(S = \{s_1, s_2, s_3,....s_n\}\)</span> a finite set of all possible states that the agent can take <span class="math notranslate nohighlight">\(E_T\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(A = \{a_1, a_2, a_3,....a_n\}\)</span> a set of all possible actions an agent can take in <span class="math notranslate nohighlight">\(E_T\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(T_{PA}(.)\)</span> = state transition prbablity matrix mapping the probablities of moving from state <span class="math notranslate nohighlight">\(s\)</span> to <span class="math notranslate nohighlight">\(s'\)</span> upon taking action <span class="math notranslate nohighlight">\(a\)</span> i.e. <span class="math notranslate nohighlight">\(T(s, a, s')\)</span> extracted from <span class="math notranslate nohighlight">\(E_T\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\pi\)</span> is the policy function that maps and defines the action to be takein in each state <span class="math notranslate nohighlight">\((\pi: S -&gt; A)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\pi*\)</span> is theoptimal policy that defines the optimal actionst o take in each sate <span class="math notranslate nohighlight">\(s\)</span> such that the generated reward is maximium</p></li>
+<li><p><span class="math notranslate nohighlight">\(\tau\)</span> = <span class="math notranslate nohighlight">\(\{(s_0, a_1, s_1); (s_1, a_2, s_2); (s_2, a_3, s_3);......(s_{n-1}, a_n, s_n);\}\)</span> is a trajectory descrbing one complete iteration of the agent in the MDP.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\gamma\)</span> = The discount factor that gives relevance to future rewards. i.e. tendency to attract Long term or short term rewards.</p></li>
+<li><p><span class="math notranslate nohighlight">\(R\)</span> = The reward function mapping the state-action rewards i.e. the reward obatine for taking action <span class="math notranslate nohighlight">\(s\)</span> and action <span class="math notranslate nohighlight">\(a\)</span> to reach <span class="math notranslate nohighlight">\(s'\)</span></p></li>
+</ul>
+<p>As a whole, we define the MDP as a tuple of <span class="math notranslate nohighlight">\((S, A, T_{PA}, \gamma)\)</span> state, action and transition probablities. In our experiment we consider gamma to be 0.9.</p>
+</section>
+<section id="intialization">
+<h3>Intialization<a class="headerlink" href="#intialization" title="Link to this heading">#</a></h3>
+<p>Now, we load libraries that we wil be using throughout this notebook</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">linprog</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span>
+<span class="kn">import</span> <span class="nn">ipywidgets</span> <span class="k">as</span> <span class="nn">widgets</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="intializing-grid-world-environment-code">
+<h3>Intializing Grid World Environment Code<a class="headerlink" href="#intializing-grid-world-environment-code" title="Link to this heading">#</a></h3>
+<p>This block of code creates an environment for grid world and produces sample trajectories of traverssing through the environment</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">GridWorld</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    GridWorld class creates an env of grid world with </span>
+<span class="sd">    policies and trajectories of size N with dimension</span>
+<span class="sd">    N*N. </span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">size</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="n">size</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_states</span> <span class="o">=</span> <span class="n">size</span> <span class="o">*</span> <span class="n">size</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_actions</span> <span class="o">=</span> <span class="mi">4</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">transition_matrix</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_build_transitions</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_coord_to_state</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">+</span> <span class="n">y</span>
+
+    <span class="k">def</span> <span class="nf">_state_to_coord</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">state</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">divmod</span><span class="p">(</span><span class="n">state</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_build_transitions</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">n_states</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_actions</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_states</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_states</span><span class="p">):</span>
+            <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_state_to_coord</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n_actions</span><span class="p">):</span>
+                <span class="n">nx</span><span class="p">,</span> <span class="n">ny</span> <span class="o">=</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span>
+                <span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span> <span class="n">nx</span> <span class="o">-=</span> <span class="mi">1</span>
+                <span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span> <span class="n">nx</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="mi">2</span> <span class="ow">and</span> <span class="n">y</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span> <span class="n">ny</span> <span class="o">-=</span> <span class="mi">1</span>
+                <span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="mi">3</span> <span class="ow">and</span> <span class="n">y</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">size</span> <span class="o">-</span> <span class="mi">1</span><span class="p">:</span> <span class="n">ny</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">ns</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_coord_to_state</span><span class="p">(</span><span class="n">nx</span><span class="p">,</span> <span class="n">ny</span><span class="p">)</span>
+                <span class="n">T</span><span class="p">[</span><span class="n">s</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">ns</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">T</span>
+
+    <span class="c1"># Generation of trajectory matrix</span>
+    <span class="k">def</span> <span class="nf">generate_policy_trajectory</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">goal</span><span class="p">):</span>
+        <span class="n">traj</span> <span class="o">=</span> <span class="p">[</span><span class="n">start</span><span class="p">]</span>
+        <span class="n">current</span> <span class="o">=</span> <span class="n">start</span>
+        <span class="k">while</span> <span class="n">current</span> <span class="o">!=</span> <span class="n">goal</span><span class="p">:</span>
+            <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_state_to_coord</span><span class="p">(</span><span class="n">current</span><span class="p">)</span>
+            <span class="n">gx</span><span class="p">,</span> <span class="n">gy</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_state_to_coord</span><span class="p">(</span><span class="n">goal</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">gx</span> <span class="o">&gt;</span> <span class="n">x</span><span class="p">:</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="k">elif</span> <span class="n">gx</span> <span class="o">&lt;</span> <span class="n">x</span><span class="p">:</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">0</span>
+            <span class="k">elif</span> <span class="n">gy</span> <span class="o">&gt;</span> <span class="n">y</span><span class="p">:</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">3</span>
+            <span class="k">else</span><span class="p">:</span> <span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>
+            <span class="n">next_state</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">transition_matrix</span><span class="p">[</span><span class="n">current</span><span class="p">,</span> <span class="n">a</span><span class="p">])</span>
+            <span class="n">traj</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">next_state</span><span class="p">)</span>
+            <span class="n">current</span> <span class="o">=</span> <span class="n">next_state</span>
+        <span class="k">return</span> <span class="n">traj</span>
+    
+    <span class="c1"># Generation of Trajecotry matrix with additional random decisions </span>
+    <span class="k">def</span> <span class="nf">generate_random_expert_trajectory</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">goal</span><span class="p">,</span> <span class="n">noise_prob</span><span class="o">=</span><span class="mf">0.2</span><span class="p">):</span>
+        <span class="n">traj</span> <span class="o">=</span> <span class="p">[</span><span class="n">start</span><span class="p">]</span>
+        <span class="n">current</span> <span class="o">=</span> <span class="n">start</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">()</span>
+        <span class="k">while</span> <span class="n">current</span> <span class="o">!=</span> <span class="n">goal</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">traj</span><span class="p">)</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_states</span> <span class="o">*</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_state_to_coord</span><span class="p">(</span><span class="n">current</span><span class="p">)</span>
+            <span class="n">gx</span><span class="p">,</span> <span class="n">gy</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_state_to_coord</span><span class="p">(</span><span class="n">goal</span><span class="p">)</span>
+            <span class="n">preferred</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">if</span> <span class="n">gx</span> <span class="o">&gt;</span> <span class="n">x</span><span class="p">:</span> <span class="n">preferred</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">gx</span> <span class="o">&lt;</span> <span class="n">x</span><span class="p">:</span> <span class="n">preferred</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">gy</span> <span class="o">&gt;</span> <span class="n">y</span><span class="p">:</span> <span class="n">preferred</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">gy</span> <span class="o">&lt;</span> <span class="n">y</span><span class="p">:</span> <span class="n">preferred</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">preferred</span><span class="p">:</span>
+                <span class="k">break</span>
+
+            <span class="c1"># random move </span>
+            <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">noise_prob</span><span class="p">:</span>
+                <span class="n">possible_actions</span> <span class="o">=</span> <span class="p">[</span><span class="n">a</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">transition_matrix</span><span class="p">[</span><span class="n">current</span><span class="p">,</span> <span class="n">a</span><span class="p">])]</span>
+                <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">possible_actions</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">preferred</span><span class="p">)</span>
+
+            <span class="n">next_state</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">transition_matrix</span><span class="p">[</span><span class="n">current</span><span class="p">,</span> <span class="n">a</span><span class="p">])</span>
+            <span class="k">if</span> <span class="n">next_state</span> <span class="o">==</span> <span class="n">current</span><span class="p">:</span>
+                <span class="k">continue</span> 
+            <span class="n">traj</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">next_state</span><span class="p">)</span>
+            <span class="n">current</span> <span class="o">=</span> <span class="n">next_state</span>
+        <span class="k">return</span> <span class="n">traj</span>
+    
+<span class="c1"># Feature Maxtrix creation</span>
+<span class="k">def</span> <span class="nf">build_feature_matrix</span><span class="p">(</span><span class="n">n_states</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">n_states</span><span class="p">)</span>
+
+<span class="c1"># Feature expectations</span>
+<span class="k">def</span> <span class="nf">compute_feature_expectations</span><span class="p">(</span><span class="n">feature_matrix</span><span class="p">,</span> <span class="n">trajectories</span><span class="p">):</span>
+    <span class="n">fe</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">feature_matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">for</span> <span class="n">traj</span> <span class="ow">in</span> <span class="n">trajectories</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">traj</span><span class="p">:</span>
+            <span class="n">fe</span> <span class="o">+=</span> <span class="n">feature_matrix</span><span class="p">[</span><span class="n">s</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">fe</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">trajectories</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now, that we have introduced our grid world and its environment, we need to understand how does the Algorithm weight the options of moving between states and selecting actions. We first start of with the value function</p>
+</section>
+<section id="value-function">
+<h3>Value function<a class="headerlink" href="#value-function" title="Link to this heading">#</a></h3>
+<p>The value function is the cumulative reward obtained for reaching a specific state by taking specific actions for a given policy <span class="math notranslate nohighlight">\(\pi\)</span></p>
+<p><span class="math notranslate nohighlight">\(V^\pi (s_1) = E[R(s_1) + \gamma R(s_2) + \gamma^2 R(s_3) = ....... | \pi]  \)</span></p>
+<p>While <span class="math notranslate nohighlight">\(Q function\)</span> defines the feature expectation</p>
+<p><span class="math notranslate nohighlight">\(Q^\pi(s,a) = R(s) + \gamma E_{s' ~ T_SA(.)} [V^\pi (s')] \)</span></p>
+<p>Internally, every MDP has a value function that accounts for the cumulative reward of following a specific trajectory.</p>
+</section>
+<section id="bellmans-equations">
+<h3>Bellmans Equations<a class="headerlink" href="#bellmans-equations" title="Link to this heading">#</a></h3>
+<p>Richard E. Bellman introduced conditions for optimiality for mathematical optimizations problems by calcualting the Value of a decision at a given point in the state space. Where, the initial choices impact the ‘value’ of the remaining decisions and therefore aim to describe the optimal action collectively.</p>
+<p>Relative to our MDP <span class="math notranslate nohighlight">\((S, A, T_SA, \gamma)\)</span> and policy mapping <span class="math notranslate nohighlight">\(\pi: S -&gt; A\)</span> for all, then for all <span class="math notranslate nohighlight">\(s \in S\)</span> and <span class="math notranslate nohighlight">\(a \in A\)</span> the value function should satisfy the following equations:</p>
+<p><span class="math notranslate nohighlight">\(V^\pi(s) = R(s) + \gamma \sum_{s'} T_{s\pi(s)}(s')V^\pi(S')\)</span></p>
+<p><span class="math notranslate nohighlight">\(Q^\pi(s,a) = R(s) + \gamma \sum_{s'} T_{sa}(s')V^\pi(S')\)</span></p>
+<p>Where, R(S) is the reward funciton mapping actions to states</p>
+<p>Then the Bellman Optimality condition states that the given policy <span class="math notranslate nohighlight">\(\pi \)</span> is an optimal policy for our MDP if and only if, for all <span class="math notranslate nohighlight">\(s \in S\)</span></p>
+<p><span class="math notranslate nohighlight">\(\pi(s) \in arg max_{a \in A} Q^\pi (s, a)\)</span></p>
+<p>However, in IRL, we wish to find the reward function <span class="math notranslate nohighlight">\(R\)</span> such that <span class="math notranslate nohighlight">\(\pi\)</span> is optimal for the MDP. This condition is sastisfied when in a state space of <span class="math notranslate nohighlight">\(S\)</span>, with action set <span class="math notranslate nohighlight">\(A = {a_1, a_2,.... a_n}\)</span> with transition probablitiy matrices <span class="math notranslate nohighlight">\(T_A\)</span>, dicounht factor <span class="math notranslate nohighlight">\(\gamma \in (0, 1)\)</span>. Then Policy <span class="math notranslate nohighlight">\(\pi(s) == a_1\)</span> is optimal if and only if for all <span class="math notranslate nohighlight">\(a = a_2, a_3.... a_k\)</span> the Reward funciton <span class="math notranslate nohighlight">\(R\)</span> satisfies the followind condition:</p>
+<p><span class="math notranslate nohighlight">\((T_{a1} - T_a).(I - \gamma T_{a1})^{-1} R &gt;= 0 \)</span></p>
+<p>On Satisyfying this condition, we are left with the specific policy reflecting the transition matrix of moving between states via actions and therefore reaching the end goal. This policy is termed the optimal</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># The Value iteration function applies the Bellman Equation and condition to convergate at V* i.e. the collective value</span>
+
+<span class="k">def</span> <span class="nf">value_iteration</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">eps</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">):</span>
+    <span class="n">n_states</span><span class="p">,</span> <span class="n">n_actions</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">T</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_states</span><span class="p">)</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="n">V_prev</span> <span class="o">=</span> <span class="n">V</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+        <span class="n">Q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n_states</span><span class="p">,</span> <span class="n">n_actions</span><span class="p">))</span>
+        <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_actions</span><span class="p">):</span>
+            <span class="n">Q</span><span class="p">[:,</span> <span class="n">a</span><span class="p">]</span> <span class="o">=</span> <span class="n">R</span> <span class="o">+</span> <span class="n">gamma</span> <span class="o">*</span> <span class="n">T</span><span class="p">[:,</span> <span class="n">a</span><span class="p">,</span> <span class="p">:]</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">V</span><span class="p">)</span>
+        <span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">Q</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="mf">1e-6</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">V</span> <span class="o">-</span> <span class="n">V_prev</span><span class="p">))</span> <span class="o">&lt;</span> <span class="n">eps</span><span class="p">:</span>
+            <span class="k">break</span>
+    <span class="n">policy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">Q</span> <span class="o">-</span> <span class="n">V</span><span class="p">[:,</span> <span class="kc">None</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">policy</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Further, we move towards the Core IRL algorithms and its implementation.</p>
+</section>
+</section>
+<section id="experiments">
+<h2>Experiments<a class="headerlink" href="#experiments" title="Link to this heading">#</a></h2>
+<section id="linear-irl">
+<h3>Linear IRL<a class="headerlink" href="#linear-irl" title="Link to this heading">#</a></h3>
+<p>The aim is to solve the optimization problem of finding the optimal <span class="math notranslate nohighlight">\(\pi^*\)</span> via a determinsitic optimal policy. The reward function here is a linear combination of state &amp; features.</p>
+<p>Therefore to identify the real optimal policy <span class="math notranslate nohighlight">\(\pi\)</span> we aim to satisfy the condition:</p>
+<p><span class="math notranslate nohighlight">\( maximize \sum_{i=1}^{k} p( V^{\pi*}(s_0) - V^{\pi_i}(s_0))\)</span></p>
+<p>where, we maximize the expert’s feature policy expectations against the current optimal policy <span class="math notranslate nohighlight">\(\pi\)</span>’s feature expectations</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(p\)</span> is the penalty to penalize the MDP when traverssing against expected optimal</p></li>
+</ul>
+<p>This condition is maximized across all trajecotries presented from the expert to eventually get the rewrad function mapping the optimal behaviour.</p>
+<p><img alt="IRL_Linear" src="../_images/Linear_IRL.png" /></p>
+<p><strong>Step 1:</strong> We initalize our MDP and preapre the data as a tuple of <span class="math notranslate nohighlight">\(State, Action, T_{PA}, L1\)</span> along with the sample trajectories depicting the experts behaviour</p>
+<p><strong>Step 2:</strong> We feed the data to the IRL aglorithm, which computes the value functon of the given trajecotries and minimizes it accross all samples.</p>
+<p><strong>Step 3:</strong> This process is repeated until all possible policies as shown in the experts behaviour to finally reach a an optimal policy <span class="math notranslate nohighlight">\(\pi*\)</span> that has maximum reward</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Linear IRL </span>
+<span class="k">def</span> <span class="nf">linear_programming_irl</span><span class="p">(</span><span class="n">feature_matrix</span><span class="p">,</span> <span class="n">expert_trajectories</span><span class="p">,</span> <span class="n">l1_reg</span><span class="o">=</span><span class="mf">10.0</span><span class="p">):</span>
+    <span class="n">n_features</span> <span class="o">=</span> <span class="n">feature_matrix</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">fe_expert</span> <span class="o">=</span> <span class="n">compute_feature_expectations</span><span class="p">(</span><span class="n">feature_matrix</span><span class="p">,</span> <span class="n">expert_trajectories</span><span class="p">)</span>
+
+    <span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_features</span><span class="p">),</span> <span class="n">l1_reg</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">n_features</span><span class="p">)])</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">traj</span> <span class="ow">in</span> <span class="n">expert_trajectories</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">traj</span><span class="p">:</span>
+            <span class="n">f_i</span> <span class="o">=</span> <span class="n">feature_matrix</span><span class="p">[</span><span class="n">s</span><span class="p">]</span>
+            <span class="n">A</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="o">-</span><span class="p">(</span><span class="n">fe_expert</span> <span class="o">-</span> <span class="n">f_i</span><span class="p">),</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">n_features</span><span class="p">)]))</span>
+            <span class="n">b</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="o">-</span><span class="mf">1.0</span><span class="p">)</span>
+
+    <span class="n">G</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">n_features</span><span class="p">),</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">n_features</span><span class="p">)]),</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">n_features</span><span class="p">),</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">n_features</span><span class="p">)])</span>
+    <span class="p">])</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">n_features</span><span class="p">)</span>
+
+    <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+
+    <span class="c1"># Minimize</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">linprog</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">A_ub</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">A</span><span class="p">,</span> <span class="n">G</span><span class="p">]),</span> <span class="n">b_ub</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">b</span><span class="p">,</span> <span class="n">h</span><span class="p">]),</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;highs&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">result</span><span class="o">.</span><span class="n">success</span><span class="p">:</span>
+        <span class="n">reward</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">x</span><span class="p">[:</span><span class="n">n_features</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">reward</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Linear program failed&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Function to Visualize Policy with actions</span>
+<span class="k">def</span> <span class="nf">visualize_policy</span><span class="p">(</span><span class="n">policy</span><span class="p">,</span> <span class="n">grid_size</span><span class="p">):</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">policy</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]):</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="nb">divmod</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">grid_size</span><span class="p">)</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">policy</span><span class="p">[</span><span class="n">s</span><span class="p">])</span>
+        <span class="n">dx</span><span class="p">,</span> <span class="n">dy</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)][</span><span class="n">a</span><span class="p">]</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">arrow</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">dx</span><span class="o">*</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">dy</span><span class="o">*</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">head_width</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">fc</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">ec</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">grid_size</span><span class="o">-</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="n">grid_size</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">grid_size</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">grid_size</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Policy Visualization&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Function to Visualize Gird world for Linear IRL</span>
+
+<span class="k">def</span> <span class="nf">visualize_Linear</span><span class="p">(</span><span class="n">grid_size</span><span class="p">,</span><span class="n">start_state</span><span class="p">,</span> <span class="n">end_state</span><span class="p">,</span> <span class="n">reward_lp</span><span class="p">):</span>
+    <span class="c1">#plt.figure(figsize=(6, 6))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">reward_lp</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">grid_size</span><span class="p">,</span> <span class="n">grid_size</span><span class="p">),</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;coolwarm&#39;</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;upper&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;LP IRL Reward&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">grid_size</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">grid_size</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mf">.5</span><span class="p">,</span> <span class="n">grid_size</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">minor</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mf">.5</span><span class="p">,</span> <span class="n">grid_size</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">minor</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">grid_size</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">grid_size</span><span class="p">):</span>
+            <span class="n">state</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="n">grid_size</span> <span class="o">+</span> <span class="n">j</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">state</span><span class="p">),</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
+
+    <span class="n">start_x</span><span class="p">,</span> <span class="n">start_y</span> <span class="o">=</span> <span class="nb">divmod</span><span class="p">(</span><span class="n">start_state</span><span class="p">,</span> <span class="n">grid_size</span><span class="p">)</span>
+    <span class="n">end_x</span><span class="p">,</span> <span class="n">end_y</span> <span class="o">=</span> <span class="nb">divmod</span><span class="p">(</span><span class="n">end_state</span><span class="p">,</span> <span class="n">grid_size</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">start_x</span><span class="p">,</span><span class="n">start_y</span> <span class="o">+</span><span class="mf">0.3</span><span class="p">,</span> <span class="s2">&quot;Start&quot;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">end_x</span><span class="p">,</span> <span class="n">end_y</span><span class="o">+</span><span class="mf">0.3</span><span class="p">,</span> <span class="s2">&quot;Goal&quot;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="now-let-us-run-linear-irl">
+<h3>Now let us run Linear IRL<a class="headerlink" href="#now-let-us-run-linear-irl" title="Link to this heading">#</a></h3>
+<p>Here we have an example of a 5*5 grid world, it has a starting state of 0 and an end state of 24</p>
+<p>We create two trajectory sets for demonstration:</p>
+<p><strong>Set 1.</strong> = Consistent Expert behaviouir</p>
+<p><strong>Set 2.</strong> = Multiple Optimals in Expert Behaviour</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">s1_traj</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">24</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">24</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">24</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">24</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">24</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">24</span><span class="p">],]</span>
+
+<span class="n">s2_traj</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">24</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">24</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">24</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">24</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">24</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">24</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">24</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">24</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">24</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">24</span><span class="p">],</span>
+            <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">24</span><span class="p">],]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grid_size</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">start_state</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">end_state</span> <span class="o">=</span> <span class="mi">24</span>
+
+<span class="n">env</span> <span class="o">=</span> <span class="n">GridWorld</span><span class="p">(</span><span class="n">grid_size</span><span class="p">)</span>
+
+<span class="n">feature_matrix</span> <span class="o">=</span> <span class="n">build_feature_matrix</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">n_states</span><span class="p">)</span>
+
+<span class="c1"># Linear Programming IRL</span>
+<span class="n">reward_lp</span> <span class="o">=</span> <span class="n">linear_programming_irl</span><span class="p">(</span><span class="n">feature_matrix</span><span class="p">,</span> <span class="n">s1_traj</span><span class="p">)</span>
+<span class="n">policy_lp</span> <span class="o">=</span> <span class="n">value_iteration</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">transition_matrix</span><span class="p">,</span> <span class="n">reward_lp</span><span class="p">)</span>
+
+<span class="n">visualize_Linear</span><span class="p">(</span><span class="n">grid_size</span><span class="p">,</span> <span class="n">start_state</span><span class="p">,</span> <span class="n">end_state</span><span class="p">,</span> <span class="n">reward_lp</span><span class="p">)</span>
+<span class="n">visualize_policy</span><span class="p">(</span><span class="n">policy_lp</span><span class="p">,</span> <span class="n">grid_size</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/be021454f051f2bb7e37ec6d4e04626191f861cf9aa65439d939ccfeee20b5eb.png" src="../_images/be021454f051f2bb7e37ec6d4e04626191f861cf9aa65439d939ccfeee20b5eb.png" />
+<img alt="../_images/340e09bae0ca869d9f099702db63410bd360d47b0d594d2647499c898c0de8cb.png" src="../_images/340e09bae0ca869d9f099702db63410bd360d47b0d594d2647499c898c0de8cb.png" />
+</div>
+</div>
+<p>An observable issue with IRL is that when presented with multiple data points that have the same reward values (i.e. multiple optimal policies), the algorithm reveals ambuiguity in selecting and proposing the optimal solution.</p>
+<p>Next we have a case where we add multiple optimal solutions to see the resulting solution</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">feature_matrix</span> <span class="o">=</span> <span class="n">build_feature_matrix</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">n_states</span><span class="p">)</span>
+<span class="n">reward_lp</span> <span class="o">=</span> <span class="n">linear_programming_irl</span><span class="p">(</span><span class="n">feature_matrix</span><span class="p">,</span> <span class="n">s2_traj</span><span class="p">)</span>
+<span class="n">visualize_Linear</span><span class="p">(</span><span class="n">grid_size</span><span class="p">,</span> <span class="n">start_state</span><span class="p">,</span> <span class="n">end_state</span><span class="p">,</span> <span class="n">reward_lp</span><span class="p">)</span>
+<span class="n">visualize_policy</span><span class="p">(</span><span class="n">policy_lp</span><span class="p">,</span> <span class="n">grid_size</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/65b4173f4f7bd7ef0457808cab533ed67e85a56cb0a4611368e71f95a65ac0d2.png" src="../_images/65b4173f4f7bd7ef0457808cab533ed67e85a56cb0a4611368e71f95a65ac0d2.png" />
+<img alt="../_images/340e09bae0ca869d9f099702db63410bd360d47b0d594d2647499c898c0de8cb.png" src="../_images/340e09bae0ca869d9f099702db63410bd360d47b0d594d2647499c898c0de8cb.png" />
+</div>
+</div>
+<p>We observe the ambuiguity in selecting the optimal path since multiple states have the same value for reaching middle states before the end goal. In order to solve this problem, the Maximum Entropy IRL was introduced. We follow through with it in the next section.</p>
+</section>
+<section id="maximum-entropy-irl">
+<h3>Maximum Entropy IRL<a class="headerlink" href="#maximum-entropy-irl" title="Link to this heading">#</a></h3>
+<p>One of the reasons to create maximum entropy IRL was to eliminate the ambuiguity of having multiple optimal policies. The authors <span id="id3">[<a class="reference internal" href="../intro.html#id5" title="Brian D. Ziebart, Andrew Maas, J. Andrew Bagnell, and Anind K. Dey. Maximum entropy inverse reinforcement learning. In Proceedings of the 23rd National Conference on Artificial Intelligence - Volume 3, AAAI'08, 1433–1438. AAAI Press, 2008. URL: https://cdn.aaai.org/AAAI/2008/AAAI08-227.pdf.">ZMBD08</a>]</span> introduce the principle of maximum entropy to resolve the problem. Contrary to linear IRL, the Maxent irl assums a sotchasitc approach to the users policies therefore ranks the policies based on entropy. Here, we estimate Expected State Visitation Frequency (SVF) i.e. how often the agent is expected to visit each state under a policy. This captures how often we expect to visit each state when following a certain policy.</p>
+<p>As per <span id="id4">[<a class="reference internal" href="../intro.html#id5" title="Brian D. Ziebart, Andrew Maas, J. Andrew Bagnell, and Anind K. Dey. Maximum entropy inverse reinforcement learning. In Proceedings of the 23rd National Conference on Artificial Intelligence - Volume 3, AAAI'08, 1433–1438. AAAI Press, 2008. URL: https://cdn.aaai.org/AAAI/2008/AAAI08-227.pdf.">ZMBD08</a>]</span>, trajecotries with equaivalent rewards have equal probablities. and trajecotries with higher rewards are exponentially more preferred. Therefore,</p>
+<p><span class="math notranslate nohighlight">\(P(\omega_i | \theta) = \frac{1}{Z(\theta)}e^{\sum_{s_j \in D}}\)</span></p>
+<p>i.e.
+<span class="math notranslate nohighlight">\(Z(\theta)\)</span> is the partiution function that converges for fintite problems</p>
+<p>Further, the entropy of the distriubution of the trajectoriues are subjected to reward weights \theta that are used to maximum the likelhood of seeing observed data. This is done using:</p>
+<p><span class="math notranslate nohighlight">\((\theta^*) = argmax_\theta \sum{log P(\omega|\theta, T)}\)</span></p>
+<p>Where,
+<span class="math notranslate nohighlight">\(\theta\)</span> = denotes the reward wieghts for given trajectories and observed behaviour</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">state_visitation_frequency</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">policy</span><span class="p">,</span> <span class="n">start_state</span><span class="p">,</span> <span class="n">traj_len</span><span class="o">=</span><span class="mi">15</span><span class="p">):</span>
+    <span class="n">n_states</span><span class="p">,</span> <span class="n">n_actions</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">T</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">mu</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">traj_len</span><span class="p">,</span> <span class="n">n_states</span><span class="p">))</span>
+    <span class="n">mu</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">start_state</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">traj_len</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_states</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_actions</span><span class="p">):</span>
+                <span class="n">next_s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmax</span><span class="p">(</span><span class="n">T</span><span class="p">[</span><span class="n">s</span><span class="p">,</span> <span class="n">a</span><span class="p">])</span>
+                <span class="n">mu</span><span class="p">[</span><span class="n">t</span><span class="p">,</span> <span class="n">next_s</span><span class="p">]</span> <span class="o">+=</span> <span class="n">mu</span><span class="p">[</span><span class="n">t</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">s</span><span class="p">]</span> <span class="o">*</span> <span class="n">policy</span><span class="p">[</span><span class="n">s</span><span class="p">,</span> <span class="n">a</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">mu</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Maximum Ent IRL </span>
+<span class="k">def</span> <span class="nf">maxent_irl</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">feature_matrix</span><span class="p">,</span> <span class="n">trajectories</span><span class="p">,</span> <span class="n">start_state</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mf">0.9</span><span class="p">,</span> <span class="n">l1</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">n_iters</span><span class="o">=</span><span class="mi">100</span><span class="p">):</span>
+    <span class="n">n_states</span><span class="p">,</span> <span class="n">n_features</span> <span class="o">=</span> <span class="n">feature_matrix</span><span class="o">.</span><span class="n">shape</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">n_features</span><span class="p">,))</span>
+    <span class="n">expert_feat_exp</span> <span class="o">=</span> <span class="n">compute_feature_expectations</span><span class="p">(</span><span class="n">feature_matrix</span><span class="p">,</span> <span class="n">trajectories</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_iters</span><span class="p">):</span>
+        <span class="n">R</span> <span class="o">=</span> <span class="n">feature_matrix</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+        <span class="n">policy</span> <span class="o">=</span> <span class="n">value_iteration</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="n">gamma</span><span class="p">)</span>
+        <span class="n">D</span> <span class="o">=</span> <span class="n">state_visitation_frequency</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">policy</span><span class="p">,</span> <span class="n">start_state</span><span class="p">)</span>
+        <span class="n">model_feat_exp</span> <span class="o">=</span> <span class="n">D</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">feature_matrix</span><span class="p">)</span>
+        <span class="n">grad</span> <span class="o">=</span> <span class="n">expert_feat_exp</span> <span class="o">-</span> <span class="n">model_feat_exp</span>
+        <span class="n">w</span> <span class="o">+=</span> <span class="n">l1</span> <span class="o">*</span> <span class="n">grad</span>
+    <span class="k">return</span> <span class="n">feature_matrix</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">w</span><span class="p">),</span> <span class="n">policy</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Function to Visualize Gird world for Linear IRL</span>
+<span class="k">def</span> <span class="nf">visualize_maxent</span><span class="p">(</span><span class="n">grid_size</span><span class="p">,</span><span class="n">start_state</span><span class="p">,</span> <span class="n">end_state</span><span class="p">,</span> <span class="n">reward_maxent</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">reward_maxent</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">grid_size</span><span class="p">,</span> <span class="n">grid_size</span><span class="p">),</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">origin</span><span class="o">=</span><span class="s1">&#39;upper&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;MaxEnt IRL Reward&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">grid_size</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">grid_size</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mf">.5</span><span class="p">,</span> <span class="n">grid_size</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">minor</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mf">.5</span><span class="p">,</span> <span class="n">grid_size</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">minor</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">grid_size</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">grid_size</span><span class="p">):</span>
+            <span class="n">state</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="n">grid_size</span> <span class="o">+</span> <span class="n">j</span>
+            <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">state</span><span class="p">),</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">)</span>
+
+    <span class="n">start_x</span><span class="p">,</span> <span class="n">start_y</span> <span class="o">=</span> <span class="nb">divmod</span><span class="p">(</span><span class="n">start_state</span><span class="p">,</span> <span class="n">grid_size</span><span class="p">)</span>
+    <span class="n">end_x</span><span class="p">,</span> <span class="n">end_y</span> <span class="o">=</span> <span class="nb">divmod</span><span class="p">(</span><span class="n">end_state</span><span class="p">,</span> <span class="n">grid_size</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">start_x</span><span class="p">,</span><span class="n">start_y</span> <span class="o">+</span><span class="mf">0.3</span><span class="p">,</span> <span class="s2">&quot;Start&quot;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">end_x</span><span class="p">,</span> <span class="n">end_y</span><span class="o">+</span><span class="mf">0.3</span><span class="p">,</span> <span class="s2">&quot;Goal&quot;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="now-we-perform-maximum-entropy-irl-for-the-first-case">
+<h3>Now we Perform Maximum Entropy IRL for the first case<a class="headerlink" href="#now-we-perform-maximum-entropy-irl-for-the-first-case" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grid_size</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">start_state</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">end_state</span> <span class="o">=</span> <span class="mi">24</span>
+
+<span class="n">env</span> <span class="o">=</span> <span class="n">GridWorld</span><span class="p">(</span><span class="n">grid_size</span><span class="p">)</span>
+
+<span class="n">feature_matrix</span> <span class="o">=</span> <span class="n">build_feature_matrix</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">n_states</span><span class="p">)</span>
+
+<span class="c1"># Maximum Entropy IRL IRL</span>
+<span class="n">reward_maxent</span><span class="p">,</span> <span class="n">policy_maxent</span> <span class="o">=</span> <span class="n">maxent_irl</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">transition_matrix</span><span class="p">,</span> <span class="n">feature_matrix</span><span class="p">,</span> <span class="n">s1_traj</span><span class="p">,</span> <span class="n">start_state</span><span class="p">)</span>
+
+<span class="n">visualize_maxent</span><span class="p">(</span><span class="n">grid_size</span><span class="p">,</span> <span class="n">start_state</span><span class="p">,</span> <span class="n">end_state</span><span class="p">,</span> <span class="n">reward_maxent</span><span class="p">)</span>
+<span class="n">visualize_policy</span><span class="p">(</span><span class="n">policy_maxent</span><span class="p">,</span> <span class="n">grid_size</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/6cc38d6d6a616539d44b600f3dc1426d11b9bd43c5be5f58f7aac7d8c10af225.png" src="../_images/6cc38d6d6a616539d44b600f3dc1426d11b9bd43c5be5f58f7aac7d8c10af225.png" />
+<img alt="../_images/435f047376687b3730db41276df052e037b202959c2d6d36ee98be754652957f.png" src="../_images/435f047376687b3730db41276df052e037b202959c2d6d36ee98be754652957f.png" />
+</div>
+</div>
+<p>Here, we observe the tendency of increasing rewards and uniformity of actions as we go closer towards the goal state. The path with the highest cumulative score is the optimal policy i.e. (0-&gt;20-&gt;24)</p>
+<p>Similar the Linear regression, we observe consistent pathways that are highlighted</p>
+<p>Now, we proceed with the second case of multiple optimal trajectories</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">feature_matrix</span> <span class="o">=</span> <span class="n">build_feature_matrix</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">n_states</span><span class="p">)</span>
+
+<span class="c1"># Maximum Entropy IRL IRL</span>
+<span class="n">reward_maxent</span><span class="p">,</span> <span class="n">policy_maxent</span> <span class="o">=</span> <span class="n">maxent_irl</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">transition_matrix</span><span class="p">,</span> <span class="n">feature_matrix</span><span class="p">,</span> <span class="n">s2_traj</span><span class="p">,</span> <span class="n">start_state</span><span class="p">)</span>
+
+<span class="n">visualize_maxent</span><span class="p">(</span><span class="n">grid_size</span><span class="p">,</span> <span class="n">start_state</span><span class="p">,</span> <span class="n">end_state</span><span class="p">,</span> <span class="n">reward_maxent</span><span class="p">)</span>
+<span class="n">visualize_policy</span><span class="p">(</span><span class="n">policy_maxent</span><span class="p">,</span> <span class="n">grid_size</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/dbc7d59331fd4f6fdd2ede60d8f16f4a7fd8061cba981e01fb40a59122bb7ed5.png" src="../_images/dbc7d59331fd4f6fdd2ede60d8f16f4a7fd8061cba981e01fb40a59122bb7ed5.png" />
+<img alt="../_images/1a4dad227a7b9a0b89d5b5720b17c77a0ab57ddff9c69f9aad0f3ba51b1e7921.png" src="../_images/1a4dad227a7b9a0b89d5b5720b17c77a0ab57ddff9c69f9aad0f3ba51b1e7921.png" />
+</div>
+</div>
+</section>
+<section id="simulating-random-trajectories">
+<h3>Simulating Random Trajectories<a class="headerlink" href="#simulating-random-trajectories" title="Link to this heading">#</a></h3>
+<p>Here, we have an example to simulate random trajectories generated to solve the grid world problem. We also have the option to interactively change the start &amp; end points to visualiuze the difference in policy &amp; reward function formation</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This function performs Linear &amp; Maxent IRL along with their Grid world visualizations</span>
+
+<span class="k">def</span> <span class="nf">run_irl</span><span class="p">(</span><span class="n">grid_size</span><span class="p">,</span> <span class="n">start_state</span><span class="p">,</span> <span class="n">end_state</span><span class="p">,</span> <span class="n">random_traj</span><span class="p">,</span> <span class="n">n_trajectories</span><span class="p">):</span>
+    <span class="n">env</span> <span class="o">=</span> <span class="n">GridWorld</span><span class="p">(</span><span class="n">grid_size</span><span class="p">)</span>
+
+    <span class="n">expert_traj</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_trajectories</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">random_traj</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">()</span> <span class="o">&lt;</span> <span class="mf">0.5</span><span class="p">:</span> <span class="c1"># condition to make sure there are logical solutions included</span>
+                <span class="n">traj</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">generate_policy_trajectory</span><span class="p">(</span><span class="n">start_state</span><span class="p">,</span> <span class="n">end_state</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">traj</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">generate_random_expert_trajectory</span><span class="p">(</span><span class="n">start_state</span><span class="p">,</span> <span class="n">end_state</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">traj</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">generate_policy_trajectory</span><span class="p">(</span><span class="n">start_state</span><span class="p">,</span> <span class="n">end_state</span><span class="p">)</span>
+        <span class="n">expert_traj</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">traj</span><span class="p">)</span>
+    
+    <span class="n">feature_matrix</span> <span class="o">=</span> <span class="n">build_feature_matrix</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">n_states</span><span class="p">)</span>
+
+    <span class="n">reward_lp</span> <span class="o">=</span> <span class="n">linear_programming_irl</span><span class="p">(</span><span class="n">feature_matrix</span><span class="p">,</span> <span class="n">expert_traj</span><span class="p">)</span>
+    <span class="n">policy_lp</span> <span class="o">=</span> <span class="n">value_iteration</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">transition_matrix</span><span class="p">,</span> <span class="n">reward_lp</span><span class="p">)</span>
+    <span class="n">reward_maxent</span><span class="p">,</span> <span class="n">policy_maxent</span> <span class="o">=</span> <span class="n">maxent_irl</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">transition_matrix</span><span class="p">,</span> <span class="n">feature_matrix</span><span class="p">,</span> <span class="n">expert_traj</span><span class="p">,</span> <span class="n">start_state</span><span class="p">)</span>
+
+    <span class="n">visualize_Linear</span><span class="p">(</span><span class="n">grid_size</span><span class="p">,</span> <span class="n">start_state</span><span class="p">,</span> <span class="n">end_state</span><span class="p">,</span><span class="n">reward_lp</span><span class="p">)</span>
+    <span class="n">visualize_maxent</span><span class="p">(</span><span class="n">grid_size</span><span class="p">,</span> <span class="n">start_state</span><span class="p">,</span> <span class="n">end_state</span><span class="p">,</span><span class="n">reward_maxent</span><span class="p">)</span>
+    
+    <span class="n">visualize_policy</span><span class="p">(</span><span class="n">policy_lp</span><span class="p">,</span> <span class="n">grid_size</span><span class="p">)</span>
+    <span class="n">visualize_policy</span><span class="p">(</span><span class="n">policy_maxent</span><span class="p">,</span> <span class="n">grid_size</span><span class="p">)</span>
+    
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the following example, we initialize the grid size, the number of sample trajectories generated, the start and end state. This sample aims to simulate real-world sampled trajecotries and behaviour obtained from experts.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grid_size</span> <span class="o">=</span> <span class="mi">5</span>                                   <span class="c1"># Dimension of Grid world</span>
+<span class="n">n_trajectories</span> <span class="o">=</span> <span class="mi">20</span>                             <span class="c1"># Number of Expert trajecotries to be generated</span>
+<span class="n">random_traj</span> <span class="o">=</span> <span class="mi">0</span>                                 <span class="c1"># Generate Random Policies = 1, else 0 </span>
+
+<span class="n">start_state</span> <span class="o">=</span> <span class="mi">0</span>                                 <span class="c1"># Starting State in the Grid world</span>
+<span class="n">end_state</span> <span class="o">=</span> <span class="mi">24</span>                                  <span class="c1"># End State in the Grid world</span>
+
+<span class="n">run_irl</span><span class="p">(</span><span class="n">grid_size</span><span class="p">,</span> <span class="n">start_state</span><span class="p">,</span> <span class="n">end_state</span><span class="p">,</span> <span class="n">random_traj</span><span class="p">,</span><span class="n">n_trajectories</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/debfcd7c461ce992584d851645b591d357cabe4514aff01275dd304ab3022223.png" src="../_images/debfcd7c461ce992584d851645b591d357cabe4514aff01275dd304ab3022223.png" />
+<img alt="../_images/6ceb08e879ce3555c0e55047c2ffd184e9e0805197c97cfaeb80fecc4bfc75d2.png" src="../_images/6ceb08e879ce3555c0e55047c2ffd184e9e0805197c97cfaeb80fecc4bfc75d2.png" />
+<img alt="../_images/340e09bae0ca869d9f099702db63410bd360d47b0d594d2647499c898c0de8cb.png" src="../_images/340e09bae0ca869d9f099702db63410bd360d47b0d594d2647499c898c0de8cb.png" />
+<img alt="../_images/7e7aac670aef25184833640c9260e230213659e07a4b583cd299bc0e10354049.png" src="../_images/7e7aac670aef25184833640c9260e230213659e07a4b583cd299bc0e10354049.png" />
+</div>
+</div>
+<p>On testing Linear and Maxent IRL we can observe the difference in approach of reaching the end state via the reward space and the action space.</p>
+<ul class="simple">
+<li><p>The Linear IRL focuses towards reaching the goal state with the shortest distance possible without discovering all possible routes</p></li>
+<li><p>Instances where Linear IRL has multiple optimal solutions, the reward space has no rewards since the state is being reached regardless of making actions</p></li>
+<li><p>The MaxEnt IRL on the other hand discoveres the underlying reward function for all possible trajectories since it is based on a stochiastic function.</p></li>
+<li><p>The action space of maximum entropy IRL shows more uniformity than that of linear IRL as it maximizes the actions across state space.</p></li>
+</ul>
+</section>
+</section>
+<section id="conclusions">
+<h2>Conclusions<a class="headerlink" href="#conclusions" title="Link to this heading">#</a></h2>
+<p>Within this chapter, we learn the basics of markov decision prcesses, inverese reinforcement learning and its principle. The Gridworld simulation shows a good example of having entropy as part of decision making for uncertain situations i.e. when we have only historical observation data. We can inversely learn the behaviour using IRL.</p>
+<p>From the grid world examples we see that when faced with trajecotries with multiple optimal scenarios or high variance the Maximum Entropy IRL performs better compared to linear IRL. The inclusion of entropy masssively improves the search for the optimal policy.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./2_Inverse_RL"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../1_Basic_RL/1_RL_basics.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Reinforcement learning basics with CartPole model</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../3_MARL/MARL.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Markov Games for Multi-Agent RL: Littman’s Soccer Experiment</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-definition">Problem Definition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation">Implementation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-markov-decision-processes-mdp">Defining Markov Decision Processes (MDP)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#intialization">Intialization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#intializing-grid-world-environment-code">Intializing Grid World Environment Code</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#value-function">Value function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bellmans-equations">Bellmans Equations</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experiments">Experiments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-irl">Linear IRL</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#now-let-us-run-linear-irl">Now let us run Linear IRL</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#maximum-entropy-irl">Maximum Entropy IRL</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#now-we-perform-maximum-entropy-irl-for-the-first-case">Now we Perform Maximum Entropy IRL for the first case</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simulating-random-trajectories">Simulating Random Trajectories</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusions">Conclusions</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Sergey V. Kovalchuk, Ashish T.S. Ireddy, Chao Li
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
