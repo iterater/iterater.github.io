@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Introduction &#8212; Selected advanced topics in reinforcement learning: practical hands-on</title>
+    <title>Front matter &#8212; Selected topics in reinforcement learning: practical hands-on</title>
   
   
   
@@ -60,6 +60,7 @@
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'intro';</script>
+    <link rel="canonical" href="https://iterater.github.io/education/rl_practice/intro.html" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Reinforcement learning basics with CartPole model" href="1_Basic_RL/1_RL_basics.html" />
@@ -151,14 +152,8 @@
   
   
   
-    
-    
-      
-    
-    
-    <img src="_static/itmo_logo_black.png" class="logo__image only-light" alt="Selected advanced topics in reinforcement learning: practical hands-on - Home"/>
-    <script>document.write(`<img src="_static/itmo_logo_black.png" class="logo__image only-dark" alt="Selected advanced topics in reinforcement learning: practical hands-on - Home"/>`);</script>
   
+    <p class="title logo__title">Selected topics in reinforcement learning: practical hands-on</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -178,7 +173,7 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1 current active">
                 <a class="reference internal" href="#">
-                    Introduction
+                    Front matter
                 </a>
             </li>
         </ul>
@@ -324,7 +319,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Introduction</h1>
+    <h1>Front matter</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -334,10 +329,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#main-idea">Main idea</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#structure-and-topics">Structure and Topics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-use-this-book">How to Use This Book</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#todo">TODO:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#structure-and-topics">Structure and topics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#education-trajectory-integration">Education trajectory integration</a></li>
 </ul>
             </nav>
         </div>
@@ -349,10 +343,10 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="introduction">
-<h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h1>
-<section id="main-idea">
-<h2>Main idea<a class="headerlink" href="#main-idea" title="Link to this heading">#</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="front-matter">
+<h1>Front matter<a class="headerlink" href="#front-matter" title="Link to this heading">#</a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <p>Reinforcement Learning (RL) has evolved far beyond its foundational algorithms like Q-learning and policy gradients. While introductory texts often focus on single-agent Markov Decision Processes (MDPs) and tabular methods, this book takes a different approach: it assumes familiarity with RL basics and instead explores adjacent and advanced topics that are increasingly critical in both research and industry applications.</p>
 <p>This is not a book that introduce basic concepts and ideas of RL. Instead, it is designed for readers who already understand RL’s core principles and want to:</p>
 <ul class="simple">
@@ -368,22 +362,30 @@ document.write(`
 </ol>
 </section>
 <section id="structure-and-topics">
-<h2>Structure and Topics<a class="headerlink" href="#structure-and-topics" title="Link to this heading">#</a></h2>
+<h2>Structure and topics<a class="headerlink" href="#structure-and-topics" title="Link to this heading">#</a></h2>
 <p>The book is organized into four self-contained but complementary sections:</p>
 <ol class="arabic simple">
-<li><p><strong>Basics of Reinforcement Learning: The CartPole Model.</strong> Covers basics ideas and concepts of RL, value iteration, and policy gradient methods.</p></li>
-<li><p><strong>Inverse Reinforcement Learning (IRL): Inferring Reward Functions.</strong> Examines the problem of reward shaping from expert trajectories, demonstrates maximum entropy IRL.</p></li>
-<li><p><strong>Multi-Agent Reinforcement Learning (MARL): Cooperation and Competition.</strong> Introduces interaction and decentralized training. Case studies on more complex muti-agent environments.</p></li>
-<li><p><strong>Reinforcement Learning with Human Feedback (RLHF).</strong> Provides a simplified RLHF pipeline for fine-tuning LLMs or robotic policies.</p></li>
+<li><p><em>Basics of Reinforcement Learning: The CartPole Model.</em> Covers basics ideas and concepts of RL, value iteration, and policy gradient methods.</p></li>
+<li><p><em>Inverse Reinforcement Learning (IRL): Inferring Reward Functions.</em> Examines the problem of reward shaping from expert trajectories, demonstrates maximum entropy IRL.</p></li>
+<li><p><em>Multi-Agent Reinforcement Learning (MARL): Cooperation and Competition.</em> Introduces interaction and decentralized training. Case studies on more complex muti-agent environments.</p></li>
+<li><p><em>Reinforcement Learning with Human Feedback (RLHF).</em> Provides a simplified RLHF pipeline for fine-tuning LLMs or robotic policies.</p></li>
 </ol>
-</section>
-<section id="how-to-use-this-book">
-<h2>How to Use This Book<a class="headerlink" href="#how-to-use-this-book" title="Link to this heading">#</a></h2>
+<p>Each section is includes basic introduction and problem definition (subsection “Poblem definition”); initial setup instruction and implementation details (subsection “Implementation”); experimental setup, running, and interpretation (subsection “Experiments”); basic conclusions and take-aways (subsection “Conclusion”).</p>
 <p>This book is designed for two complementary modes of engagement:</p>
 <ol class="arabic simple">
-<li><p><strong>As an interactive coding guide.</strong> All the codes were implemented as Jupyter notebooks, available at <a class="github reference external" href="https://github.com/iterater/abm_book_rl_practice">iterater/abm_book_rl_practice</a> Run the provided notebooks, tweak hyperparameters, and observe how changes affect performance. Extend implementations with custom environments or alternative algorithms.</p></li>
-<li><p><strong>As a conceptual reference.</strong> Read through the problem formulations and discussions without running code. Use the notebooks as annotated case studies in advanced RL techniques.</p></li>
+<li><p><em>As an interactive coding guide.</em> All the codes were implemented as Jupyter notebooks. A reader can run the provided notebooks, tweak hyperparameters, and observe how changes affect performance. Extend implementations with custom environments or alternative algorithms.</p></li>
+<li><p><em>As a conceptual reference.</em> Read through the problem formulations and discussions without running code. Use the notebooks as annotated case studies in advanced RL techniques.</p></li>
 </ol>
+<p>The book is distributed in several forms with the same content:</p>
+<ol class="arabic simple">
+<li><p>As printed or electronically distributed book.</p></li>
+<li><p>As online practical materials available at: <a class="reference external" href="https://iterater.github.io/education/rl_practice/">https://iterater.github.io/education/rl_practice/</a></p></li>
+<li><p>As source code repository at: <a class="github reference external" href="https://github.com/iterater/abm_book_rl_practice">iterater/abm_book_rl_practice</a></p></li>
+</ol>
+</section>
+<section id="education-trajectory-integration">
+<h2>Education trajectory integration<a class="headerlink" href="#education-trajectory-integration" title="Link to this heading">#</a></h2>
+<p>The book is developed as a practical training text book available in MSc programs “Big Data and Machine Learning” (courses “Machine Learning”, “Reinforcement Learning”), “Artificial Intelligence and Behavioral Economics” (courses “Agent behavior modelling and prediction in financial systesm”), and others. However, the book can be used in free-form and self education for practical training in reinforcement learning topics and applications.</p>
 <p><strong>Prerequisites.</strong> Readers should have:</p>
 <ul class="simple">
 <li><p>Intermediate Python skills (NumPy, PyTorch/TensorFlow).</p></li>
@@ -396,14 +398,7 @@ document.write(`
 <li><p>Balances implementability with depth - code is simple enough to run on a laptop but sophisticated enough to be research-relevant.</p></li>
 <li><p>Encourages critical thinking by highlighting where methods fail or require careful tuning.</p></li>
 </ul>
-<p><strong>Getting Started:</strong> Proceed to the first chapter - or jump to the topic most relevant to your work.</p>
-</section>
-<section id="todo">
-<h2>TODO:<a class="headerlink" href="#todo" title="Link to this heading">#</a></h2>
-<ul class="contains-task-list simple">
-<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> references to github</p></li>
-<li class="task-list-item"><p><input class="task-list-item-checkbox" disabled="disabled" type="checkbox"> references to web version</p></li>
-</ul>
+<p><strong>Review:</strong> The book was reviewed by <strong>XXXXX</strong></p>
 <div class="docutils container" id="id1">
 <div role="list" class="citation-list">
 <div class="citation" id="id3" role="doc-biblioentry">
@@ -420,7 +415,7 @@ document.write(`
 </div>
 <div class="citation" id="id6" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>Lit94<span class="fn-bracket">]</span></span>
-<p>Michael L. Littman. Markov games as a framework for multi-agent reinforcement learning. In William W. Cohen and Haym Hirsh, editors, <em>Machine Learning Proceedings 1994</em>, pages 157–163. Morgan Kaufmann, San Francisco (CA), 1994. URL: <a class="reference external" href="https://courses.cs.duke.edu/spring07/cps296.3/littman94markov.pdf">https://courses.cs.duke.edu/spring07/cps296.3/littman94markov.pdf</a>, <a class="reference external" href="https://doi.org/https://doi.org/10.1016/B978-1-55860-335-6.50027-1">doi:https://doi.org/10.1016/B978-1-55860-335-6.50027-1</a>.</p>
+<p>Michael L. Littman. Markov games as a framework for multi-agent reinforcement learning. In William W. Cohen and Haym Hirsh, editors, <em>Machine Learning Proceedings 1994</em>, pages 157–163. Morgan Kaufmann, San Francisco (CA), 1994. URL: <a class="reference external" href="https://courses.cs.duke.edu/spring07/cps296.3/littman94markov.pdf">https://courses.cs.duke.edu/spring07/cps296.3/littman94markov.pdf</a>, <a class="reference external" href="https://doi.org/10.1016/B978-1-55860-335-6.50027-1">doi:10.1016/B978-1-55860-335-6.50027-1</a>.</p>
 </div>
 <div class="citation" id="id4" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>NR00<span class="fn-bracket">]</span></span>
@@ -428,7 +423,7 @@ document.write(`
 </div>
 <div class="citation" id="id2" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>Wil92<span class="fn-bracket">]</span></span>
-<p>Ronald J. Williams. Simple statistical gradient-following algorithms for connectionist reinforcement learning. <em>Machine Learning</em>, 8(3–4):229–256, May 1992. URL: <a class="reference external" href="http://dx.doi.org/10.1007/BF00992696">http://dx.doi.org/10.1007/BF00992696</a>, <a class="reference external" href="https://doi.org/10.1007/bf00992696">doi:10.1007/bf00992696</a>.</p>
+<p>Ronald J. Williams. Simple statistical gradient-following algorithms for connectionist reinforcement learning. <em>Machine Learning</em>, 8(3–4):229–256, May 1992. URL: <a class="reference external" href="https://link.springer.com/content/pdf/10.1007/BF00992696.pdf">https://link.springer.com/content/pdf/10.1007/BF00992696.pdf</a>, <a class="reference external" href="https://doi.org/10.1007/bf00992696">doi:10.1007/bf00992696</a>.</p>
 </div>
 <div class="citation" id="id5" role="doc-biblioentry">
 <span class="label"><span class="fn-bracket">[</span>ZMBD08<span class="fn-bracket">]</span></span>
@@ -496,10 +491,9 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#main-idea">Main idea</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#structure-and-topics">Structure and Topics</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-use-this-book">How to Use This Book</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#todo">TODO:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#structure-and-topics">Structure and topics</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#education-trajectory-integration">Education trajectory integration</a></li>
 </ul>
   </nav></div>
 

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Reinforcement learning basics with CartPole model &#8212; Selected advanced topics in reinforcement learning: practical hands-on</title>
+    <title>Reinforcement learning basics with CartPole model &#8212; Selected topics in reinforcement learning: practical hands-on</title>
   
   
   
@@ -60,10 +60,11 @@
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '1_Basic_RL/1_RL_basics';</script>
+    <link rel="canonical" href="https://iterater.github.io/education/rl_practice/1_Basic_RL/1_RL_basics.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Inverse Reinforcement Learning with Grid World Traversal" href="../2_Inverse_RL/2_IRL.html" />
-    <link rel="prev" title="Introduction" href="../intro.html" />
+    <link rel="prev" title="Front matter" href="../intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -150,14 +151,8 @@
   
   
   
-    
-    
-      
-    
-    
-    <img src="../_static/itmo_logo_black.png" class="logo__image only-light" alt="Selected advanced topics in reinforcement learning: practical hands-on - Home"/>
-    <script>document.write(`<img src="../_static/itmo_logo_black.png" class="logo__image only-dark" alt="Selected advanced topics in reinforcement learning: practical hands-on - Home"/>`);</script>
   
+    <p class="title logo__title">Selected topics in reinforcement learning: practical hands-on</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -177,7 +172,7 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../intro.html">
-                    Introduction
+                    Front matter
                 </a>
             </li>
         </ul>
@@ -369,10 +364,12 @@ name: basic-cartpole
 ---
 Basic CartPole model
 ```-->
-<p><img alt="Figure 1" src="../_images/1_RL_basics_Fig1_CartPole.png" /></p>
+<a class="reference internal image-reference" href="../_images/1_RL_basics_Fig1_CartPole.png" id="basic-cartpole"><img alt="../_images/1_RL_basics_Fig1_CartPole.png" id="basic-cartpole" src="../_images/1_RL_basics_Fig1_CartPole.png" style="width: 300px;" />
+</a>
+<!-- ![Figure 1](1_RL_basics_Fig1_CartPole.png) -->
 <!-- <img src="1_RL_basics_Fig1_CartPole.png" width="300px"/> -->
 <p>The model is implemented in Gymnasium library <span id="id1">[<a class="reference internal" href="../intro.html#id3" title="Cart Pole – Gymnasium Documentation. https://gymnasium.farama.org/environments/classic_control/cart_pole/. [Accessed 25-04-2025].">Car</a>]</span> with basics physics enabling simulation of various control mechanisms. Here the observation space is defined by a vector <span class="math notranslate nohighlight">\((x,x',\theta,\theta')\)</span>, action space is <span class="math notranslate nohighlight">\(A=\{0,1\}\)</span>. The agent receives +1 for every timestep the pole remains upright. The episode ends if: a) the pole tilts more than 15 degrees from vertical; b) the cart moves more than 2.4 units from the center; c) the episode length exceeds 500 steps.</p>
-<p>Within this practical task we’ll implement and evaluate a basic RL agent to control the cart in an optimal way using Gymnasium environment with REINFORCE algorithm <span id="id2">[<a class="reference internal" href="../intro.html#id2" title="Ronald J. Williams. Simple statistical gradient-following algorithms for connectionist reinforcement learning. Machine Learning, 8(3–4):229–256, May 1992. URL: http://dx.doi.org/10.1007/BF00992696, doi:10.1007/bf00992696.">Wil92</a>]</span>.</p>
+<p>Within this practical task we’ll implement and evaluate a basic RL agent to control the cart in an optimal way using Gymnasium environment with REINFORCE algorithm <span id="id2">[<a class="reference internal" href="../intro.html#id2" title="Ronald J. Williams. Simple statistical gradient-following algorithms for connectionist reinforcement learning. Machine Learning, 8(3–4):229–256, May 1992. URL: https://link.springer.com/content/pdf/10.1007/BF00992696.pdf, doi:10.1007/bf00992696.">Wil92</a>]</span>.</p>
 <!-- ### References
 1. [Cart Pole in Gymnasium Documentation](https://gymnasium.farama.org/environments/classic_control/cart_pole/)
 2. [R. J. Williams, Simple statistical gradient-following algorithms for connectionist reinforcement learning, Machine Learning, vol. 8, no. 23, 1992.](https://link.springer.com/content/pdf/10.1007/BF00992696.pdf) -->
@@ -759,7 +756,7 @@ E: 250 R: 499.0
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Introduction</p>
+        <p class="prev-next-title">Front matter</p>
       </div>
     </a>
     <a class="right-next"

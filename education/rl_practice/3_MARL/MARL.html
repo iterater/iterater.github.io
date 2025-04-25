@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Markov Games for Multi-Agent RL: Littman’s Soccer Experiment &#8212; Selected advanced topics in reinforcement learning: practical hands-on</title>
+    <title>Markov Games for Multi-Agent RL: Littman’s Soccer Experiment &#8212; Selected topics in reinforcement learning: practical hands-on</title>
   
   
   
@@ -60,6 +60,7 @@
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '3_MARL/MARL';</script>
+    <link rel="canonical" href="https://iterater.github.io/education/rl_practice/3_MARL/MARL.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="prev" title="Inverse Reinforcement Learning with Grid World Traversal" href="../2_Inverse_RL/2_IRL.html" />
@@ -149,14 +150,8 @@
   
   
   
-    
-    
-      
-    
-    
-    <img src="../_static/itmo_logo_black.png" class="logo__image only-light" alt="Selected advanced topics in reinforcement learning: practical hands-on - Home"/>
-    <script>document.write(`<img src="../_static/itmo_logo_black.png" class="logo__image only-dark" alt="Selected advanced topics in reinforcement learning: practical hands-on - Home"/>`);</script>
   
+    <p class="title logo__title">Selected topics in reinforcement learning: practical hands-on</p>
   
 </a></div>
         <div class="sidebar-primary-item">
@@ -176,7 +171,7 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../intro.html">
-                    Introduction
+                    Front matter
                 </a>
             </li>
         </ul>
@@ -393,7 +388,7 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="markov-games-for-multi-agent-rl-littman-s-soccer-experiment">
 <h1>Markov Games for Multi-Agent RL: Littman’s Soccer Experiment<a class="headerlink" href="#markov-games-for-multi-agent-rl-littman-s-soccer-experiment" title="Link to this heading">#</a></h1>
 <!-- **Based on "Markov Games as a Framework for Multi-Agent RL" (Littman, 1994)**   -->
-<p>This section demonstrates the minimax-Q learning algorithm using a simple two-player zero-sum Markov game modeled after the game of soccer <span id="id1">[<a class="reference internal" href="../intro.html#id6" title="Michael L. Littman. Markov games as a framework for multi-agent reinforcement learning. In William W. Cohen and Haym Hirsh, editors, Machine Learning Proceedings 1994, pages 157-163. Morgan Kaufmann, San Francisco (CA), 1994. URL: https://courses.cs.duke.edu/spring07/cps296.3/littman94markov.pdf, doi:https://doi.org/10.1016/B978-1-55860-335-6.50027-1.">Lit94</a>]</span>.</p>
+<p>This section demonstrates the minimax-Q learning algorithm using a simple two-player zero-sum Markov game modeled after the game of soccer <span id="id1">[<a class="reference internal" href="../intro.html#id6" title="Michael L. Littman. Markov games as a framework for multi-agent reinforcement learning. In William W. Cohen and Haym Hirsh, editors, Machine Learning Proceedings 1994, pages 157-163. Morgan Kaufmann, San Francisco (CA), 1994. URL: https://courses.cs.duke.edu/spring07/cps296.3/littman94markov.pdf, doi:10.1016/B978-1-55860-335-6.50027-1.">Lit94</a>]</span>.</p>
 <!-- **References**
 
 - [Markov games as a framework for multi-agent reinforcement learning
@@ -416,7 +411,9 @@ $<span class="math notranslate nohighlight">\(
 V^\pi(s) = \mathbb{E}\left[\sum_{t=0}^{\infty} \gamma^t R(s_t,a_t)\right]
 \)</span><span class="math notranslate nohighlight">\(
 where \)</span>\gamma=0<span class="math notranslate nohighlight">\( reduces to myopic optimization, while \)</span>\gamma \rightarrow 1$ emphasizes long-term outcomes.</p>
-<p><img alt="MDP" src="../_images/MDP.png" /></p>
+<!-- ![MDP](figs/MDP.png) -->
+<a class="reference internal image-reference" href="../_images/MDP.png" id="mdp"><img alt="../_images/MDP.png" id="mdp" src="../_images/MDP.png" style="width: 300px;" />
+</a>
 <p>Figure above shows the MDP decision flow: state → action → next state cycle</p>
 </section>
 <section id="two-player-zero-sum-markov-games">
@@ -464,7 +461,9 @@ where \)</span>\pi: S \rightarrow \text{PD}(A)<span class="math notranslate nohi
 </tbody>
 </table>
 </div>
-<p><img alt="MDPvsGame" src="../_images/MDPvsGame.png" /></p>
+<!-- ![MDPvsGame](figs/MDPvsGame.png) -->
+<a class="reference internal image-reference" href="../_images/MDPvsGame.png" id="mdp-vs-game"><img alt="../_images/MDPvsGame.png" id="mdp-vs-game" src="../_images/MDPvsGame.png" style="width: 500px;" />
+</a>
 <p>Figure above shows MDP single path decision vs Markov Game</p>
 </section>
 </section>
