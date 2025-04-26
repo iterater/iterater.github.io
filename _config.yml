@@ -5,6 +5,7 @@ twitter_username: iterater
 github_username: iterater
 author: Sergey V. Kovalchuk
 google_analytics: UA-210876536-1
+include: ["education/rl_practice/_static", "education/rl_practice/_images", "education/rl_practice/_sources", "education/rl_practice/_sphinx_design_static"]
 header_pages:
   - index.md
   - research.md
