@@ -38,7 +38,7 @@ The book is distributed in several forms with the same content:
 
 ## Education trajectory integration 
 
-The book is developed as a practical training text book available in MSc programs "Big Data and Machine Learning" (courses "Machine Learning", "Reinforcement Learning"), "Artificial Intelligence and Behavioral Economics" (courses "Agent behavior modelling and prediction in financial systesm"), and others. However, the book can be used in free-form and self education for practical training in reinforcement learning topics and applications.
+The book is developed as a practical training text book available in MSc programs "Big Data and Machine Learning" (courses "Machine Learning", "Reinforcement Learning"), "Artificial Intelligence and Behavioral Economics" (courses "Agent behavior modelling and prediction in financial systesm") provided at [ITMO University](https://en.itmo.ru/), and other programs within direction "01.04.02 Applied mathematics and informatics" or similar. However, the book can be used in free-form and self education for practical training in reinforcement learning topics and applications.
 
 **Prerequisites.** Readers should have:  
 - Intermediate Python skills (NumPy, PyTorch/TensorFlow).  
@@ -50,7 +50,7 @@ The book is developed as a practical training text book available in MSc program
 - Balances implementability with depth - code is simple enough to run on a laptop but sophisticated enough to be research-relevant.  
 - Encourages critical thinking by highlighting where methods fail or require careful tuning.  
 
-**Review:** The book was reviewed by **XXXXX**
+**Review:** The book was reviewed by Dmitry S. Shalymov, PhD (candidate of sciences in physics and mathematics), Associate Professor, St. Petersburg State University.
 
 ```{bibliography}
 ```

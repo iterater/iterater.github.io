@@ -5,8 +5,6 @@ twitter_username: iterater
 github_username: iterater
 author: Sergey V. Kovalchuk
 google_analytics: UA-210876536-1
-include: 
-  - "education/rl_practice/_*"
 header_pages:
   - index.md
   - research.md
