@@ -1,0 +1,1453 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Reinforcement Learning with Human Feedback &#8212; Selected topics in reinforcement learning: practical hands-on</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../static/doctools.js?v=9a2dae69"></script>
+    <script src="../static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../static/copybutton.js?v=f281be69"></script>
+    <script src="../static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '4_RLHF/4_RLHF';</script>
+    <link rel="canonical" href="https://iterater.github.io/education/rl_practice/4_RLHF/4_RLHF.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Markov Games for Multi-Agent RL with Littman’s Soccer Experiment" href="../3_MARL/MARL.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../static/itmo_logo_black.png" class="logo__image only-light" alt="Selected topics in reinforcement learning: practical hands-on - Home"/>
+    <script>document.write(`<img src="../static/itmo_logo_black.png" class="logo__image only-dark" alt="Selected topics in reinforcement learning: practical hands-on - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Front matter
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../1_Basic_RL/1_RL_basics.html">Reinforcement Learning Basics with CartPole Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2_Inverse_RL/2_IRL.html">Inverse Reinforcement Learning with Grid World Traversal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_MARL/MARL.html">Markov Games for Multi-Agent RL with Littman’s Soccer Experiment</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Reinforcement Learning with Human Feedback</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../sources/4_RLHF/4_RLHF.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Reinforcement Learning with Human Feedback</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-definition">Problem Definition</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-large-language-model-llm">What is a Large Language Model (LLM)?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-transformers">What are Transformers?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation">Implementation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#intialization">Intialization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#intializing-the-pre-trained-model-on-imdb-data">Intializing the Pre-trained model on IMDB data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-wandb-instance-to-log-weights">Creating a wandb instance to log Weights</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-data">Loading Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-gpt2-model">Load gpt2 model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-instances-of-bert-classfied-to-fine-tune-the-imdb-dataset">Creating instances of BERT Classfied to fine tune the IMDB dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mini-visualizaiton">Mini Visualizaiton</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experiment">Experiment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusions">Conclusions</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="reinforcement-learning-with-human-feedback">
+<h1>Reinforcement Learning with Human Feedback<a class="headerlink" href="#reinforcement-learning-with-human-feedback" title="Link to this heading">#</a></h1>
+<section id="problem-definition">
+<h2>Problem Definition<a class="headerlink" href="#problem-definition" title="Link to this heading">#</a></h2>
+<p>With the foundation of classical reinforcement learning (RL) covered, this chapter takes a step towards training intelligent agents that are capble of adapting their behaviour as per the human user. Classical RL aims to train an agent to learn a function defining specific behaviour based on a certain policy while iteratively maximizing the rewards achievable given the agent’s performance. However, this situation requires an explicit definition of the reward function while also creating complexity for dynamic adaptation. In many real-world scenarios, the ground truth may be subjective (i.e. not absolutely defined) E.g. the perception of an aggressive question may be different for each human user. Situation as such calls for the need to align models that can adapt to the human user’s personal perception over offerring generic solutions.</p>
+<p>Reinforcement Learning with Human Feedback (RLHF) is one way to address this problem by training the reward function directly from acquired human feedback, to align the model with human expectations given the situation, context and the human’s perception. In RLHF, we start with a pre-trained model that is tested for specific results. This model then serves as the baseline to re-train using feedback and improve an agent’s policy via an optimization algorithm (e.g. proximal policy optimization). Some of the most famous and widely used applications of RLHF are generative AI, large language models (LLMs), e.g. Chatgpt etc. The base of these generative AI applications is feedback training on supervised pre-trained models that are then optimized to meet the human user’s goals. The figure below provides an overview of RLHF vs Classical RL where the introduction of human feedback into the training loop allows the agent to add wieghts (relevance and priorty) as per user’s personalization.</p>
+<!-- ![Basic RLHF vs RL](Images/RLHF_Base.png) -->
+<a class="reference internal image-reference" href="../images/RLHF_Base.png" id="rlhf-base"><img alt="../images/RLHF_Base.png" id="rlhf-base" src="../images/RLHF_Base.png" style="width: 500px;" />
+</a>
+<p>In this notebook we present a practical implementation of <strong>RLHF aimed at aligning a generative model (GPT-2) to produce more positive movie reviews</strong>. It uses the <strong>IMDB dataset</strong> for movie reviews and a comparision between standard GPT-2 versus RLHF-trained GPT-2 to see the impact of feedback. Within this example, we will use the BERT reward model for sentiment analysis and a Proximal Policy Optimization (PPO) condition approach for RL training.</p>
+<p>Before diving into RLHF, we first need to introduce certain concents about LLMs and have a brief overview of the RLHF training procedure.</p>
+<section id="what-is-a-large-language-model-llm">
+<h3>What is a Large Language Model (LLM)?<a class="headerlink" href="#what-is-a-large-language-model-llm" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>In simplest terms, a language model is a type of machine learning model trained to generate a probability distribution of words relative to the environment. An LLM is a larger and juiced up version with millions of tuning parameters and variables used to work with languages. To progress further, we need to recap a basic understanding of how natural language processing (NLP) works for prediction tasks. Prior to 2016, language models interpretted words and sentences by processing word after word. While in 2017, the engineers at google presented the concept of transformers <span id="id1">[<a class="reference internal" href="../intro.html#id9" title="Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N Gomez, Łukasz Kaiser, and Illia Polosukhin. Attention is all you need. Advances in neural information processing systems, 2017.">VSP+17</a>]</span>. The <strong>Token</strong> is the numeric representation of a word, set of characters or sentences when processed as a block. The following Figure showcases the approach of LLMs when analyzed using transformers.</p></li>
+</ul>
+<p><img alt="Tokenization" src="../images/Tokenization.png" /></p>
+</section>
+<section id="what-are-transformers">
+<h3>What are Transformers?<a class="headerlink" href="#what-are-transformers" title="Link to this heading">#</a></h3>
+<p>-Transformers are a state-of-the-art architecture that computes text as tokens and converts by converting it into a vector along a embeddings table that stores the relative context of text with respect to the environment. It was introduced by google engineers in the paper <span id="id2">[<a class="reference internal" href="../intro.html#id9" title="Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N Gomez, Łukasz Kaiser, and Illia Polosukhin. Attention is all you need. Advances in neural information processing systems, 2017.">VSP+17</a>]</span>, where attention denotes the relative importance (i.e. weightage) of each component (text) in a sequence relative to the other components in that specific sequence. Transformers are widely used as part of languge model applications for translation, prediciton etc. One of the most notable changes in LLMs with the introduction of transformers, were its ability to read complete texts in parallel. Words assocoated with numbers as vector are more efficient to tune across multi dimension matrices describing the attention (i.e. relevance or weightage) of the words within the given texts. The Figure below provides an overview of a simple case where, given a sentence to complete, the LLM sweeps through its vast training to extract probablities of the upcoming words relative to the given sentence.</p>
+<p><img alt="Transformers_LLMs" src="../images/Example_LLM.png" /></p>
+</section>
+</section>
+<section id="implementation">
+<h2>Implementation<a class="headerlink" href="#implementation" title="Link to this heading">#</a></h2>
+<p>In this chapter, we focus on a task that aims to include human feedback into the training process of an LLM and then observe the difference before and after human feedback. We will be using a movie review data set called IMDB, a pre-trained generative model (gpt2) on the IMDB, a BERT (Bidirectional Encoder Representations from Transformers) to finetune the model on IMDB data for sentinment analysis and RL via Proximal policy optimization. In the general ChatGPT (Generative pre-trained transformer) model training, the steps followed were as such:</p>
+<ol class="arabic simple">
+<li><p>Supervised fine-tuning - (SFT). Supervised fine-tuning of a previously trained language model (LM) on the first type of labeled data - with ready-made answers.</p></li>
+<li><p>Reward model. Training a reward model on the second type of data - people ranking different bot responses.</p></li>
+<li><p>Reinforcement learning - RL. Using a reward model to retrain a language model (LM) using reinforcement learning (RL) .</p></li>
+</ol>
+<p>These steps are repeated for multiple iterations to finally build a reward function that models human preferences <span id="id3">[<a class="reference internal" href="../intro.html#id10" title="Long Ouyang, Jeffrey Wu, Xu Jiang, Diogo Almeida, Carroll Wainwright, Pamela Mishkin, Chong Zhang, Sandhini Agarwal, Katarina Slama, Alex Ray, and others. Training language models to follow instructions with human feedback. Advances in neural information processing systems, 35:27730–27744, 2022.">OWJ+22</a>]</span>.</p>
+<p><img alt="ChatGPT_Approach" src="../images/chatgpt_diagram_dark.png" />
+Figure source: <a class="reference external" href="https://openai.com/index/chatgpt/">https://openai.com/index/chatgpt/</a></p>
+<p>In order to train models, we use Proximal policy optimization (PPO) approach. A reinforcement learning (RL) algorithm for training an intelligent agent via a policy gradient method. We use this approach to ensure that the over-training &amp; over fitting do not occur.  The outcomes of such a step is to prevent bias in the results.</p>
+<section id="intialization">
+<h3>Intialization<a class="headerlink" href="#intialization" title="Link to this heading">#</a></h3>
+<p>We first install and load libraries that we wil be using throughout this chapter</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>git+https://github.com/huggingface/transformers
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">datasets</span><span class="o">==</span><span class="m">2</span>.15.0
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">peft</span><span class="o">==</span><span class="m">0</span>.5.0
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span><span class="nv">trl</span><span class="o">==</span><span class="m">0</span>.11.3
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>--no-binary<span class="w"> </span><span class="nv">numpy</span><span class="o">==</span><span class="m">1</span>.26.4
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+<span class="n">tqdm</span><span class="o">.</span><span class="n">pandas</span><span class="p">()</span>
+
+<span class="kn">from</span> <span class="nn">datasets</span> <span class="kn">import</span> <span class="n">load_dataset</span>
+<span class="kn">from</span> <span class="nn">transformers</span> <span class="kn">import</span> <span class="n">AutoTokenizer</span><span class="p">,</span> <span class="n">GPT2LMHeadModel</span><span class="p">,</span> <span class="n">pipeline</span>
+<span class="kn">from</span> <span class="nn">trl.core</span> <span class="kn">import</span> <span class="n">LengthSampler</span>
+<span class="kn">from</span> <span class="nn">trl</span> <span class="kn">import</span> <span class="n">PPOTrainer</span><span class="p">,</span> <span class="n">PPOConfig</span><span class="p">,</span> <span class="n">AutoModelForCausalLMWithValueHead</span>
+
+<span class="kn">from</span> <span class="nn">peft</span> <span class="kn">import</span> <span class="n">get_peft_model</span><span class="p">,</span> <span class="n">LoraConfig</span><span class="p">,</span> <span class="n">TaskType</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="intializing-the-pre-trained-model-on-imdb-data">
+<h3>Intializing the Pre-trained model on IMDB data<a class="headerlink" href="#intializing-the-pre-trained-model-on-imdb-data" title="Link to this heading">#</a></h3>
+<p>Here we setup our PPO RL training conditions with a learning rate (LR) and a base for logging weights of the transformer during training. Here, we use “wandb” for its simplcity in usage.</p>
+<p>Source: <a class="reference external" href="https://huggingface.co/lvwerra/gpt2-imdb">https://huggingface.co/lvwerra/gpt2-imdb</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">config</span> <span class="o">=</span> <span class="n">PPOConfig</span><span class="p">(</span>
+    <span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;lvwerra/gpt2-imdb&quot;</span><span class="p">,</span>
+    <span class="n">learning_rate</span><span class="o">=</span><span class="mf">1.5e-5</span><span class="p">,</span>
+    <span class="n">log_with</span><span class="o">=</span><span class="s2">&quot;wandb&quot;</span><span class="p">)</span>
+
+<span class="c1"># Argument to be sent to Sentiment model</span>
+<span class="n">sent_kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;return_all_scores&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;function_to_apply&quot;</span><span class="p">:</span> <span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="s2">&quot;batch_size&quot;</span><span class="p">:</span> <span class="mi">16</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.11/dist-packages/trl/trainer/ppo_config.py:207: FutureWarning: `PPOConfig` is deprecated and will be removed in the future. Please use `PPOv2Config` with `PPOv2Trainer` instead.
+  warnings.warn(
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="creating-a-wandb-instance-to-log-weights">
+<h3>Creating a wandb instance to log Weights<a class="headerlink" href="#creating-a-wandb-instance-to-log-weights" title="Link to this heading">#</a></h3>
+<p>Here, you will be asked to open the website and create an account/log in to acquire your api. The steps are as follow:</p>
+<ol class="arabic simple">
+<li><p>Go to: <a class="reference external" href="https://wandb.ai/login">wandb</a> and create an account/log in using existing accounts.</p></li>
+<li><p>Next, go to <a class="reference external" href="https://wandb.ai/authorize">Authorize Wandb to create API</a>, here you will see a dashboard with your API key</p></li>
+<li><p>Copy and paste this API into the instance below as show in the image</p></li>
+</ol>
+<p><img alt="Usage of Weights and Biases" src="../images/WB_Usage.png" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">wandb</span>
+
+<span class="n">wandb</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Bold -Color-Bold-Blue">wandb</span>: Using wandb-core as the SDK backend.  Please refer to https://wandb.me/wandb-core for more information.
+<span class=" -Color -Color-Bold -Color-Bold-Blue">wandb</span>: Currently logged in as: <span class=" -Color -Color-Yellow">ash-dadaya</span> (<span class=" -Color -Color-Yellow">ash-dadaya-hse-university</span>) to <span class=" -Color -Color-Green">https://api.wandb.ai</span>. Use <span class=" -Color -Color-Bold">`wandb login --relogin`</span> to force relogin
+</pre></div>
+</div>
+<div class="output text_html">Tracking run with wandb version 0.19.9</div><div class="output text_html">Run data is saved locally in <code>/content/wandb/run-20250427_174334-957nno8a</code></div><div class="output text_html">Syncing run <strong><a href='https://wandb.ai/ash-dadaya-hse-university/uncategorized/runs/957nno8a' target="_blank">earthy-serenity-8</a></strong> to <a href='https://wandb.ai/ash-dadaya-hse-university/uncategorized' target="_blank">Weights & Biases</a> (<a href='https://wandb.me/developer-guide' target="_blank">docs</a>)<br></div><div class="output text_html"> View project at <a href='https://wandb.ai/ash-dadaya-hse-university/uncategorized' target="_blank">https://wandb.ai/ash-dadaya-hse-university/uncategorized</a></div><div class="output text_html"> View run at <a href='https://wandb.ai/ash-dadaya-hse-university/uncategorized/runs/957nno8a' target="_blank">https://wandb.ai/ash-dadaya-hse-university/uncategorized/runs/957nno8a</a></div><div class="output text_html"><button onClick="this.nextSibling.style.display='block';this.style.display='none';">Display W&B run</button><iframe src='https://wandb.ai/ash-dadaya-hse-university/uncategorized/runs/957nno8a?jupyter=true' style='border:none;width:100%;height:420px;display:none;'></iframe></div></div>
+</div>
+</section>
+<section id="loading-data">
+<h3>Loading Data<a class="headerlink" href="#loading-data" title="Link to this heading">#</a></h3>
+<p>This IMDB dataset contains 50,000 reviews of movies labelled with positive or negative feedback. We load this data, filter to include reviews that are greater than 250 words and tokenize the text.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">tokenize_data</span><span class="p">(</span><span class="n">config</span><span class="p">,</span> <span class="n">dataset_name</span><span class="o">=</span><span class="s2">&quot;imdb&quot;</span><span class="p">,</span> <span class="n">input_min_text_length</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">input_max_text_length</span><span class="o">=</span><span class="mi">8</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Args:</span>
+<span class="sd">        dataset_name (`str`):</span>
+<span class="sd">            The name of the dataset to be loaded.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        dataloader (`torch.utils.data.DataLoader`):</span>
+<span class="sd">            The dataloader for the dataset.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">tokenizer</span> <span class="o">=</span> <span class="n">AutoTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">model_name</span><span class="p">)</span>
+    <span class="n">tokenizer</span><span class="o">.</span><span class="n">pad_token</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">eos_token</span>
+
+    <span class="c1"># Load imdb dataset</span>
+    <span class="n">dfs</span> <span class="o">=</span> <span class="n">load_dataset</span><span class="p">(</span><span class="n">dataset_name</span><span class="p">,</span> <span class="n">split</span><span class="o">=</span><span class="s2">&quot;train&quot;</span><span class="p">)</span>
+    <span class="n">dfs</span> <span class="o">=</span> <span class="n">dfs</span><span class="o">.</span><span class="n">rename_columns</span><span class="p">({</span><span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="s2">&quot;review&quot;</span><span class="p">})</span>
+    <span class="n">dfs</span> <span class="o">=</span> <span class="n">dfs</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="s2">&quot;review&quot;</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">250</span><span class="p">,</span> <span class="n">batched</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="n">input_size_txt</span> <span class="o">=</span> <span class="n">LengthSampler</span><span class="p">(</span><span class="n">input_min_text_length</span><span class="p">,</span> <span class="n">input_max_text_length</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">tokenize</span><span class="p">(</span><span class="n">sample</span><span class="p">):</span>
+        <span class="n">sample</span><span class="p">[</span><span class="s2">&quot;input_ids&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">sample</span><span class="p">[</span><span class="s2">&quot;review&quot;</span><span class="p">])[:</span> <span class="n">input_size_txt</span><span class="p">()]</span>
+        <span class="n">sample</span><span class="p">[</span><span class="s2">&quot;query&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">sample</span><span class="p">[</span><span class="s2">&quot;input_ids&quot;</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">sample</span>
+
+    <span class="n">dfs</span> <span class="o">=</span> <span class="n">dfs</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">tokenize</span><span class="p">,</span> <span class="n">batched</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">dfs</span><span class="o">.</span><span class="n">set_format</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;torch&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">dfs</span>
+
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">tokenize_data</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.11/dist-packages/huggingface_hub/utils/_auth.py:94: UserWarning: 
+The secret `HF_TOKEN` does not exist in your Colab secrets.
+To authenticate with the Hugging Face Hub, create a token in your settings tab (https://huggingface.co/settings/tokens), set it as secret in your Google Colab and restart your session.
+You will be able to reuse this secret in all of your notebooks.
+Please note that authentication is recommended but still optional to access public models or datasets.
+  warnings.warn(
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">collator</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">dict</span><span class="p">((</span><span class="n">key</span><span class="p">,</span> <span class="p">[</span><span class="n">d</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">data</span><span class="p">])</span> <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="load-gpt2-model">
+<h3>Load gpt2 model<a class="headerlink" href="#load-gpt2-model" title="Link to this heading">#</a></h3>
+<p>We load the gpt2 model as two instances as a:</p>
+<ol class="arabic simple">
+<li><p>Trained version (Optimized)</p></li>
+<li><p>Reference version (Original)</p></li>
+</ol>
+<p>to observe the difference in performance with feedback as a factor</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span> <span class="o">=</span> <span class="n">GPT2LMHeadModel</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">model_name</span><span class="p">)</span>
+
+<span class="n">peft_config</span> <span class="o">=</span> <span class="n">LoraConfig</span><span class="p">(</span>
+    <span class="n">task_type</span><span class="o">=</span><span class="n">TaskType</span><span class="o">.</span><span class="n">CAUSAL_LM</span><span class="p">,</span>
+    <span class="n">inference_mode</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">r</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span>
+    <span class="n">lora_alpha</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span>
+    <span class="n">lora_dropout</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+
+<span class="n">peft_model</span> <span class="o">=</span> <span class="n">get_peft_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">peft_config</span><span class="p">)</span>
+
+
+<span class="n">new_model</span> <span class="o">=</span> <span class="n">AutoModelForCausalLMWithValueHead</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">peft_model</span><span class="p">,</span> <span class="n">is_trainable</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">original_model</span> <span class="o">=</span> <span class="n">AutoModelForCausalLMWithValueHead</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">model_name</span><span class="p">)</span>
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">AutoTokenizer</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">model_name</span><span class="p">)</span>
+
+<span class="n">tokenizer</span><span class="o">.</span><span class="n">pad_token</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">eos_token</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.11/dist-packages/peft/tuners/lora.py:475: UserWarning: fan_in_fan_out is set to False but the target module is `Conv1D`. Setting fan_in_fan_out to True.
+  warnings.warn(
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="creating-instances-of-bert-classfied-to-fine-tune-the-imdb-dataset">
+<h3>Creating instances of BERT Classfied to fine tune the IMDB dataset<a class="headerlink" href="#creating-instances-of-bert-classfied-to-fine-tune-the-imdb-dataset" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ppo_trainer</span> <span class="o">=</span> <span class="n">PPOTrainer</span><span class="p">(</span>
+    <span class="n">config</span><span class="p">,</span> <span class="n">new_model</span><span class="p">,</span> <span class="n">original_model</span><span class="p">,</span> <span class="n">tokenizer</span><span class="p">,</span> <span class="n">dataset</span><span class="o">=</span><span class="n">dataset</span><span class="p">,</span> <span class="n">data_collator</span><span class="o">=</span><span class="n">collator</span><span class="p">)</span>
+
+
+<span class="n">src_device</span> <span class="o">=</span> <span class="n">ppo_trainer</span><span class="o">.</span><span class="n">accelerator</span><span class="o">.</span><span class="n">device</span>
+<span class="k">if</span> <span class="n">ppo_trainer</span><span class="o">.</span><span class="n">accelerator</span><span class="o">.</span><span class="n">num_processes</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="n">src_device</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s2">&quot;cpu&quot;</span>  <span class="c1"># to avoid a `pipeline` bug</span>
+<span class="n">sentiment_pipe</span> <span class="o">=</span> <span class="n">pipeline</span><span class="p">(</span>
+    <span class="s2">&quot;sentiment-analysis&quot;</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s2">&quot;lvwerra/distilbert-imdb&quot;</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">src_device</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.11/dist-packages/trl/trainer/ppo_trainer.py:193: FutureWarning: `PPOTrainer` is deprecated and will be removed in trl v0.12. Please use `PPOv2Trainer` instead.
+  warnings.warn(
+</pre></div>
+</div>
+<div class="output text_html"></div><div class="output text_html"> View run <strong style="color:#cdcd00">earthy-serenity-8</strong> at: <a href='https://wandb.ai/ash-dadaya-hse-university/uncategorized/runs/957nno8a' target="_blank">https://wandb.ai/ash-dadaya-hse-university/uncategorized/runs/957nno8a</a><br> View project at: <a href='https://wandb.ai/ash-dadaya-hse-university/uncategorized' target="_blank">https://wandb.ai/ash-dadaya-hse-university/uncategorized</a><br>Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)</div><div class="output text_html">Find logs at: <code>./wandb/run-20250427_174334-957nno8a/logs</code></div><div class="output text_html">Tracking run with wandb version 0.19.9</div><div class="output text_html">Run data is saved locally in <code>/content/wandb/run-20250427_174354-cslh4uuq</code></div><div class="output text_html">Syncing run <strong><a href='https://wandb.ai/ash-dadaya-hse-university/trl/runs/cslh4uuq' target="_blank">fluent-cosmos-7</a></strong> to <a href='https://wandb.ai/ash-dadaya-hse-university/trl' target="_blank">Weights & Biases</a> (<a href='https://wandb.me/developer-guide' target="_blank">docs</a>)<br></div><div class="output text_html"> View project at <a href='https://wandb.ai/ash-dadaya-hse-university/trl' target="_blank">https://wandb.ai/ash-dadaya-hse-university/trl</a></div><div class="output text_html"> View run at <a href='https://wandb.ai/ash-dadaya-hse-university/trl/runs/cslh4uuq' target="_blank">https://wandb.ai/ash-dadaya-hse-university/trl/runs/cslh4uuq</a></div><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Device set to use cpu
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="mini-visualizaiton">
+<h3>Mini Visualizaiton<a class="headerlink" href="#mini-visualizaiton" title="Link to this heading">#</a></h3>
+<p>Here, we show the sentimental output for either types of reviews as probablities. i.e. Positive and negative logits to represent the output.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_1</span> <span class="o">=</span> <span class="s2">&quot;this movie was really bad!!&quot;</span>
+<span class="n">sentiment_pipe</span><span class="p">(</span><span class="n">test_1</span><span class="p">,</span> <span class="o">**</span><span class="n">sent_kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.11/dist-packages/transformers/pipelines/text_classification.py:106: UserWarning: `return_all_scores` is now deprecated,  if want a similar functionality use `top_k=None` instead of `return_all_scores=True` or `top_k=1` instead of `return_all_scores=False`.
+  warnings.warn(
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[{&#39;label&#39;: &#39;NEGATIVE&#39;, &#39;score&#39;: 2.335048198699951},
+  {&#39;label&#39;: &#39;POSITIVE&#39;, &#39;score&#39;: -2.7265758514404297}]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_2</span> <span class="o">=</span> <span class="s2">&quot;It was an amazing movie&quot;</span>
+<span class="n">sentiment_pipe</span><span class="p">(</span><span class="n">test_2</span><span class="p">,</span> <span class="o">**</span><span class="n">sent_kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[{&#39;label&#39;: &#39;NEGATIVE&#39;, &#39;score&#39;: -2.496453285217285},
+  {&#39;label&#39;: &#39;POSITIVE&#39;, &#39;score&#39;: 2.7821977138519287}]]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test_3</span> <span class="o">=</span> <span class="s2">&quot;I threw up at by finale of the movie&quot;</span>
+<span class="n">sentiment_pipe</span><span class="p">(</span><span class="n">test_3</span><span class="p">,</span> <span class="o">**</span><span class="n">sent_kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[[{&#39;label&#39;: &#39;NEGATIVE&#39;, &#39;score&#39;: 1.2481341361999512},
+  {&#39;label&#39;: &#39;POSITIVE&#39;, &#39;score&#39;: -1.6977636814117432}]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="experiment">
+<h2>Experiment<a class="headerlink" href="#experiment" title="Link to this heading">#</a></h2>
+<p>Here, we aim to train the model in the following steps similar to how an MDP is traverssed:</p>
+<p>The <strong>Query</strong> is considered as the state of the system (S), the <strong>response</strong> is the action (A) taken when in state (S) and reward (R) is achieved with this tuple</p>
+<ol class="arabic simple">
+<li><p>Acquire responses from gpt-2 model</p></li>
+<li><p>Acquire sentiment from BERT</p></li>
+<li><p>Optimze the policy via PPO using (query, response, reward)</p></li>
+</ol>
+<p>When run on Google Colab, this snippet of code takes around 35 - 40 mins to complete 12 steps of training.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">output_min_length</span> <span class="o">=</span> <span class="mi">4</span>     <span class="c1"># The minimum number of tokens for each model response</span>
+<span class="n">output_max_length</span> <span class="o">=</span> <span class="mi">16</span>    <span class="c1"># The maximum number of tokens for each model response</span>
+<span class="n">output_length_sampler</span> <span class="o">=</span> <span class="n">LengthSampler</span><span class="p">(</span><span class="n">output_min_length</span><span class="p">,</span> <span class="n">output_max_length</span><span class="p">)</span>  <span class="c1"># Sampling between the min-max length</span>
+
+
+<span class="n">gen_kwargs</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;min_length&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;top_k&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+    <span class="s2">&quot;top_p&quot;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+    <span class="s2">&quot;do_sample&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="s2">&quot;pad_token_id&quot;</span><span class="p">:</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">eos_token_id</span><span class="p">,</span>
+    <span class="p">}</span>
+
+<span class="n">num_steps</span> <span class="o">=</span> <span class="mi">12</span> <span class="c1"># Number of training steps w.r.t PPO</span>
+
+<span class="k">for</span> <span class="n">epoch</span><span class="p">,</span> <span class="n">batch</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">enumerate</span><span class="p">(</span><span class="n">ppo_trainer</span><span class="o">.</span><span class="n">dataloader</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="n">epoch</span> <span class="o">&gt;=</span> <span class="n">num_steps</span><span class="p">:</span>
+        <span class="k">break</span>
+
+    <span class="n">query_tensors</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="s2">&quot;input_ids&quot;</span><span class="p">]</span>
+
+    <span class="c1"># Acquire response from gpt2</span>
+    <span class="n">response_tensors</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">query</span> <span class="ow">in</span> <span class="n">query_tensors</span><span class="p">:</span>
+        <span class="n">gen_len</span> <span class="o">=</span> <span class="n">output_length_sampler</span><span class="p">()</span>
+        <span class="n">generation_kwargs</span><span class="p">[</span><span class="s2">&quot;max_new_tokens&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">gen_len</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">ppo_trainer</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="o">**</span><span class="n">generation_kwargs</span><span class="p">)</span>
+        <span class="n">response_tensors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()[</span><span class="o">-</span><span class="n">gen_len</span><span class="p">:])</span>
+    <span class="n">batch</span><span class="p">[</span><span class="s2">&quot;response&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">squeeze</span><span class="p">())</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">response_tensors</span><span class="p">]</span>
+
+    <span class="c1"># Sentiment computation score</span>
+    <span class="n">texts</span> <span class="o">=</span> <span class="p">[</span><span class="n">q</span> <span class="o">+</span> <span class="n">r</span> <span class="k">for</span> <span class="n">q</span><span class="p">,</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">batch</span><span class="p">[</span><span class="s2">&quot;query&quot;</span><span class="p">],</span> <span class="n">batch</span><span class="p">[</span><span class="s2">&quot;response&quot;</span><span class="p">])]</span>
+    <span class="n">pipe_outputs</span> <span class="o">=</span> <span class="n">sentiment_pipe</span><span class="p">(</span><span class="n">texts</span><span class="p">,</span> <span class="o">**</span><span class="n">sent_kwargs</span><span class="p">)</span>
+    <span class="n">rewards</span> <span class="o">=</span> <span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">output</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;score&quot;</span><span class="p">])</span> <span class="k">for</span> <span class="n">output</span> <span class="ow">in</span> <span class="n">pipe_outputs</span><span class="p">]</span>
+
+    <span class="c1"># PPO looping steps</span>
+    <span class="n">stats</span> <span class="o">=</span> <span class="n">ppo_trainer</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">query_tensors</span><span class="p">,</span> <span class="n">response_tensors</span><span class="p">,</span> <span class="n">rewards</span><span class="p">)</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;objective/kl: </span><span class="si">{</span><span class="n">stats</span><span class="p">[</span><span class="s2">&quot;objective/kl&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;ppo/returns/mean: </span><span class="si">{</span><span class="n">stats</span><span class="p">[</span><span class="s2">&quot;ppo/returns/mean&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;ppo/policy/advantages_mean: </span><span class="si">{</span><span class="n">stats</span><span class="p">[</span><span class="s2">&quot;ppo/policy/advantages_mean&quot;</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;&quot;</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">)))</span>
+
+    <span class="n">ppo_trainer</span><span class="o">.</span><span class="n">log_stats</span><span class="p">(</span><span class="n">stats</span><span class="p">,</span> <span class="n">batch</span><span class="p">,</span> <span class="n">rewards</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0it [00:00, ?it/s]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>objective/kl: 0.0
+ppo/returns/mean: [0.7363893]
+ppo/policy/advantages_mean: [8.384737e-08]
+---------------------------------------------------------------------------------------------------
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2it [09:18, 276.84s/it]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>objective/kl: -0.00028980534989386797
+ppo/returns/mean: [0.50014883]
+ppo/policy/advantages_mean: [5.362319e-08]
+---------------------------------------------------------------------------------------------------
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3it [13:46, 273.10s/it]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>objective/kl: -0.0018314942717552185
+ppo/returns/mean: [0.2460297]
+ppo/policy/advantages_mean: [2.1364782e-08]
+---------------------------------------------------------------------------------------------------
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4it [18:25, 275.16s/it]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>objective/kl: -0.001931782579049468
+ppo/returns/mean: [0.51561016]
+ppo/policy/advantages_mean: [4.4654787e-08]
+---------------------------------------------------------------------------------------------------
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5it [23:02, 276.12s/it]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>objective/kl: -0.0013388340594246984
+ppo/returns/mean: [0.7350349]
+ppo/policy/advantages_mean: [-6.260703e-08]
+---------------------------------------------------------------------------------------------------
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6it [27:41, 276.84s/it]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>objective/kl: 0.0016613180050626397
+ppo/returns/mean: [0.55383056]
+ppo/policy/advantages_mean: [-1.1246533e-07]
+---------------------------------------------------------------------------------------------------
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7it [32:12, 275.18s/it]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>objective/kl: -0.005873559974133968
+ppo/returns/mean: [0.48312318]
+ppo/policy/advantages_mean: [2.483527e-09]
+---------------------------------------------------------------------------------------------------
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8it [36:43, 273.78s/it]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>objective/kl: -0.004583868198096752
+ppo/returns/mean: [0.35332435]
+ppo/policy/advantages_mean: [4.4592003e-08]
+---------------------------------------------------------------------------------------------------
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>9it [41:11, 272.00s/it]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>objective/kl: -0.006592849735170603
+ppo/returns/mean: [0.44370276]
+ppo/policy/advantages_mean: [-7.629787e-08]
+---------------------------------------------------------------------------------------------------
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10it [45:44, 274.42s/it]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>objective/kl: -0.005800541490316391
+ppo/returns/mean: [0.56546915]
+ppo/policy/advantages_mean: [2.091391e-08]
+---------------------------------------------------------------------------------------------------
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#To interpret results, we create a script to generate and evaluate sentimate of respones across old and new models</span>
+
+<span class="n">batch_size</span> <span class="o">=</span> <span class="mi">18</span> <span class="c1"># Number of queries o take as input</span>
+<span class="n">game_data</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+<span class="n">dataset</span><span class="o">.</span><span class="n">set_format</span><span class="p">(</span><span class="s2">&quot;pandas&quot;</span><span class="p">)</span>
+
+<span class="c1"># Random sampling of data</span>
+<span class="n">df_batch</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[:]</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">batch_size</span><span class="p">)</span>
+
+<span class="c1"># We store queries as string lists</span>
+<span class="n">game_data</span><span class="p">[</span><span class="s2">&quot;query&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_batch</span><span class="p">[</span><span class="s2">&quot;query&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="n">query_tensors</span> <span class="o">=</span> <span class="n">df_batch</span><span class="p">[</span><span class="s2">&quot;input_ids&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+
+<span class="c1"># To store final resulting outputs</span>
+<span class="n">response_tensors_ref</span><span class="p">,</span> <span class="n">response_tensors</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+
+<span class="c1"># Acquiring respones from Original model and Newly trained model</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">batch_size</span><span class="p">):</span>
+    <span class="n">gen_len</span> <span class="o">=</span> <span class="n">output_length_sampler</span><span class="p">()</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="n">original_model</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span>
+        <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">query_tensors</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">src_device</span><span class="p">),</span>
+        <span class="n">max_new_tokens</span><span class="o">=</span><span class="n">gen_len</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">gen_kwargs</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()[</span><span class="o">-</span><span class="n">gen_len</span><span class="p">:]</span>
+    <span class="n">response_tensors_ref</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="n">new_model</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span>
+        <span class="n">input_ids</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">query_tensors</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">src_device</span><span class="p">),</span>
+        <span class="n">max_new_tokens</span><span class="o">=</span><span class="n">gen_len</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">gen_kwargs</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()[</span><span class="o">-</span><span class="n">gen_len</span><span class="p">:]</span>
+    <span class="n">response_tensors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+
+
+<span class="c1"># Recover the text from given tokenized vector</span>
+<span class="n">game_data</span><span class="p">[</span><span class="s2">&quot;response (before)&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">tokenizer</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">response_tensors_ref</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">batch_size</span><span class="p">)</span>
+<span class="p">]</span>
+<span class="n">game_data</span><span class="p">[</span><span class="s2">&quot;response (after)&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">tokenizer</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">response_tensors</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">batch_size</span><span class="p">)</span>
+<span class="p">]</span>
+
+<span class="c1"># Sentiment analysis of query-response pairs before feedback training</span>
+<span class="n">texts</span> <span class="o">=</span> <span class="p">[</span><span class="n">q</span> <span class="o">+</span> <span class="n">r</span> <span class="k">for</span> <span class="n">q</span><span class="p">,</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">game_data</span><span class="p">[</span><span class="s2">&quot;query&quot;</span><span class="p">],</span> <span class="n">game_data</span><span class="p">[</span><span class="s2">&quot;response (before)&quot;</span><span class="p">])]</span>
+<span class="n">game_data</span><span class="p">[</span><span class="s2">&quot;rewards (before)&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">output</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;score&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">output</span> <span class="ow">in</span> <span class="n">sentiment_pipe</span><span class="p">(</span><span class="n">texts</span><span class="p">,</span> <span class="o">**</span><span class="n">sent_kwargs</span><span class="p">)</span>
+<span class="p">]</span>
+
+<span class="c1"># Sentiment analysis of query-response pairs after feedback training via PPO RL</span>
+<span class="n">texts</span> <span class="o">=</span> <span class="p">[</span><span class="n">q</span> <span class="o">+</span> <span class="n">r</span> <span class="k">for</span> <span class="n">q</span><span class="p">,</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">game_data</span><span class="p">[</span><span class="s2">&quot;query&quot;</span><span class="p">],</span> <span class="n">game_data</span><span class="p">[</span><span class="s2">&quot;response (after)&quot;</span><span class="p">])]</span>
+<span class="n">game_data</span><span class="p">[</span><span class="s2">&quot;rewards (after)&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">output</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s2">&quot;score&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">output</span> <span class="ow">in</span> <span class="n">sentiment_pipe</span><span class="p">(</span><span class="n">texts</span><span class="p">,</span> <span class="o">**</span><span class="n">sent_kwargs</span><span class="p">)</span>
+<span class="p">]</span>
+
+<span class="c1"># Visualization of the results</span>
+<span class="n">df_results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">game_data</span><span class="p">)</span>
+<span class="n">df_results</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/usr/local/lib/python3.11/dist-packages/transformers/pipelines/text_classification.py:106: UserWarning: `return_all_scores` is now deprecated,  if want a similar functionality use `top_k=None` instead of `return_all_scores=True` or `top_k=1` instead of `return_all_scores=False`.
+  warnings.warn(
+</pre></div>
+</div>
+<div class="output text_html">
+  <div id="df-cd176fbd-7a3a-4392-84a8-defe719dd6ab" class="colab-df-container">
+    <div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>query</th>
+      <th>response (before)</th>
+      <th>response (after)</th>
+      <th>rewards (before)</th>
+      <th>rewards (after)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Yes I admit I cried during this</td>
+      <td>one, I'm while the truck flipped.)&lt;</td>
+      <td>last viewing.&lt;br /&gt;&lt;br /&gt;I truly</td>
+      <td>-0.608511</td>
+      <td>1.951699</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>I generally find Loretta Young</td>
+      <td>a signifier. Her writing is always very poor,...</td>
+      <td>'s stuff pretty restrained and dark, for insta...</td>
+      <td>-2.404545</td>
+      <td>1.521147</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>This was a disappointing</td>
+      <td>film. I've gotta</td>
+      <td>film. It didn't</td>
+      <td>-2.847512</td>
+      <td>-2.773234</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>This is</td>
+      <td>much more than to say it's a thriller, it is a</td>
+      <td>one of Lois Torrence's best films, at least. ...</td>
+      <td>2.057177</td>
+      <td>2.635111</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>An old man</td>
+      <td>hit by what might</td>
+      <td>managed to make an</td>
+      <td>-0.880338</td>
+      <td>-0.953584</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>This film can</td>
+      <td>'t lie in any way, it's all</td>
+      <td>effortlessly tell the difference. The acting ...</td>
+      <td>0.597921</td>
+      <td>2.745242</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>I saw this movie about 5</td>
+      <td>or 6 yrs</td>
+      <td>times after I picked</td>
+      <td>0.048315</td>
+      <td>1.311543</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Spike Lee has been</td>
+      <td>around a long enough</td>
+      <td>as bad as it</td>
+      <td>0.642214</td>
+      <td>-2.094339</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>I saw this film</td>
+      <td>, just dumb....not from the censors, but anyway!</td>
+      <td>at a film festival; the actors/actresses befo...</td>
+      <td>-1.926696</td>
+      <td>1.342419</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>I have to agree</td>
+      <td>that these characters are just wasted. Eviden...</td>
+      <td>that the book in the 80's is so tasteless</td>
+      <td>-2.914865</td>
+      <td>-1.551304</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Thoughtless, ignorant, ill</td>
+      <td>-informed, godless</td>
+      <td>-conceived, week</td>
+      <td>-2.656834</td>
+      <td>-2.884943</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Dark Rising is</td>
+      <td>also a spoiler and badly directed graphic nov...</td>
+      <td>by my standard (Max Dillon's latest film), bu...</td>
+      <td>-2.908494</td>
+      <td>-1.567007</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Mobile Suit Gundam Wing is the</td>
+      <td>best Gundam yet for the mastering of this mas...</td>
+      <td>most up to date animation of all time. As is ...</td>
+      <td>2.509727</td>
+      <td>2.041152</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Why is it that everyone who</td>
+      <td>lives in the mostly swanky club</td>
+      <td>believes fake news today seems to be</td>
+      <td>-0.154455</td>
+      <td>-0.837222</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>I wish more movies were</td>
+      <td>made of this kind, so we can all watch this m...</td>
+      <td>like that than Roskin'. He's lucky to direct ...</td>
+      <td>1.649065</td>
+      <td>1.155018</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>Great CGI effects &amp;</td>
+      <td>special effects and nothing just</td>
+      <td>Covering.3 Disney</td>
+      <td>-0.286802</td>
+      <td>1.571842</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+    <div class="colab-df-buttons">
+
+  <div class="colab-df-container">
+    <button class="colab-df-convert" onclick="convertToInteractive('df-cd176fbd-7a3a-4392-84a8-defe719dd6ab')"
+            title="Convert this dataframe to an interactive table."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960">
+    <path d="M120-120v-720h720v720H120Zm60-500h600v-160H180v160Zm220 220h160v-160H400v160Zm0 220h160v-160H400v160ZM180-400h160v-160H180v160Zm440 0h160v-160H620v160ZM180-180h160v-160H180v160Zm440 0h160v-160H620v160Z"/>
+  </svg>
+    </button>
+
+  <style>
+    .colab-df-container {
+      display:flex;
+      gap: 12px;
+    }
+
+    .colab-df-convert {
+      background-color: #E8F0FE;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      fill: #1967D2;
+      height: 32px;
+      padding: 0 0 0 0;
+      width: 32px;
+    }
+
+    .colab-df-convert:hover {
+      background-color: #E2EBFA;
+      box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+      fill: #174EA6;
+    }
+
+    .colab-df-buttons div {
+      margin-bottom: 4px;
+    }
+
+    [theme=dark] .colab-df-convert {
+      background-color: #3B4455;
+      fill: #D2E3FC;
+    }
+
+    [theme=dark] .colab-df-convert:hover {
+      background-color: #434B5C;
+      box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+      fill: #FFFFFF;
+    }
+  </style>
+
+    <script>
+      const buttonEl =
+        document.querySelector('#df-cd176fbd-7a3a-4392-84a8-defe719dd6ab button.colab-df-convert');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      async function convertToInteractive(key) {
+        const element = document.querySelector('#df-cd176fbd-7a3a-4392-84a8-defe719dd6ab');
+        const dataTable =
+          await google.colab.kernel.invokeFunction('convertToInteractive',
+                                                    [key], {});
+        if (!dataTable) return;
+
+        const docLinkHtml = 'Like what you see? Visit the ' +
+          '<a target="_blank" href=https://colab.research.google.com/notebooks/data_table.ipynb>data table notebook</a>'
+          + ' to learn more about interactive tables.';
+        element.innerHTML = '';
+        dataTable['output_type'] = 'display_data';
+        await google.colab.output.renderOutput(dataTable, element);
+        const docLink = document.createElement('div');
+        docLink.innerHTML = docLinkHtml;
+        element.appendChild(docLink);
+      }
+    </script>
+  </div>
+
+
+    <div id="df-df690c96-d6f3-481d-bb28-b0549a655139">
+      <button class="colab-df-quickchart" onclick="quickchart('df-df690c96-d6f3-481d-bb28-b0549a655139')"
+                title="Suggest charts"
+                style="display:none;">
+
+<svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+     width="24px">
+    <g>
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/>
+    </g>
+</svg>
+      </button>
+
+<style>
+  .colab-df-quickchart {
+      --bg-color: #E8F0FE;
+      --fill-color: #1967D2;
+      --hover-bg-color: #E2EBFA;
+      --hover-fill-color: #174EA6;
+      --disabled-fill-color: #AAA;
+      --disabled-bg-color: #DDD;
+  }
+
+  [theme=dark] .colab-df-quickchart {
+      --bg-color: #3B4455;
+      --fill-color: #D2E3FC;
+      --hover-bg-color: #434B5C;
+      --hover-fill-color: #FFFFFF;
+      --disabled-bg-color: #3B4455;
+      --disabled-fill-color: #666;
+  }
+
+  .colab-df-quickchart {
+    background-color: var(--bg-color);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    fill: var(--fill-color);
+    height: 32px;
+    padding: 0;
+    width: 32px;
+  }
+
+  .colab-df-quickchart:hover {
+    background-color: var(--hover-bg-color);
+    box-shadow: 0 1px 2px rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+    fill: var(--button-hover-fill-color);
+  }
+
+  .colab-df-quickchart-complete:disabled,
+  .colab-df-quickchart-complete:disabled:hover {
+    background-color: var(--disabled-bg-color);
+    fill: var(--disabled-fill-color);
+    box-shadow: none;
+  }
+
+  .colab-df-spinner {
+    border: 2px solid var(--fill-color);
+    border-color: transparent;
+    border-bottom-color: var(--fill-color);
+    animation:
+      spin 1s steps(1) infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+      border-left-color: var(--fill-color);
+    }
+    20% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    30% {
+      border-color: transparent;
+      border-left-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+      border-right-color: var(--fill-color);
+    }
+    40% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-top-color: var(--fill-color);
+    }
+    60% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+    }
+    80% {
+      border-color: transparent;
+      border-right-color: var(--fill-color);
+      border-bottom-color: var(--fill-color);
+    }
+    90% {
+      border-color: transparent;
+      border-bottom-color: var(--fill-color);
+    }
+  }
+</style>
+
+      <script>
+        async function quickchart(key) {
+          const quickchartButtonEl =
+            document.querySelector('#' + key + ' button');
+          quickchartButtonEl.disabled = true;  // To prevent multiple clicks.
+          quickchartButtonEl.classList.add('colab-df-spinner');
+          try {
+            const charts = await google.colab.kernel.invokeFunction(
+                'suggestCharts', [key], {});
+          } catch (error) {
+            console.error('Error during call to suggestCharts:', error);
+          }
+          quickchartButtonEl.classList.remove('colab-df-spinner');
+          quickchartButtonEl.classList.add('colab-df-quickchart-complete');
+        }
+        (() => {
+          let quickchartButtonEl =
+            document.querySelector('#df-df690c96-d6f3-481d-bb28-b0549a655139 button');
+          quickchartButtonEl.style.display =
+            google.colab.kernel.accessAllowed ? 'block' : 'none';
+        })();
+      </script>
+    </div>
+
+  <div id="id_5256aa19-e9ce-4f2b-80f0-ecdb972c9626">
+    <style>
+      .colab-df-generate {
+        background-color: #E8F0FE;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: none;
+        fill: #1967D2;
+        height: 32px;
+        padding: 0 0 0 0;
+        width: 32px;
+      }
+
+      .colab-df-generate:hover {
+        background-color: #E2EBFA;
+        box-shadow: 0px 1px 2px rgba(60, 64, 67, 0.3), 0px 1px 3px 1px rgba(60, 64, 67, 0.15);
+        fill: #174EA6;
+      }
+
+      [theme=dark] .colab-df-generate {
+        background-color: #3B4455;
+        fill: #D2E3FC;
+      }
+
+      [theme=dark] .colab-df-generate:hover {
+        background-color: #434B5C;
+        box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+        filter: drop-shadow(0px 1px 2px rgba(0, 0, 0, 0.3));
+        fill: #FFFFFF;
+      }
+    </style>
+    <button class="colab-df-generate" onclick="generateWithVariable('df_results')"
+            title="Generate code using this dataframe."
+            style="display:none;">
+
+  <svg xmlns="http://www.w3.org/2000/svg" height="24px"viewBox="0 0 24 24"
+       width="24px">
+    <path d="M7,19H8.4L18.45,9,17,7.55,7,17.6ZM5,21V16.75L18.45,3.32a2,2,0,0,1,2.83,0l1.4,1.43a1.91,1.91,0,0,1,.58,1.4,1.91,1.91,0,0,1-.58,1.4L9.25,21ZM18.45,9,17,7.55Zm-12,3A5.31,5.31,0,0,0,4.9,8.1,5.31,5.31,0,0,0,1,6.5,5.31,5.31,0,0,0,4.9,4.9,5.31,5.31,0,0,0,6.5,1,5.31,5.31,0,0,0,8.1,4.9,5.31,5.31,0,0,0,12,6.5,5.46,5.46,0,0,0,6.5,12Z"/>
+  </svg>
+    </button>
+    <script>
+      (() => {
+      const buttonEl =
+        document.querySelector('#id_5256aa19-e9ce-4f2b-80f0-ecdb972c9626 button.colab-df-generate');
+      buttonEl.style.display =
+        google.colab.kernel.accessAllowed ? 'block' : 'none';
+
+      buttonEl.onclick = () => {
+        google.colab.notebook.generateWithVariable('df_results');
+      }
+      })();
+    </script>
+  </div>
+
+    </div>
+  </div>
+</div></div>
+</div>
+<p>When going through the results dataframe in detail. We can see multiple instances where the completed query before human feedback is more blatant and non positively encouraging. However, in the feedback-trained model, we can see the respones becoming more positive and encouraging.</p>
+<p>e.g.</p>
+<ol class="arabic simple">
+<li><p>Query: I have to agree _____</p></li>
+</ol>
+<ul class="simple">
+<li><p>Response (before feedback): <strong>“that these characters are just wasted.”</strong></p></li>
+<li><p>Response (after feedback) : <strong>“that the book in the 80’s is so tasteles”</strong></p></li>
+</ul>
+<ol class="arabic simple" start="2">
+<li><p>Query: This is …</p></li>
+</ol>
+<ul class="simple">
+<li><p>Response (before feedback): <strong>“much more than to say it’s a thriller, it is a”</strong></p></li>
+<li><p>Response (after feedback) : <strong>“one of Lois Torrence’s best films, at least.”</strong></p></li>
+</ul>
+</section>
+<section id="conclusions">
+<h2>Conclusions<a class="headerlink" href="#conclusions" title="Link to this heading">#</a></h2>
+<p>Overall, within this chapter we study the foundations of LLMs, transformers and the concept of having human feedback included into the training process via reiforcement learning. Using an experiment to re-train an RL model to propose more positive reviews of movies from the IMDB. We see the result showing difference between the base gpt2 model versus the human feedback trained model. However, it is worth noting that despite the expanding applications of RLHF from text summarizations to computer vision etc, they still face challenges due to their training and data colleciton approaches which together impacts the performance of the models, by creating bias, hallucinations etc. There are still debates and dilemmas about whether a model is as good as its data or whether retraining is the key to better performance but this extends into a research question on its own.</p>
+<p>You can also check out the gpt-2 model trained on IMDB dataset aiming to give neutral reviews (<a class="reference external" href="https://huggingface.co/mrm8488/gpt2-imdb-neutral">https://huggingface.co/mrm8488/gpt2-imdb-neutral</a>).</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./4_RLHF"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../3_MARL/MARL.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Markov Games for Multi-Agent RL with Littman’s Soccer Experiment</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-definition">Problem Definition</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-a-large-language-model-llm">What is a Large Language Model (LLM)?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#what-are-transformers">What are Transformers?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation">Implementation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#intialization">Intialization</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#intializing-the-pre-trained-model-on-imdb-data">Intializing the Pre-trained model on IMDB data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-wandb-instance-to-log-weights">Creating a wandb instance to log Weights</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-data">Loading Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-gpt2-model">Load gpt2 model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-instances-of-bert-classfied-to-fine-tune-the-imdb-dataset">Creating instances of BERT Classfied to fine tune the IMDB dataset</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mini-visualizaiton">Mini Visualizaiton</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#experiment">Experiment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusions">Conclusions</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Sergey V. Kovalchuk, Ashish T.S. Ireddy, Chao Li
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2025.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

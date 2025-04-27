@@ -50,7 +50,7 @@ The book is developed as a practical training text book available in MSc program
 - Balances implementability with depth - code is simple enough to run on a laptop but sophisticated enough to be research-relevant.  
 - Encourages critical thinking by highlighting where methods fail or require careful tuning.  
 
-**Review:** The book was reviewed by Dmitry S. Shalymov, PhD (candidate of sciences in physics and mathematics), Associate Professor, St. Petersburg State University.
+<!-- **Review:** The book was reviewed by Dmitry S. Shalymov, PhD (candidate of sciences in physics and mathematics), Associate Professor, St. Petersburg State University. -->
 
 ```{bibliography}
 ```

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Reinforcement learning basics with CartPole model &#8212; Selected topics in reinforcement learning: practical hands-on</title>
+    <title>Reinforcement Learning Basics with CartPole Model &#8212; Selected topics in reinforcement learning: practical hands-on</title>
   
   
   
@@ -183,9 +183,10 @@
             </li>
         </ul>
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Reinforcement learning basics with CartPole model</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Reinforcement Learning Basics with CartPole Model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../2_Inverse_RL/2_IRL.html">Inverse Reinforcement Learning with Grid World Traversal</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../3_MARL/MARL.html">Markov Games for Multi-Agent RL: Littman’s Soccer Experiment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3_MARL/MARL.html">Markov Games for Multi-Agent RL with Littman’s Soccer Experiment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4_RLHF/4_RLHF.html">Reinforcement Learning with Human Feedback</a></li>
 </ul>
 
     </div>
@@ -324,7 +325,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Reinforcement learning basics with CartPole model</h1>
+    <h1>Reinforcement Learning Basics with CartPole Model</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -334,7 +335,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-definition">Problem definition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-definition">Problem Definition</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation">Implementation</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-initialization">Basic initialization</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-run">Simple run</a></li>
@@ -359,9 +360,9 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="reinforcement-learning-basics-with-cartpole-model">
-<h1>Reinforcement learning basics with CartPole model<a class="headerlink" href="#reinforcement-learning-basics-with-cartpole-model" title="Link to this heading">#</a></h1>
+<h1>Reinforcement Learning Basics with CartPole Model<a class="headerlink" href="#reinforcement-learning-basics-with-cartpole-model" title="Link to this heading">#</a></h1>
 <section id="problem-definition">
-<h2>Problem definition<a class="headerlink" href="#problem-definition" title="Link to this heading">#</a></h2>
+<h2>Problem Definition<a class="headerlink" href="#problem-definition" title="Link to this heading">#</a></h2>
 <p>CartPole model is a simple example of control problem in a simplified physical environment. The goal is to balance a pole with a mass <span class="math notranslate nohighlight">\(m\)</span> and length <span class="math notranslate nohighlight">\(l\)</span> on a moving cart by applying discrete forces to the cart in gorisontal direction. The environment is characterized by cart position <span class="math notranslate nohighlight">\(x\)</span>, cart velocity <span class="math notranslate nohighlight">\(x'\)</span>, pole angle <span class="math notranslate nohighlight">\(\theta\)</span>, and pole angular velocity <span class="math notranslate nohighlight">\(\theta'\)</span>. The action space <span class="math notranslate nohighlight">\(A\)</span> include discrete horisontal forces applied to the cart in negative (<span class="math notranslate nohighlight">\(a=0\)</span>) or positive (<span class="math notranslate nohighlight">\(a=1\)</span>) direction.</p>
 <!-- ```{figure} 1_RL_basics_Fig1_CartPole.png
 ---
@@ -790,7 +791,7 @@ E: 250 R: 499.0
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-definition">Problem definition</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-definition">Problem Definition</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation">Implementation</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-initialization">Basic initialization</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-run">Simple run</a></li>
