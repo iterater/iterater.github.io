@@ -1,9 +1,9 @@
 ---
 layout: default
-title: Blog
+title: Blog [RU]
 ---
 {% for post in site.posts %}
 	
-- [{{ post.date | date: "%A %-d %B %Y" }} - {{ post.title }}]({{ post.url | prepend: site.url }})
+- {{ post.date | date: "%A %-d %B %Y" }} - [{{ post.title }}]({{ post.url | prepend: site.url }})
 		
 {% endfor %}
