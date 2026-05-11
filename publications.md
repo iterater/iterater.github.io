@@ -25,3 +25,5 @@ title: Publications
 [All publications - 246 items (2025-11-11)]({{ site.baseurl }}{% link all_publications.html %})
 
 [Patents and software (in Russian) - 29 items (2025-11-11)]({{ site.baseurl }}{% link patents_and_software.md %})
+
+[Publications Q1/Q2/K1 - 75 items (2026-05-11)]({{ site.baseurl }}{% link publications_q1q2.html %})
