@@ -8,8 +8,8 @@ title: About
 
 # Sergey V. Kovalchuk, Ph.D.
 
-- Associate professor at Faculty of AI Technologies, ITMO University
-- Research Group Leader, Sirius University of Science and Technology 
+- Associate Professor at Faculty of AI Technologies, ITMO University
+- Research Group Leader at Research Center for IT and AI, Sirius University of Science and Technology 
 
 # About me
 
