@@ -18,8 +18,8 @@ tags: [opinion, LLM, information_bubble, echo_chamber, memory, personalization]
 
 🦆 А тем временем, например, по результатам [опроса поисковика DuckDuckGo](https://finance.yahoo.com/news/yes-no-ai-93-duckduckgo-165624118.html), известного своей борьбой с информационными пузырями, больше 90% пользователей не хотят видеть вывод ИИ в результатах поиска. 😁 
 
-*Ссылки
-[1]* [Hipsters on networks: How a minority group of individuals can lead to an antiestablishment majority](https://doi.org/10.1103/PhysRevE.99.022313)
+*Ссылки*
+*[1]* [Hipsters on networks: How a minority group of individuals can lead to an antiestablishment majority](https://doi.org/10.1103/PhysRevE.99.022313)
 *[2]* [Echo Chambers and Algorithmic Bias: The Homogenization of Online Culture in a Smart Society](https://www.shs-conferences.org/articles/shsconf/pdf/2024/22/shsconf_icense2024_05001.pdf) 
 *[3]* [Algorithmic amplification of biases on Google Search](https://arxiv.org/abs/2401.09044)
 *[4]* [The Echo Chamber of Algorithm Bias](https://ijbht.thebrpi.org/journals/Vol_12_No_1_March_2022/1.pdf)

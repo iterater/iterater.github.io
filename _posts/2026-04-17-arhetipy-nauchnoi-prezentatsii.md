@@ -8,7 +8,7 @@ tags: [tutorial, opinion, ppt, presentation]
 ---
 <img src="/images/post_images/photo_20@17-04-2026_14-44-00.jpg" alt="🎭 Архетипы научной презентации" />
 
-Какое-то время назад я писал про то что презентация в каком-то роде [графическая новелла](https://t.me/AbacusNegat/14). Но в этом направлении можно пойти дальше. Например, иногда выделяют "архетипы" нарратива научного доклада:
+Какое-то время назад я писал про то что презентация в каком-то роде [графическая новелла](/2025/10/20/prezentatsiya-graficheskaya-novella.html). Но в этом направлении можно пойти дальше. Например, иногда выделяют "архетипы" нарратива научного доклада:
 
 🕵️‍♂️ **Детектив.** Все считали что Х, но вот обнаружилась аномалия, которую сложно объяснить (улика). Мы разобрались почему и каков механизм (расследование).
 
@@ -18,6 +18,6 @@ tags: [tutorial, opinion, ppt, presentation]
 
 Архетипов и структуры рассказа может быть много (см. например, таблицу в иллюстрации). Главное - не забывать, что рассказываемая история должна что-то донести до слушателей, а значит - структурирование презентации и речи - важная часть подготовки любого доклада (презентации на конференции, лекции, зажиты диссертации и др.), о которой обязательно стоит задумываться.
 
-*Ссылки
-[1]* [The science of storytelling: the David Attenborough style of scientific presentation](https://www.sciencedirect.com/science/article/abs/pii/S1471491423000928) 
+*Ссылки*
+*[1]* [The science of storytelling: the David Attenborough style of scientific presentation](https://www.sciencedirect.com/science/article/abs/pii/S1471491423000928) 
 *[2]* [Building a Scientific Narrative](https://www.the-scientist.com/building-a-scientific-narrative-71780)
