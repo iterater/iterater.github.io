@@ -4,7 +4,7 @@ title: 🗓 Этика в сфере искусственного интелле
 date: 2026-06-03
 comments: true
 archive: false
-tags: [conference, HAI, cognitive, ГКС, ethics, event, ИСК]
+tags: [conference, hai, cognitive, гкс, ethics, event, иск]
 ---
 <img src="/images/post_images/photo_23@03-06-2026_14-12-01.jpg" alt="🗓 Этика в сфере искусственного интеллекта и робототехнических систем" />
 

@@ -4,7 +4,7 @@ title: 🐦 О суперстимулах и прокси-метриках
 date: 2026-06-25
 comments: true
 archive: false
-tags: [opinion, control, RL, feedback]
+tags: [opinion, control, rl, feedback]
 ---
 <img src="/images/post_images/photo_25@25-06-2026_23-57-01.jpg" alt="🐦 О суперстимулах и прокси-метриках" />
 

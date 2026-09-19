@@ -4,7 +4,7 @@ title: 🧜‍♀️ Объединение человека и ИИ - гибр�
 date: 2026-05-29
 comments: true
 archive: false
-tags: [HAI, opinion, cognitive, ГКС, review]
+tags: [hai, opinion, cognitive, гкс, review]
 ---
 <img src="/images/post_images/photo_22@29-05-2026_14-41-01.jpg" alt="🧜‍♀️ Объединение человека и ИИ - гибриды, кентавры, обратная связь и пр." />
 

@@ -4,7 +4,7 @@ title: 👩‍💻 Динамика мнений в коде
 date: 2026-03-07
 comments: true
 archive: false
-tags: [paper, opinion_dynamics, JoCS]
+tags: [paper, opinion_dynamics, jocs]
 ---
 <img src="/images/post_images/photo_19@07-03-2026_15-11-54.jpg" alt="👩‍💻 Динамика мнений в коде" />
 

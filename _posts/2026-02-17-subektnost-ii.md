@@ -4,7 +4,7 @@ title: 👻 Субъектность ИИ
 date: 2026-02-17
 comments: true
 archive: false
-tags: [opinion, HAI, ethics, agent, AGI, LLM]
+tags: [opinion, hai, ethics, agent, agi, llm]
 ---
 В последнее время часто звучат новости вида "ИИ научился...". Кажется, тут есть фундаментальная проблема, которая от таких новостей лишь усугубляется. 
 

@@ -4,7 +4,7 @@ title: 🗓 Искусственный интеллект в мире людей
 date: 2026-04-27
 comments: true
 archive: false
-tags: [conference, HAI, cognitive, ГКС, ethics, event]
+tags: [conference, hai, cognitive, гкс, ethics, event]
 ---
 <img src="/images/post_images/photo_21@27-04-2026_13-02-57.jpg" alt="🗓 Искусственный интеллект в мире людей" />
 

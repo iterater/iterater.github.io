@@ -4,7 +4,7 @@ title: 🧠 О субъективной сложности
 date: 2026-07-31
 comments: true
 archive: false
-tags: [process_minig, IRL, patent, HAI, cognitive, complexity, subjective_complexity]
+tags: [process_minig, irl, patent, hai, cognitive, complexity, subjective_complexity]
 ---
 <img src="/images/post_images/photo_28@31-07-2026_23-58-02.jpg" alt="🧠 О субъективной сложности" />
 

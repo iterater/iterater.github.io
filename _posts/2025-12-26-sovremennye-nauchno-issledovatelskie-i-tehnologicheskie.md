@@ -4,7 +4,7 @@ title: 🗓 Современные научно-исследовательски
 date: 2025-12-26
 comments: true
 archive: false
-tags: [ai_code, LLM, event, conference, norm, metric]
+tags: [ai_code, llm, event, conference, norm, metric]
 ---
 <img src="/images/post_images/photo_17@26-12-2025_13-08-24.jpg" alt="🗓 Современные научно-исследовательские и технологические аспекты программной инженерии 2025" />
 

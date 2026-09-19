@@ -4,7 +4,7 @@ title: 📜 Юристы и восприятие ИИ
 date: 2025-10-31
 comments: true
 archive: false
-tags: [paper, HAI, legaltech]
+tags: [paper, hai, legaltech]
 ---
 <img src="/images/post_images/photo_11@31-10-2025_16-28-04.jpg" alt="📜 Юристы и восприятие ИИ" />
 

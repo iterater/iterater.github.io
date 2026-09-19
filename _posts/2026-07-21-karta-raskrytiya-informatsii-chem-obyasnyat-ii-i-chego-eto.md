@@ -4,7 +4,7 @@ title: "🗺 Карта раскрытия информации: чем объя
 date: 2026-07-21
 comments: true
 archive: false
-tags: [XAI, opinion, cognitive, HAI]
+tags: [xai, opinion, cognitive, hai]
 ---
 <img src="/images/post_images/photo_27@21-07-2026_18-19-01.jpg" alt="🗺 Карта раскрытия информации: чем объяснять ИИ и чего это стоит" />
 

@@ -4,7 +4,7 @@ title: 📚 Книги из ноутбуков
 date: 2025-12-04
 comments: true
 archive: false
-tags: [tutorial, RL, python, book]
+tags: [tutorial, rl, python, book]
 ---
 <img src="/images/post_images/photo_15@04-12-2025_12-31-00.jpg" alt="📚 Книги из ноутбуков" />
 
