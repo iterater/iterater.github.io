@@ -14,9 +14,9 @@ tags: [LLM, opinion, prompt, agent]
 
 Вероятно, агентная модель тут подойдет еще лучше (см. например, наш эксперимент по моделированию динамики мнений [5]). Ролевые модели агентов могут предотвратить быструю конвергенцию мнения. Но пробовать для себя можно и в обычных чатах.
 
-*Ссылки*
-*[1]* [Character-LLM: A Trainable Agent for Role-Playing](https://aclanthology.org/2023.emnlp-main.814.pdf)
-*[2]* [35 авторских ролевых промтов для создания эталонного контента в ChayGPT](https://dzen.ru/a/ZjyvAJ9mnDDDZr5o) 
-*[3]* [Argumentative Experience: Reducing Confirmation Bias on Controversial Issues through LLM-Generated Multi-Persona Debates](https://arxiv.org/abs/2412.04629)
-*[4]* [Town Hall Debate Prompting: Enhancing Logical Reasoning in LLMs through Multi-Persona Interaction](https://arxiv.org/abs/2502.15725) 
+*Ссылки*<br>
+*[1]* [Character-LLM: A Trainable Agent for Role-Playing](https://aclanthology.org/2023.emnlp-main.814.pdf)<br>
+*[2]* [35 авторских ролевых промтов для создания эталонного контента в ChayGPT](https://dzen.ru/a/ZjyvAJ9mnDDDZr5o) <br>
+*[3]* [Argumentative Experience: Reducing Confirmation Bias on Controversial Issues through LLM-Generated Multi-Persona Debates](https://arxiv.org/abs/2412.04629)<br>
+*[4]* [Town Hall Debate Prompting: Enhancing Logical Reasoning in LLMs through Multi-Persona Interaction](https://arxiv.org/abs/2502.15725) <br>
 *[5]* [Opinion dynamics and mutual influence with LLM agents through dialog simulation](https://arxiv.org/abs/2602.12583)

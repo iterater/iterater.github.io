@@ -22,15 +22,15 @@ tags: [HAI, opinion, cognitive, ГКС, review]
 
 🤔 Можно выделить три ключевые группы концепций: а) *инструментальные / инженерные*, сфокусированные на задаче (IA, HITL); б) *операциональные / протокольные*, сфокусированные на анализе и построении протоколов и единых систем взаимодействия (MII, HAT); в) *когнитивно-системные*, сфокусированные на объединении когнитивных характеристик гибридной системы (JCS, HI). При этом можно определить две шкалы: *конструктивность* (построение систем, а не аналитика/протоколы) - лучше у группы а; *глубину когнитивной проработки* (когнитивные, а не интеллектуальные системы) - лучше у группы в. Мы в свою очередь пытаемся развить эту историю в концепции **гибридных когнитивных систем (ГКС)**, сочетающей обе характеристики [11].
 
-**Ссылки:**
-*[1]* [Intelligence amplification](https://en.wikipedia.org/wiki/Intelligence_amplification)
-*[2]* [Augmented intelligence vs. artificial intelligence](https://news.wpcarey.asu.edu/20170216-augmented-intelligence-vs-artificial-intelligence)
-*[3]* [Human-in-the-Loop Artificial Intelligence](https://www.mdpi.com/1099-4300/28/4/377)
-*[4]* [Architecting Human-AI Cocreation for Technical Services](https://arxiv.org/abs/2507.14034)
-*[5]* [Principles of mixed-initiative user interfaces](https://dl.acm.org/doi/10.1145/302979.303030) 
-*[6]* [How Users Perceive Mixed-Initiative AI](https://arxiv.org/abs/2602.01481v1)
-*[7]* [Joint cognitive systems: Foundations of cognitive systems engineering ](https://www.amazon.com/Joint-Cognitive-Systems-Foundations-Engineering/dp/0849328217)
-*[8]* [Human–Autonomy Teaming](https://doi.org/10.3389/fpsyg.2021.589585)
-*[9]* [Hybrid Intelligence in Action](https://aisel.aisnet.org/ecis2025/human_ai/human_ai/6/)
-*[10]* [The future of human-AI collaboration](https://arxiv.org/abs/2105.03354)
+**Ссылки:**<br>
+*[1]* [Intelligence amplification](https://en.wikipedia.org/wiki/Intelligence_amplification)<br>
+*[2]* [Augmented intelligence vs. artificial intelligence](https://news.wpcarey.asu.edu/20170216-augmented-intelligence-vs-artificial-intelligence)<br>
+*[3]* [Human-in-the-Loop Artificial Intelligence](https://www.mdpi.com/1099-4300/28/4/377)<br>
+*[4]* [Architecting Human-AI Cocreation for Technical Services](https://arxiv.org/abs/2507.14034)<br>
+*[5]* [Principles of mixed-initiative user interfaces](https://dl.acm.org/doi/10.1145/302979.303030) <br>
+*[6]* [How Users Perceive Mixed-Initiative AI](https://arxiv.org/abs/2602.01481v1)<br>
+*[7]* [Joint cognitive systems: Foundations of cognitive systems engineering ](https://www.amazon.com/Joint-Cognitive-Systems-Foundations-Engineering/dp/0849328217)<br>
+*[8]* [Human–Autonomy Teaming](https://doi.org/10.3389/fpsyg.2021.589585)<br>
+*[9]* [Hybrid Intelligence in Action](https://aisel.aisnet.org/ecis2025/human_ai/human_ai/6/)<br>
+*[10]* [The future of human-AI collaboration](https://arxiv.org/abs/2105.03354)<br>
 *[11]* [Базовые принципы построения гибридных когнитивных систем](https://doi.org/10.13140/RG.2.2.31348.00647)

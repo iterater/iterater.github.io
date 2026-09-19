@@ -18,14 +18,14 @@ tags: [opinion, LLM, information_bubble, echo_chamber, memory, personalization]
 
 🦆 А тем временем, например, по результатам [опроса поисковика DuckDuckGo](https://finance.yahoo.com/news/yes-no-ai-93-duckduckgo-165624118.html), известного своей борьбой с информационными пузырями, больше 90% пользователей не хотят видеть вывод ИИ в результатах поиска. 😁 
 
-*Ссылки*
-*[1]* [Hipsters on networks: How a minority group of individuals can lead to an antiestablishment majority](https://doi.org/10.1103/PhysRevE.99.022313)
-*[2]* [Echo Chambers and Algorithmic Bias: The Homogenization of Online Culture in a Smart Society](https://www.shs-conferences.org/articles/shsconf/pdf/2024/22/shsconf_icense2024_05001.pdf) 
-*[3]* [Algorithmic amplification of biases on Google Search](https://arxiv.org/abs/2401.09044)
-*[4]* [The Echo Chamber of Algorithm Bias](https://ijbht.thebrpi.org/journals/Vol_12_No_1_March_2022/1.pdf)
-*[5]* [No Free Lunch: Retrieval-Augmented Generation Undermines Fairness in LLMs, Even for Vigilant Users](https://openreview.net/forum?id=cphaRg46jD)
-*[6]* [Evaluating the Effect of Retrieval Augmentation on Social Biases](https://arxiv.org/html/2502.17611v1)
-*[7]* [The Price of Format: Diversity Collapse in LLMs](https://arxiv.org/pdf/2505.18949)
-*[8]* [Large language models show amplified cognitive biases in moral decision-making](https://www.pnas.org/doi/10.1073/pnas.2412015122)
-*[9]* [Who is in the Spotlight: The Hidden Bias Undermining Multimodal Retrieval-Augmented Generation](https://aclanthology.org/2025.emnlp-main.768.pdf)
+*Ссылки*<br>
+*[1]* [Hipsters on networks: How a minority group of individuals can lead to an antiestablishment majority](https://doi.org/10.1103/PhysRevE.99.022313)<br>
+*[2]* [Echo Chambers and Algorithmic Bias: The Homogenization of Online Culture in a Smart Society](https://www.shs-conferences.org/articles/shsconf/pdf/2024/22/shsconf_icense2024_05001.pdf) <br>
+*[3]* [Algorithmic amplification of biases on Google Search](https://arxiv.org/abs/2401.09044)<br>
+*[4]* [The Echo Chamber of Algorithm Bias](https://ijbht.thebrpi.org/journals/Vol_12_No_1_March_2022/1.pdf)<br>
+*[5]* [No Free Lunch: Retrieval-Augmented Generation Undermines Fairness in LLMs, Even for Vigilant Users](https://openreview.net/forum?id=cphaRg46jD)<br>
+*[6]* [Evaluating the Effect of Retrieval Augmentation on Social Biases](https://arxiv.org/html/2502.17611v1)<br>
+*[7]* [The Price of Format: Diversity Collapse in LLMs](https://arxiv.org/pdf/2505.18949)<br>
+*[8]* [Large language models show amplified cognitive biases in moral decision-making](https://www.pnas.org/doi/10.1073/pnas.2412015122)<br>
+*[9]* [Who is in the Spotlight: The Hidden Bias Undermining Multimodal Retrieval-Augmented Generation](https://aclanthology.org/2025.emnlp-main.768.pdf)<br>
 *[10]* [Memory consolidation as an adaptive process](https://pubmed.ncbi.nlm.nih.gov/34327677/)

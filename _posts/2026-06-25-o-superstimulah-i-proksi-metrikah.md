@@ -18,8 +18,8 @@ tags: [opinion, control, RL, feedback]
 
 *На рисунке - птица выбирает для насиживания несоразмерно большой "макет яйца", игнорируя настоящие яйца - свои и чужие (из книги [4] Нико Тинбергена, этолога, лауреата Нобелевской премии, который ввел понятие "суперстимула").*
 
-**Ссылки**
-*[1]* [Supernormal stimulus](https://en.wikipedia.org/wiki/Supernormal_stimulus)
-*[2]* [Как работают суперстимулы?](https://mediiia.com/project/c2036ecd5b4b44919caedf6bf346b0cd)
-*[3]* [Учение о доминанте](https://ru.wikipedia.org/wiki/%D0%A3%D1%87%D0%B5%D0%BD%D0%B8%D0%B5_%D0%BE_%D0%B4%D0%BE%D0%BC%D0%B8%D0%BD%D0%B0%D0%BD%D1%82%D0%B5)
+**Ссылки**<br>
+*[1]* [Supernormal stimulus](https://en.wikipedia.org/wiki/Supernormal_stimulus)<br>
+*[2]* [Как работают суперстимулы?](https://mediiia.com/project/c2036ecd5b4b44919caedf6bf346b0cd)<br>
+*[3]* [Учение о доминанте](https://ru.wikipedia.org/wiki/%D0%A3%D1%87%D0%B5%D0%BD%D0%B8%D0%B5_%D0%BE_%D0%B4%D0%BE%D0%BC%D0%B8%D0%BD%D0%B0%D0%BD%D1%82%D0%B5)<br>
 *[4]* [Мир серебристой чайки](http://ornithology.su/books/item/f00/s00/z0000019/index.shtml)

@@ -16,10 +16,10 @@ tags: [paper, opinion, ICCS, JoCS]
 
 🤔 При этом варианты 2 и 3 очень ярко проявляются в [гибридных системах](/2026/05/29/obedinenie-cheloveka-i-ii-gibridy-kentavry-obratnaya-svyaz.html), в которых, во-первых, явно возникает вопрос переноса информации из модели или ИИ - человеку, а во-вторых, в масштабе такие системы (как агентные системы ИИ, так и системы человек-ИИ) сами начинают требовать своей разрешимости. А если эти инструменты (модели/ИИ) сами требут разрешимости, возникает следующий уровень в иерархии разрешимости (а может и не один).
 
-**Ссылки**:
-*[1]* [Making Complex Systems Tractable through Computational Science](https://authors.elsevier.com/a/1nMCX6gytHA80N)
-*[2]* [Cognition and Intractability: A Guide to Classical and Parameterized Complexity Analysis](https://doi.org/10.1017/9781107358331)
-*[3]* [Scientific Inference with Interpretable Machine Learning](https://doi.org/10.1007/s11023-024-09691-z)
-*[4]* [Harnessing Computational Complexity Theory to Model Human Decision-making and Cognition](https://doi.org/10.1111/cogs.13304)
-*[5]* [The Tractable Cognition Thesis](https://doi.org/10.1080/03640210801897856)
+**Ссылки**:<br>
+*[1]* [Making Complex Systems Tractable through Computational Science](https://authors.elsevier.com/a/1nMCX6gytHA80N)<br>
+*[2]* [Cognition and Intractability: A Guide to Classical and Parameterized Complexity Analysis](https://doi.org/10.1017/9781107358331)<br>
+*[3]* [Scientific Inference with Interpretable Machine Learning](https://doi.org/10.1007/s11023-024-09691-z)<br>
+*[4]* [Harnessing Computational Complexity Theory to Model Human Decision-making and Cognition](https://doi.org/10.1111/cogs.13304)<br>
+*[5]* [The Tractable Cognition Thesis](https://doi.org/10.1080/03640210801897856)<br>
 *[6]* [The Future of Computational Social Science](https://doi.org/10.1093/oxfordhb/9780192868282.013.50)

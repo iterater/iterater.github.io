@@ -18,9 +18,9 @@ tags: [LLM, opinion, tutorial, tool, ai_science]
 
 🎺 Наконец, **продвижение статей** после публикации. Помимо вполне общей поддержки (сгенерируй твит, сгенерируй картинку и пр.) появляются и весьма оригинальные решения. Например, alphaXiv (в целом - любопытный проект) сделал генератор подкастов, в котором по любой статье с arXiv'а можно за две минут сгенерировать аудио с дискуссией "профессора" и "студента", обсуждающих ключевые идеи статьи. [Пример для нашей статьи про когнитивные способности](https://www.alphaxiv.org/resources/2209.11761) [5]. Можно поменять arXiv id в адресной строке и, нажав кнопку, получить обсуждение своей или чужой статьи.
 
-**Ссылки**
-*[1]* [Artificial intelligence for literature reviews: opportunities and challenges](https://link.springer.com/article/10.1007/s10462-024-10902-3)
-*[2]* [The AI Scientist: Towards Fully Automated Open-Ended Scientific Discovery](https://arxiv.org/abs/2408.06292)
-*[3]* [Curie: Toward Rigorous and Automated Scientific Experimentation with AI Agents](https://arxiv.org/abs/2502.16069)
-*[4]* [Dolphin: Moving Towards Closed-loop Auto-research through Thinking, Practice, and Feedback](https://arxiv.org/abs/2501.03916)
+**Ссылки**<br>
+*[1]* [Artificial intelligence for literature reviews: opportunities and challenges](https://link.springer.com/article/10.1007/s10462-024-10902-3)<br>
+*[2]* [The AI Scientist: Towards Fully Automated Open-Ended Scientific Discovery](https://arxiv.org/abs/2408.06292)<br>
+*[3]* [Curie: Toward Rigorous and Automated Scientific Experimentation with AI Agents](https://arxiv.org/abs/2502.16069)<br>
+*[4]* [Dolphin: Moving Towards Closed-loop Auto-research through Thinking, Practice, and Feedback](https://arxiv.org/abs/2501.03916)<br>
 *[5]* [Assessment of Cognitive Behavioral Characteristics in Intelligent Systems with Predictive Ability and Computing Power](https://www.mdpi.com/2409-9287/8/5/75)

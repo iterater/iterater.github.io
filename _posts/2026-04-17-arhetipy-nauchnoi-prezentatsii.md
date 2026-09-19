@@ -18,6 +18,6 @@ tags: [tutorial, opinion, ppt, presentation]
 
 Архетипов и структуры рассказа может быть много (см. например, таблицу в иллюстрации). Главное - не забывать, что рассказываемая история должна что-то донести до слушателей, а значит - структурирование презентации и речи - важная часть подготовки любого доклада (презентации на конференции, лекции, зажиты диссертации и др.), о которой обязательно стоит задумываться.
 
-*Ссылки*
-*[1]* [The science of storytelling: the David Attenborough style of scientific presentation](https://www.sciencedirect.com/science/article/abs/pii/S1471491423000928) 
+*Ссылки*<br>
+*[1]* [The science of storytelling: the David Attenborough style of scientific presentation](https://www.sciencedirect.com/science/article/abs/pii/S1471491423000928) <br>
 *[2]* [Building a Scientific Narrative](https://www.the-scientist.com/building-a-scientific-narrative-71780)

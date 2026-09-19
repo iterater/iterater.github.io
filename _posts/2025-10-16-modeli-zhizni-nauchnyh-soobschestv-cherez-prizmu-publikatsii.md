@@ -16,8 +16,8 @@ tags: [наукометрия, social_networks, opinion]
 
 🧑‍⚖️ А еще необходимо учитывать, что жизнь научного сообщества, как и любого социума регулируется не только снизу-вверх (с эмерджентностью и пр.), но и сверху-вниз: экспертными советами, номенклатурами, нормами защит диссертаций. Наиболее ярко наблюдать в динамике диссертаций, которые "выравнивают" под требования номенклатур специальностей (см. например, наш анализ авторефератов по стоматологии [4]). При этом номенклатуры и регуляторы в общем случае - часть той же социальной системы ученых (только с другими ролями) и для полной картины надо моделировать и их динамику, социальные связи, контексты, поведение. А также взаимное влияние ролей "ученый-специалист" и "эксперт-регулятор", воплощающихся в одних и тех же людях.
 
-*Ссылки:*
-[[1] The Science of Science](https://www.dashunwang.com/book/the-science-of-science)
-[[2] Evolution of the computational science community: The dynamics of topics and collaborations in 24 years of ICCS and JoCS publications](https://www.sciencedirect.com/science/article/pii/S1877750325000869)
-[[3] Joint latent topic models for text and citations](https://doi.org/10.1145/1401890.1401957)
+*Ссылки:*<br>
+[[1] The Science of Science](https://www.dashunwang.com/book/the-science-of-science)<br>
+[[2] Evolution of the computational science community: The dynamics of topics and collaborations in 24 years of ICCS and JoCS publications](https://www.sciencedirect.com/science/article/pii/S1877750325000869)<br>
+[[3] Joint latent topic models for text and citations](https://doi.org/10.1145/1401890.1401957)<br>
 [[4] Structuring Research Directions in Medical Domain with Topic Modeling: Application for PhD Theses Synopses in Dentistry](https://epub.uni-regensburg.de/53754/1/9781643683492.pdf#page=245)

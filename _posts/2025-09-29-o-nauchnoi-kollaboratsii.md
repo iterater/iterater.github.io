@@ -14,6 +14,6 @@ tags: [complex_systems, social_networks, iccs]
 
 🤔 На примере конференции ICCS попробовали оценить и предсказать возникновение таких связей, определяя их через сеть соавторства как ситуацию, когда люди без совместных публикаций независимо участвуют в конференции в один год, а через какое-то время у них появляется совместная статья (определение, безусловно, ограниченное по многим причинам, но некоторую оценку позволяет дать). Получается, что такие связи работают как в рамках растущего "ядра" сообщества (гигантская связанная компонента на рисунке), так и в рамках отдельно возникающих пар, троек и т.д. Первый компонент отражает "стабильность" сообщества, а второй - новые связи. Представляется, что именно комбинация первого и второго дает адаптивную систему, способную жить и развиваться, не распадаясь на отдельные группы.
 
-**Ссылки:**
-[[1] Evolution of the computational science community: The dynamics of topics and collaborations in 24 years of ICCS and JoCS publications](https://www.sciencedirect.com/science/article/pii/S1877750325000869)
+**Ссылки:**<br>
+[[1] Evolution of the computational science community: The dynamics of topics and collaborations in 24 years of ICCS and JoCS publications](https://www.sciencedirect.com/science/article/pii/S1877750325000869)<br>
 [[2] Predicting future collaborations in a scientific community using graph neural networks](https://www.iccs-meeting.org/archive/iccs2025/papers/159060353.pdf)

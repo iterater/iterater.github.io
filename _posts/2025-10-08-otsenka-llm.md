@@ -16,8 +16,8 @@ tags: [opinion, llm, metric]
 
 🙋‍♂️ Второй путь - *работа с человеком-оценщиком*. Как следствие, метрики дальше лингвистических (см. таблицу - от уровней функциональной пригодности и дальше) до сих пор лучше всего оцениваются человеком: все еще долго, дорого, ограничено. Попытки формирования бенчмарков чаще всего сводятся к фактической оценке более низких уровней, чаще всего, суррогатами на базе поверхностной корректности или функциональной пригодности. Определенная попытка сдвинуться в этом направлении предпринимается в рамках идей LLM-as-a-judge [4]. Однако, возникает вопрос, насколько точно и глубоко воспроизводится человек-оценщик в такой ситуации? Проблема представляется до сих пор открытой. Более того, формируемая информационная обратная связь может вести к увеличению рисков (см. уязвимости), ограниченности, деградации моделей.
 
-**Ссылки:**
-*[1]* [Beyond Accuracy: What Data Quality Means to Data Consumers](https://dl.acm.org/doi/10.1080/07421222.1996.11518099)
-*[2]* [Human perceiving behavior modeling in evaluation of code generation models](https://aclanthology.org/2022.gem-1.24/)
-*[3]* [Test-based and metric-based evaluation of code generation models for practical question answering](https://ieeexplore.ieee.org/abstract/document/10114665)
+**Ссылки:**<br>
+*[1]* [Beyond Accuracy: What Data Quality Means to Data Consumers](https://dl.acm.org/doi/10.1080/07421222.1996.11518099)<br>
+*[2]* [Human perceiving behavior modeling in evaluation of code generation models](https://aclanthology.org/2022.gem-1.24/)<br>
+*[3]* [Test-based and metric-based evaluation of code generation models for practical question answering](https://ieeexplore.ieee.org/abstract/document/10114665)<br>
 *[4]* [A Survey on LLM-as-a-Judge](https://arxiv.org/abs/2411.15594)
