@@ -5,7 +5,19 @@ permalink: /tags/
 ---
 <h1>Tags</h1>
 
-{% assign tag_names = site.tags | keys | sort %}
+{% comment %}
+  Built via split/sort/uniq on a joined string rather than
+  `site.tags | keys` — on some Jekyll/Liquid versions `keys` silently
+  no-ops on site.tags and leaves `tag` bound to a [name, posts] pair
+  instead of a plain string, which crashes `slugify` below with
+  "undefined method `gsub' for an instance of Array".
+{% endcomment %}
+{% assign tags_csv = "" %}
+{% for tag in site.tags %}
+  {% assign tags_csv = tags_csv | append: tag[0] | append: "," %}
+{% endfor %}
+{% assign tag_names = tags_csv | split: "," | uniq | sort %}
+
 <nav class="tag-index">
   {% for tag in tag_names %}
     <a href="#{{ tag | slugify }}">#{{ tag }}</a>
