@@ -21,6 +21,8 @@ Since 2015, I'm the head of the [Digital Healthcare Lab]({{ site.baseurl }}{% li
 
 [CV (2025-03-07)]({{ site.baseurl }}{% link docs/Kovalchuk_CV_ENG.pdf %})
 
+[Blog (RU)]({{ site.baseurl }}{% link posts.md %})
+
 # Contact
 
 Birzhevaya line, 4, Saint Petersburg, 199034, Russia (room 306A)
